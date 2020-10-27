@@ -531,7 +531,7 @@ void SetupServerArgs(NodeContext& node)
                  " If <type> is not supplied or if <type> = 1, indexes for all known types are enabled.",
                  ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
 
-    // Particl specific
+    // Rhombus specific
     gArgs.AddArg("-addressindex", strprintf("Maintain a full address index, used to query for the balance, txids and unspent outputs for addresses (default: %u)", DEFAULT_ADDRESSINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     gArgs.AddArg("-timestampindex", strprintf("Maintain a timestamp index for block hashes, used to query blocks hashes by a range of timestamps (default: %u)", DEFAULT_TIMESTAMPINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
     gArgs.AddArg("-spentindex", strprintf("Maintain a full spent index, used to query the spending txid and input index for an outpoint (default: %u)", DEFAULT_SPENTINDEX), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
@@ -542,7 +542,7 @@ void SetupServerArgs(NodeContext& node)
     gArgs.AddArg("-dbcompression", strprintf("Database compression parameter passed to level-db (default: %s)", DEFAULT_DB_COMPRESSION ? "true" : "false"), ArgsManager::ALLOW_ANY, OptionsCategory::OPTIONS);
 
     gArgs.AddArg("-findpeers", "Node will search for peers (default: 1)", ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
-    // end Particl specific
+    // end Rhombus specific
 
     gArgs.AddArg("-addnode=<ip>", "Add a node to connect to and attempt to keep the connection open (see the `addnode` RPC command help for more info). This option can be specified multiple times to add multiple nodes.", ArgsManager::ALLOW_ANY | ArgsManager::NETWORK_ONLY, OptionsCategory::CONNECTION);
     gArgs.AddArg("-asmap=<file>", strprintf("Specify asn mapping used for bucketing of the peers (default: %s). Relative paths will be prefixed by the net-specific datadir location.", DEFAULT_ASMAP_FILENAME), ArgsManager::ALLOW_ANY, OptionsCategory::CONNECTION);
@@ -713,7 +713,7 @@ void SetupServerArgs(NodeContext& node)
     gArgs.AddArg("-rpcwhitelistdefault", "Sets default behavior for rpc whitelisting. Unless rpcwhitelistdefault is set to 0, if any -rpcwhitelist is set, the rpc server acts as if all rpc users are subject to empty-unless-otherwise-specified whitelists. If rpcwhitelistdefault is set to 1 and no -rpcwhitelist is set, rpc server acts as if all rpc users are subject to empty whitelists.", ArgsManager::ALLOW_BOOL, OptionsCategory::RPC);
     gArgs.AddArg("-rpcworkqueue=<n>", strprintf("Set the depth of the work queue to service RPC calls (default: %d)", DEFAULT_HTTP_WORKQUEUE), ArgsManager::ALLOW_ANY | ArgsManager::DEBUG_ONLY, OptionsCategory::RPC);
     gArgs.AddArg("-server", "Accept command line and JSON-RPC commands", ArgsManager::ALLOW_ANY, OptionsCategory::RPC);
-    gArgs.AddArg("-rpccorsdomain=<domain>", "Allow JSON-RPC connections from specified domain (e.g. http://localhost:4200 or \"*\"). This needs to be set if you are using the Particl GUI in a browser.", ArgsManager::ALLOW_ANY, OptionsCategory::RPC);
+    gArgs.AddArg("-rpccorsdomain=<domain>", "Allow JSON-RPC connections from specified domain (e.g. http://localhost:4200 or \"*\"). This needs to be set if you are using the Rhombus GUI in a browser.", ArgsManager::ALLOW_ANY, OptionsCategory::RPC);
 
     gArgs.AddArg("-displaylocaltime", "Display human readable time strings in local timezone (default: false)", ArgsManager::ALLOW_ANY, OptionsCategory::RPC);
     gArgs.AddArg("-displayutctime", "Display human readable time strings in UTC (default: false)", ArgsManager::ALLOW_ANY, OptionsCategory::RPC);

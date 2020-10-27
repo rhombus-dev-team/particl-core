@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020 The Particl Core developers
+// Copyright (c) 2017-2020 The Rhombus Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -171,7 +171,7 @@ void MnemonicDialog::hwImportComplete(bool passed)
             ui->tbxHwdOut->appendPlainText("Have you added a udev rule for your device?");
 #endif
 #endif
-            ui->tbxHwdOut->appendPlainText("The Particl app on your device must be open before importing.");
+            ui->tbxHwdOut->appendPlainText("The Rhombus app on your device must be open before importing.");
         }
     } else {
         UniValue rv;

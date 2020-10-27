@@ -29,16 +29,16 @@
   <string>????</string>
 
   <key>CFBundleExecutable</key>
-  <string>Particl-Qt</string>
+  <string>Rhombus-Qt</string>
 
   <key>CFBundleName</key>
-  <string>Particl-Qt</string>
+  <string>Rhombus-Qt</string>
 
   <key>LSHasLocalizedDisplayName</key>
   <true/>
 
   <key>CFBundleIdentifier</key>
-  <string>io.rhombusfoundation.Particl-Qt</string>
+  <string>io.rhombusfoundation.Rhombus-Qt</string>
 
   <key>CFBundleURLTypes</key>
   <array>
@@ -46,7 +46,7 @@
       <key>CFBundleTypeRole</key>
       <string>Editor</string>
       <key>CFBundleURLName</key>
-      <string>org.rhombus.ParticlPayment</string>
+      <string>org.rhombus.RhombusPayment</string>
       <key>CFBundleURLSchemes</key>
       <array>
         <string>rhombus</string>

@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-# Copyright (c) 2019 The Particl Core developers
+# Copyright (c) 2019 The Rhombus Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 import time
 
-from test_framework.test_rhombus import ParticlTestFramework, connect_nodes_bi
+from test_framework.test_rhombus import RhombusTestFramework, connect_nodes_bi
 from test_framework.authproxy import JSONRPCException
 
 
-class SmsgMultiWalletTest(ParticlTestFramework):
+class SmsgMultiWalletTest(RhombusTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True  # Don't copy from cache
         self.num_nodes = 3

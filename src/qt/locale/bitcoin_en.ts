@@ -85,12 +85,12 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>These are your Particl addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Rhombus addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+5"/>
-        <source>These are your Particl addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.</source>
+        <source>These are your Rhombus addresses for receiving payments. Use the &apos;Create new receiving address&apos; button in the receive tab to create new addresses.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -363,7 +363,7 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>Send coins to a Particl address</source>
+        <source>Send coins to a Rhombus address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -438,12 +438,12 @@
     </message>
     <message>
         <location line="+3"/>
-        <source>Sign messages with your Particl addresses to prove you own them</source>
+        <source>Sign messages with your Rhombus addresses to prove you own them</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+2"/>
-        <source>Verify messages to ensure they were signed with specified Particl addresses</source>
+        <source>Verify messages to ensure they were signed with specified Rhombus addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -468,7 +468,7 @@
     </message>
     <message>
         <location line="+4"/>
-        <source>Show the %1 help message to get a list with possible Particl command-line options</source>
+        <source>Show the %1 help message to get a list with possible Rhombus command-line options</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -493,7 +493,7 @@
     </message>
     <message numerus="yes">
         <location line="+0"/>
-        <source>%n active connection(s) to Particl network</source>
+        <source>%n active connection(s) to Rhombus network</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
@@ -825,7 +825,7 @@
     </message>
     <message>
         <location filename="../bitcoin.cpp" line="+390"/>
-        <source>A fatal error occurred. Particl can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Rhombus can no longer continue safely and will quit.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1237,7 +1237,7 @@
     </message>
     <message>
         <location line="+96"/>
-        <source>The entered address &quot;%1&quot; is not a valid Particl address.</source>
+        <source>The entered address &quot;%1&quot; is not a valid Rhombus address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1366,7 +1366,7 @@
     </message>
     <message>
         <location line="-92"/>
-        <source>Particl</source>
+        <source>Rhombus</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1400,7 +1400,7 @@
     </message>
     <message>
         <location line="+79"/>
-        <source>%1 will download and store a copy of the Particl block chain.</source>
+        <source>%1 will download and store a copy of the Rhombus block chain.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1748,12 +1748,12 @@
     </message>
     <message>
         <location line="+30"/>
-        <source>Automatically open the Particl client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the Rhombus client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+20"/>
-        <source>Connect to the Particl network through a SOCKS5 proxy.</source>
+        <source>Connect to the Rhombus network through a SOCKS5 proxy.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1771,7 +1771,7 @@
     </message>
     <message>
         <location line="+35"/>
-        <source>Connect to the Particl network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <source>Connect to the Rhombus network through a separate SOCKS5 proxy for Tor hidden services.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2126,7 +2126,7 @@
     <message>
         <location line="+16"/>
         <location line="+539"/>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Particl network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rhombus network after a connection is established, but this process has not completed yet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2260,7 +2260,7 @@
     </message>
     <message>
         <location line="+8"/>
-        <source>URI cannot be parsed! This can be caused by an invalid Particl address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Rhombus address or malformed URI parameters.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2311,7 +2311,7 @@
     </message>
     <message>
         <location filename="../guiutil.cpp" line="+111"/>
-        <source>Enter a Particl address (e.g. %1)</source>
+        <source>Enter a Rhombus address (e.g. %1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2972,7 +2972,7 @@
     </message>
     <message>
         <location line="-155"/>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Particl network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rhombus network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3452,7 +3452,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+1"/>
-        <source>Creates a Partially Signed Particl Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <source>Creates a Partially Signed Rhombus Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3502,7 +3502,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+596"/>
-        <source>Warning: Invalid Particl address</source>
+        <source>Warning: Invalid Rhombus address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3656,7 +3656,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="-325"/>
-        <source>The Particl address to send the payment to</source>
+        <source>The Rhombus address to send the payment to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3725,7 +3725,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <location line="-74"/>
         <location line="+96"/>
-        <source>A short message sent over the Particl network, encrypted if sending to a stealth address or in a blind or anon transaction.</source>
+        <source>A short message sent over the Rhombus network, encrypted if sending to a stealth address or in a blind or anon transaction.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3735,7 +3735,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+10"/>
-        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rhombus network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3755,7 +3755,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+28"/>
-        <source>The Particl address that will be able to spend the output (must be 256bit)</source>
+        <source>The Rhombus address that will be able to spend the output (must be 256bit)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3770,7 +3770,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+31"/>
-        <source>The Particl address that will be able to stake the output</source>
+        <source>The Rhombus address that will be able to stake the output</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3834,7 +3834,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+18"/>
-        <source>The Particl address to sign the message with</source>
+        <source>The Rhombus address to sign the message with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3877,17 +3877,17 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+21"/>
-        <source>Sign the message to prove you own this Particl address</source>
+        <source>Sign the message to prove you own this Rhombus address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+106"/>
-        <source>The Particl address the message was signed with</source>
+        <source>The Rhombus address the message was signed with</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+51"/>
-        <source>Verify the message to ensure it was signed with the specified Particl address</source>
+        <source>Verify the message to ensure it was signed with the specified Rhombus address</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

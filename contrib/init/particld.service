@@ -1,5 +1,5 @@
 [Unit]
-Description=Particl daemon
+Description=Rhombus daemon
 After=network.target
 
 [Service]
@@ -8,10 +8,10 @@ Group=rhombus
 
 Type=forking
 PIDFile=/home/rhombus/.rhombus/rhombusd.pid
-ExecStart=/home/rhombus/Particl/rhombusd -daemon -pid=/home/rhombus/.rhombus/rhombusd.pid \
+ExecStart=/home/rhombus/Rhombus/rhombusd -daemon -pid=/home/rhombus/.rhombus/rhombusd.pid \
 -conf=/home/rhombus/.rhombus/rhombus.conf -datadir=/home/rhombus/.rhombus
 
-ExecStop=/home/rhombus/Particl/rhombus-cli -conf=/home/rhombus/.rhombus/rhombus.conf stop
+ExecStop=/home/rhombus/Rhombus/rhombus-cli -conf=/home/rhombus/.rhombus/rhombus.conf stop
 ExecStop=/usr/bin/sleep 25
 
 Restart=no

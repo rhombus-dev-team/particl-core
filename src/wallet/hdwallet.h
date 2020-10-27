@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020 The Particl Core developers
+// Copyright (c) 2017-2020 The Rhombus Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -76,7 +76,7 @@ class CHDWallet : public CWallet
 public:
     CHDWallet(interfaces::Chain* chain, const WalletLocation& location, std::unique_ptr<WalletDatabase> dbw_in) : CWallet(chain, location, std::move(dbw_in))
     {
-        m_default_address_type = OutputType::LEGACY; // In Particl segwit is enabled for all types
+        m_default_address_type = OutputType::LEGACY; // In Rhombus segwit is enabled for all types
         m_fallback_fee = CFeeRate(DEFAULT_FALLBACK_FEE_PART);
     }
 

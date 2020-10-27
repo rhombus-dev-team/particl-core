@@ -1,20 +1,20 @@
-Particl Core
+Rhombus Core
 
 Intro
 -----
-Particl is an open source, decentralized privacy platform
+Rhombus is an open source, decentralized privacy platform
 built for global person to person eCommerce.
 
 For more information, as well as an immediately useable, binary version of
-the Particl Core software, see https://rhombus.io.
+the Rhombus Core software, see https://rhombus.io.
 
 
 Setup
 -----
 Unpack the files into a directory and run rhombus-qt.exe.
 
-Particl Core is the original Particl client and it builds the backbone of the network.
-However, it downloads and stores the entire history of Particl transactions;
+Rhombus Core is the original Rhombus client and it builds the backbone of the network.
+However, it downloads and stores the entire history of Rhombus transactions;
 depending on the speed of your computer and network connection, the synchronization
 process can take anywhere from a few hours to a day or more.
 

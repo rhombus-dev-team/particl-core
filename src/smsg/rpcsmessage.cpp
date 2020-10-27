@@ -1,5 +1,5 @@
 // Copyright (c) 2014-2016 The ShadowCoin developers
-// Copyright (c) 2017-2020 The Particl Core developers
+// Copyright (c) 2017-2020 The Rhombus Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -669,7 +669,7 @@ static UniValue smsgdumpprivkey(const JSONRPCRequest &request)
     std::string strAddress = request.params[0].get_str();
     CTxDestination dest = DecodeDestination(strAddress);
     if (!IsValidDestination(dest)) {
-        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Particl address");
+        throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Rhombus address");
     }
 
     if (dest.type() != typeid(PKHash)) {

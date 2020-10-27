@@ -113,7 +113,7 @@ Next Major Version
 - Fixed help text for createsignaturewith commands.
 - Added 'pubkey' to output of extkey info extended-secret-key.
 - Fixed help text for getspentinfo.
-- Enabled segwit addresses in Particl mode for easier integrations.
+- Enabled segwit addresses in Rhombus mode for easier integrations.
 - Raised minimum peer version to 90009.
 
 

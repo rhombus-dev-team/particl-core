@@ -66,11 +66,11 @@
         <translation>Imenik prejemnih naslovov</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Rhombus addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>To so vaši rhombus-naslovi za pošiljanje. Pred pošiljanjem vedno preverite količino in prejemnikov naslov.</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
+        <source>These are your Rhombus addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
         <translation>To so vaši naslovi za prejemanje rhombusov. Če želite ustvariti nov prejemni naslov, uporabite gumb za ustvarjanje novih naslovov v zavihku "prejemanje".</translation>
     </message>
     <message>
@@ -362,7 +362,7 @@
         <translation>Posredniški strežnik je &lt;b&gt;omogočen&lt;/b&gt;: %1</translation>
     </message>
     <message>
-        <source>Send coins to a Particl address</source>
+        <source>Send coins to a Rhombus address</source>
         <translation>Izvedite plačilo na rhombus-naslov</translation>
     </message>
     <message>
@@ -398,11 +398,11 @@
         <translation>Šifrirajte zasebne ključe, ki se nahajajo v denarnici</translation>
     </message>
     <message>
-        <source>Sign messages with your Particl addresses to prove you own them</source>
+        <source>Sign messages with your Rhombus addresses to prove you own them</source>
         <translation>Podpišite poljubno sporočilo z enim svojih rhombus-naslovov, da prejemniku sporočila dokažete, da je ta naslov v vaši lasti.</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Particl addresses</source>
+        <source>Verify messages to ensure they were signed with specified Rhombus addresses</source>
         <translation>Preverite, če je bilo prejeto sporočilo podpisano z določenim rhombus-naslovom.</translation>
     </message>
     <message>
@@ -438,8 +438,8 @@
         <translation>Možnosti &amp;ukazne vrstice</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Particl network</source>
-        <translation><numerusform>%n aktivna povezava v omrežje Particl</numerusform><numerusform>%n aktivni povezavi v omrežje Particl</numerusform><numerusform>%n aktivne povezave v omrežje Particl</numerusform><numerusform>%n aktivnih povezav v omrežje Particl</numerusform></translation>
+        <source>%n active connection(s) to Rhombus network</source>
+        <translation><numerusform>%n aktivna povezava v omrežje Rhombus</numerusform><numerusform>%n aktivni povezavi v omrežje Rhombus</numerusform><numerusform>%n aktivne povezave v omrežje Rhombus</numerusform><numerusform>%n aktivnih povezav v omrežje Rhombus</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -518,7 +518,7 @@
         <translation>Zapri denarnico</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Particl command-line options</source>
+        <source>Show the %1 help message to get a list with possible Rhombus command-line options</source>
         <translation>Pokaži %1 sporočilo za pomoč s seznamom vseh možnosti v ukazni vrstici</translation>
     </message>
     <message>
@@ -630,8 +630,8 @@
         <translation>Denarnica je &lt;b&gt;šifrirana&lt;/b&gt; in trenutno &lt;b&gt;zaklenjena&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Particl can no longer continue safely and will quit.</source>
-        <translation>Prišlo je do usodne napake. Particl ne more več varno nadaljevati in se bo zaprl.</translation>
+        <source>A fatal error occurred. Rhombus can no longer continue safely and will quit.</source>
+        <translation>Prišlo je do usodne napake. Rhombus ne more več varno nadaljevati in se bo zaprl.</translation>
     </message>
 </context>
 <context>
@@ -874,7 +874,7 @@
         <translation>Uredi naslov za pošiljanje</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Particl address.</source>
+        <source>The entered address "%1" is not a valid Rhombus address.</source>
         <translation>Vnešeni naslov "%1" ni veljaven rhombus-naslov.</translation>
     </message>
     <message>
@@ -971,8 +971,8 @@
         <translation>Uporabi to podatkovno mapo:</translation>
     </message>
     <message>
-        <source>Particl</source>
-        <translation>Particl</translation>
+        <source>Rhombus</source>
+        <translation>Rhombus</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -987,7 +987,7 @@
         <translation>Približno %1 GB podatkov bo shranjenih v tem direktoriju.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Particl block chain.</source>
+        <source>%1 will download and store a copy of the Rhombus block chain.</source>
         <translation>%1 bo prenesel in shranil kopijo verige blokov.</translation>
     </message>
     <message>
@@ -1223,7 +1223,7 @@
         <translation>Omogoči &amp;trošenje vračila iz še nepotrjenih plačil</translation>
     </message>
     <message>
-        <source>Automatically open the Particl client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the Rhombus client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Program samodejno odpre ustrezna vrata na usmerjevalniku. To deluje samo, če vaš usmerjevalnik podpira in ima omogočen UPnP.</translation>
     </message>
     <message>
@@ -1239,8 +1239,8 @@
         <translation>Dovoli &amp;dohodne povezave</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a SOCKS5 proxy.</source>
-        <translation>Poveži se v omrežje Particl preko posredniškega strežnika SOCKS5.</translation>
+        <source>Connect to the Rhombus network through a SOCKS5 proxy.</source>
+        <translation>Poveži se v omrežje Rhombus preko posredniškega strežnika SOCKS5.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1275,8 +1275,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Poveži se v omrežje Particl preko posredniškega strežnika SOCKS5 za skrite storitve Tor.</translation>
+        <source>Connect to the Rhombus network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Poveži se v omrežje Rhombus preko posredniškega strežnika SOCKS5 za skrite storitve Tor.</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -1386,8 +1386,8 @@
         <translation>Oblika</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Particl network after a connection is established, but this process has not completed yet.</source>
-        <translation>Prikazani podatki so morda zastareli. Program ob vzpostavitvi povezave samodejno sinhronizira denarnico z omrežjem Particl, a trenutno ta proces še ni zaključen.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rhombus network after a connection is established, but this process has not completed yet.</source>
+        <translation>Prikazani podatki so morda zastareli. Program ob vzpostavitvi povezave samodejno sinhronizira denarnico z omrežjem Rhombus, a trenutno ta proces še ni zaključen.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1489,7 +1489,7 @@
         <translation>Neveljaven naslov za plačilo %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Particl address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Rhombus address or malformed URI parameters.</source>
         <translation>URI je neprepoznaven! Možno je, da je rhombus-naslov neveljaven ali pa so parametri URI-ja napačno oblikovani.</translation>
     </message>
     <message>
@@ -1531,7 +1531,7 @@
         <translation>Znesek</translation>
     </message>
     <message>
-        <source>Enter a Particl address (e.g. %1)</source>
+        <source>Enter a Rhombus address (e.g. %1)</source>
         <translation>Vnesite rhombus-naslov (npr. %1)</translation>
     </message>
     <message>
@@ -1992,8 +1992,8 @@
         <translation>&amp;Sporočilo:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Particl network.</source>
-        <translation>Neobvezno sporočilo kot priponka zahtevku za plačilo, ki bo prikazano, ko bo zahtevek odprt. Opomba: Opravljeno plačilo.prek omrežja Particl tega sporočila ne bo vsebovalo.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rhombus network.</source>
+        <translation>Neobvezno sporočilo kot priponka zahtevku za plačilo, ki bo prikazano, ko bo zahtevek odprt. Opomba: Opravljeno plačilo.prek omrežja Rhombus tega sporočila ne bo vsebovalo.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -2345,7 +2345,7 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>Ustvari n&amp;epodpisano</translation>
     </message>
     <message>
-        <source>Creates a Partially Signed Particl Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <source>Creates a Partially Signed Rhombus Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
         <translation>Ustvari delno podpisano rhombus-transakcijo (DPBT, angl. PSBT), ki jo lahko skopirate in potem podpišete n.pr. z nepovezano (offline) %1 denarnico ali pa s hardversko denarnico, ki podpira DPBT.</translation>
     </message>
     <message>
@@ -2369,7 +2369,7 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>Ali ste prepričani, da želite poslati?</translation>
     </message>
     <message>
-        <source>Please, review your transaction proposal. This will produce a Partially Signed Particl Transaction (PSBT) which you can copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Rhombus Transaction (PSBT) which you can copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
         <translation>Prosimo, preglejte svoj predlog transakcije. Ustvarjena bo delno podpisana rhombus-transakcija (DPBT, angl. PSBT), ki jo lahko skopirate in potem podpišete n.pr. z nepovezano (offline) %1 denarnico ali pa s hardversko denarnico, ki podpira DPBT.</translation>
     </message>
     <message>
@@ -2461,7 +2461,7 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation><numerusform>Predviden začetek potrditev po %n najdenemu bloku.</numerusform><numerusform>Predviden začetek potrditev po %n najdenih blokih.</numerusform><numerusform>Predviden začetek potrditev po %n najdenih blokih.</numerusform><numerusform>Prva predvidena potrditev v naslednjih %n blokih.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid Particl address</source>
+        <source>Warning: Invalid Rhombus address</source>
         <translation>Opozorilo: Neveljaven rhombus-naslov</translation>
     </message>
     <message>
@@ -2500,8 +2500,8 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>Izberite enega od že uporabljenih naslovov</translation>
     </message>
     <message>
-        <source>The Particl address to send the payment to</source>
-        <translation>Particl-naslov, na katerega bo plačilo poslano</translation>
+        <source>The Rhombus address to send the payment to</source>
+        <translation>Rhombus-naslov, na katerega bo plačilo poslano</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2552,8 +2552,8 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>Če vnesete oznako za zgornji naslov, se bo skupaj z naslovom shranila v imenk že uporabljenih naslovov</translation>
     </message>
     <message>
-        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
-        <translation>Sporočilo, ki je bilo pripeto na URI tipa rhombus: in bo shranjeno skupaj s podatki o transakciji. Opomba: Sporočilo ne bo poslano preko omrežja Particl.</translation>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rhombus network.</source>
+        <translation>Sporočilo, ki je bilo pripeto na URI tipa rhombus: in bo shranjeno skupaj s podatki o transakciji. Opomba: Sporočilo ne bo poslano preko omrežja Rhombus.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2590,8 +2590,8 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>S svojimi naslovi lahko podpisujete sporočila ali dogovore in s tem dokazujete, da na teh naslovih lahko prejemate kovance. Bodite previdni in ne podpisujte ničesar nejasnega ali naključnega, ker vas zlikovci preko ribarjenja (phishing) lahko prelisičijo, da na njih prepišete svojo identiteto. Podpisujte samo podrobno opisane izjave, s katerimi se strinjate.</translation>
     </message>
     <message>
-        <source>The Particl address to sign the message with</source>
-        <translation>Particl-naslov, s katerim podpisujete sporočilo</translation>
+        <source>The Rhombus address to sign the message with</source>
+        <translation>Rhombus-naslov, s katerim podpisujete sporočilo</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2622,7 +2622,7 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>Kopiranje trenutnega podpisa v sistemsko odložišče.</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Particl address</source>
+        <source>Sign the message to prove you own this Rhombus address</source>
         <translation>Podpišite sporočilo, da dokažete lastništvo zgornjega naslova.</translation>
     </message>
     <message>
@@ -2646,8 +2646,8 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>Da preverite verodostojnost sporočila, spodaj vnesite: prejemnikov naslov, prejeto sporočilo (pazljivo skopirajte vse prelome vrstic, presledke, tabulatorje itd.) in prejeti podpis. Da se izognete napadom tipa man-in-the-middle, vedite, da iz veljavnega podpisa ne sledi nič drugega, kot tisto, kar je navedeno v sporočilu. Podpis samo potrjuje dejstvo, da ima podpisnik v lasti prejemni naslov, ne more pa dokazati vira nobene transakcije!</translation>
     </message>
     <message>
-        <source>The Particl address the message was signed with</source>
-        <translation>Particl-naslov, s katerim je bilo sporočilo podpisano</translation>
+        <source>The Rhombus address the message was signed with</source>
+        <translation>Rhombus-naslov, s katerim je bilo sporočilo podpisano</translation>
     </message>
     <message>
         <source>The signed message to verify</source>
@@ -2658,7 +2658,7 @@ Opomba: Ker se provizija izračuna na bajt, bi provizija "100 satoshijev na kB" 
         <translation>Podpis, ustvarjen ob podpisovanju sporočila</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Particl address</source>
+        <source>Verify the message to ensure it was signed with the specified Rhombus address</source>
         <translation>Preverite, ali je bilo sporočilo v resnici podpisano z navedenim rhombus-naslovom.</translation>
     </message>
     <message>

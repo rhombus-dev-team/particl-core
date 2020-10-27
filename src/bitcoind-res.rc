@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Particl"
-            VALUE "FileDescription",    "rhombusd (Particl node with a JSON-RPC server)"
+            VALUE "CompanyName",        "Rhombus"
+            VALUE "FileDescription",    "rhombusd (Rhombus node with a JSON-RPC server)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "rhombusd"
             VALUE "LegalCopyright",     COPYRIGHT_STR

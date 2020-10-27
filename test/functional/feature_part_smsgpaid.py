@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2019 The Particl Core developers
+# Copyright (c) 2017-2019 The Rhombus Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,7 +8,7 @@ import json
 import binascii
 
 from test_framework.test_rhombus import (
-    ParticlTestFramework,
+    RhombusTestFramework,
     isclose,
     getIndexAtProperty,
 )
@@ -16,7 +16,7 @@ from test_framework.util import assert_raises_rpc_error, connect_nodes, sync_mem
 from test_framework.authproxy import JSONRPCException
 
 
-class SmsgPaidTest(ParticlTestFramework):
+class SmsgPaidTest(RhombusTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3

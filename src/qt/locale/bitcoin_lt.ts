@@ -66,8 +66,8 @@
         <translation>Gavimo adresai</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Tai yra jūsų Particl adresai išeinantiems mokėjimams. Visada pasitikrinkite sumą ir gavėjo adresą prieš siunčiant lėšas.</translation>
+        <source>These are your Rhombus addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Tai yra jūsų Rhombus adresai išeinantiems mokėjimams. Visada pasitikrinkite sumą ir gavėjo adresą prieš siunčiant lėšas.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -326,8 +326,8 @@
         <translation>Tarpinis serveris yra &lt;b&gt;įgalintas&lt;/b&gt;: %1</translation>
     </message>
     <message>
-        <source>Send coins to a Particl address</source>
-        <translation>Siųsti monetas Particl adresui</translation>
+        <source>Send coins to a Rhombus address</source>
+        <translation>Siųsti monetas Rhombus adresui</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -362,12 +362,12 @@
         <translation>Užšifruoti privačius raktus, kurie priklauso jūsų piniginei</translation>
     </message>
     <message>
-        <source>Sign messages with your Particl addresses to prove you own them</source>
-        <translation>Pasirašydami žinutes su savo Particl adresais įrodysite jog esate jų savininkas</translation>
+        <source>Sign messages with your Rhombus addresses to prove you own them</source>
+        <translation>Pasirašydami žinutes su savo Rhombus adresais įrodysite jog esate jų savininkas</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Particl addresses</source>
-        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas Particl adresas</translation>
+        <source>Verify messages to ensure they were signed with specified Rhombus addresses</source>
+        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas Rhombus adresas</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -402,8 +402,8 @@
         <translation>Komandinės eilutės parametrai</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Particl network</source>
-        <translation><numerusform>%n Particl tinklo aktyvus ryšys</numerusform><numerusform>%n Particl tinklo aktyvūs ryšiai</numerusform><numerusform>%n Particl tinklo aktyvūs ryšiai</numerusform><numerusform>%n Particl tinklo aktyvūs ryšiai</numerusform></translation>
+        <source>%n active connection(s) to Rhombus network</source>
+        <translation><numerusform>%n Rhombus tinklo aktyvus ryšys</numerusform><numerusform>%n Rhombus tinklo aktyvūs ryšiai</numerusform><numerusform>%n Rhombus tinklo aktyvūs ryšiai</numerusform><numerusform>%n Rhombus tinklo aktyvūs ryšiai</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -470,8 +470,8 @@
         <translation>Uždaryti Piniginę</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Particl command-line options</source>
-        <translation>Rodyti %1 pagalbos žinutę su Particl pasirinkimo komandomis</translation>
+        <source>Show the %1 help message to get a list with possible Rhombus command-line options</source>
+        <translation>Rodyti %1 pagalbos žinutę su Rhombus pasirinkimo komandomis</translation>
     </message>
     <message>
         <source>default wallet</source>
@@ -574,8 +574,8 @@
         <translation>Piniginė &lt;b&gt;užšifruota&lt;/b&gt; ir šiuo metu &lt;b&gt;užrakinta&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Particl can no longer continue safely and will quit.</source>
-        <translation>Kritinė klaida. Particl nebegali tęsti saugiai ir bus išjungtas.</translation>
+        <source>A fatal error occurred. Rhombus can no longer continue safely and will quit.</source>
+        <translation>Kritinė klaida. Rhombus nebegali tęsti saugiai ir bus išjungtas.</translation>
     </message>
 </context>
 <context>
@@ -770,8 +770,8 @@
         <translation>Keisti siuntimo adresą</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Particl address.</source>
-        <translation>Įvestas adresas „%1“ nėra galiojantis Particl adresas.</translation>
+        <source>The entered address "%1" is not a valid Rhombus address.</source>
+        <translation>Įvestas adresas „%1“ nėra galiojantis Rhombus adresas.</translation>
     </message>
     <message>
         <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
@@ -863,8 +863,8 @@
         <translation>Naudoti kitą duomenų katalogą:</translation>
     </message>
     <message>
-        <source>Particl</source>
-        <translation>Particl</translation>
+        <source>Rhombus</source>
+        <translation>Rhombus</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -875,8 +875,8 @@
         <translation>Šiame kataloge bus saugoma maždaug apie %1 GB duomenų.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Particl block chain.</source>
-        <translation>%1 bus atsisiųsta ir išsaugota Particl blokų grandinės kopiją.</translation>
+        <source>%1 will download and store a copy of the Rhombus block chain.</source>
+        <translation>%1 bus atsisiųsta ir išsaugota Rhombus blokų grandinės kopiją.</translation>
     </message>
     <message>
         <source>The wallet will also be stored in this directory.</source>
@@ -1087,8 +1087,8 @@
         <translation>&amp;Išleiskite nepatvirtintus pakeitimus</translation>
     </message>
     <message>
-        <source>Automatically open the Particl client port on the router. This only works when your router supports UPnP and it is enabled.</source>
-        <translation>Automatiškai atidaryti Particl kliento prievadą maršrutizatoriuje. Tai veikia tik tada, kai jūsų maršrutizatorius palaiko UPnP ir ji įjungta.</translation>
+        <source>Automatically open the Rhombus client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation>Automatiškai atidaryti Rhombus kliento prievadą maršrutizatoriuje. Tai veikia tik tada, kai jūsų maršrutizatorius palaiko UPnP ir ji įjungta.</translation>
     </message>
     <message>
         <source>Map port using &amp;UPnP</source>
@@ -1103,8 +1103,8 @@
         <translation>Leisti gaunamu&amp;s ryšius</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a SOCKS5 proxy.</source>
-        <translation>Prisijunkite prie „Particl“ tinklo per SOCKS5 proxy.</translation>
+        <source>Connect to the Rhombus network through a SOCKS5 proxy.</source>
+        <translation>Prisijunkite prie „Rhombus“ tinklo per SOCKS5 proxy.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1139,8 +1139,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Prisijunkite prie „Particl“ tinklo per atskirą „SOCKS5“ proxy „Tor“ paslėptas paslaugas.</translation>
+        <source>Connect to the Rhombus network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Prisijunkite prie „Rhombus“ tinklo per atskirą „SOCKS5“ proxy „Tor“ paslėptas paslaugas.</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -1250,8 +1250,8 @@
         <translation>Forma</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Particl network after a connection is established, but this process has not completed yet.</source>
-        <translation>Rodoma informacija gali būti pasenusi. Piniginė automatiškai sinchronizuojasi su „Particl“ tinklu po ryšio užmezgimo, tačiau šis procesas dar nebaigtas.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rhombus network after a connection is established, but this process has not completed yet.</source>
+        <translation>Rodoma informacija gali būti pasenusi. Piniginė automatiškai sinchronizuojasi su „Rhombus“ tinklu po ryšio užmezgimo, tačiau šis procesas dar nebaigtas.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1341,8 +1341,8 @@
         <translation>Neteisingas mokėjimo adresas %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Particl address or malformed URI parameters.</source>
-        <translation>URI negalima perskaityti! Tai gali sukelti negaliojantys „Particl“ adresas arba netinkami URI parametrai.</translation>
+        <source>URI cannot be parsed! This can be caused by an invalid Rhombus address or malformed URI parameters.</source>
+        <translation>URI negalima perskaityti! Tai gali sukelti negaliojantys „Rhombus“ adresas arba netinkami URI parametrai.</translation>
     </message>
     <message>
         <source>Payment request file handling</source>
@@ -1383,8 +1383,8 @@
         <translation>Suma</translation>
     </message>
     <message>
-        <source>Enter a Particl address (e.g. %1)</source>
-        <translation>Įveskite Particl adresą (pvz., %1)</translation>
+        <source>Enter a Rhombus address (e.g. %1)</source>
+        <translation>Įveskite Rhombus adresą (pvz., %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1836,8 +1836,8 @@
         <translation>Žinutė:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Particl network.</source>
-        <translation>Neprivalomas pranešimas, pridedamas prie mokėjimo prašymo, kuris bus rodomas atidarius užklausą. Pastaba: pranešimas nebus išsiųstas su mokėjimu per „Particl“ tinklą.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rhombus network.</source>
+        <translation>Neprivalomas pranešimas, pridedamas prie mokėjimo prašymo, kuris bus rodomas atidarius užklausą. Pastaba: pranešimas nebus išsiųstas su mokėjimu per „Rhombus“ tinklą.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -2237,8 +2237,8 @@ Pastaba: Kadangi mokestis apskaičiuojamas pagal baitą, mokestis už „100 sat
         <translation><numerusform>Apskaičiuota, kad bus pradėtas patvirtinimas per %n bloką.</numerusform><numerusform>Apskaičiuota, kad bus pradėtas patvirtinimas per %n blokus.</numerusform><numerusform>Apskaičiuota, kad bus pradėtas patvirtinimas per %n blokus.</numerusform><numerusform>Apskaičiuota, kad bus pradėtas patvirtinimas per %n blokus.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid Particl address</source>
-        <translation>Įspėjimas: neteisingas Particl adresas</translation>
+        <source>Warning: Invalid Rhombus address</source>
+        <translation>Įspėjimas: neteisingas Rhombus adresas</translation>
     </message>
     <message>
         <source>Warning: Unknown change address</source>
@@ -2276,8 +2276,8 @@ Pastaba: Kadangi mokestis apskaičiuojamas pagal baitą, mokestis už „100 sat
         <translation>Pasirinkite anksčiau naudojamą adresą</translation>
     </message>
     <message>
-        <source>The Particl address to send the payment to</source>
-        <translation>Particl adresas, į kurį siunčiamas mokėjimas</translation>
+        <source>The Rhombus address to send the payment to</source>
+        <translation>Rhombus adresas, į kurį siunčiamas mokėjimas</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2324,8 +2324,8 @@ Pastaba: Kadangi mokestis apskaičiuojamas pagal baitą, mokestis už „100 sat
         <translation>Įveskite šio adreso etiketę, kad ją pridėtumėte prie naudojamų adresų sąrašo</translation>
     </message>
     <message>
-        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
-        <translation>Pranešimas, kuris buvo pridėtas prie rhombus: URI, kuris bus saugomas kartu su sandoriu jūsų nuoroda. Pastaba: šis pranešimas nebus išsiųstas per „Particl“ tinklą.</translation>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rhombus network.</source>
+        <translation>Pranešimas, kuris buvo pridėtas prie rhombus: URI, kuris bus saugomas kartu su sandoriu jūsų nuoroda. Pastaba: šis pranešimas nebus išsiųstas per „Rhombus“ tinklą.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2358,8 +2358,8 @@ Pastaba: Kadangi mokestis apskaičiuojamas pagal baitą, mokestis už „100 sat
         <translation>&amp;Pasirašyti žinutę</translation>
     </message>
     <message>
-        <source>The Particl address to sign the message with</source>
-        <translation>Particl adresas, kuriuo bus pasirašytas pranešimas su</translation>
+        <source>The Rhombus address to sign the message with</source>
+        <translation>Rhombus adresas, kuriuo bus pasirašytas pranešimas su</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2390,7 +2390,7 @@ Pastaba: Kadangi mokestis apskaičiuojamas pagal baitą, mokestis už „100 sat
         <translation>Nukopijuokite dabartinį parašą į sistemos iškarpinę</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Particl address</source>
+        <source>Sign the message to prove you own this Rhombus address</source>
         <translation>Registruotis žinute įrodymuii, kad turite šį adresą</translation>
     </message>
     <message>
@@ -2410,12 +2410,12 @@ Pastaba: Kadangi mokestis apskaičiuojamas pagal baitą, mokestis už „100 sat
         <translation>&amp;Patikrinti žinutę</translation>
     </message>
     <message>
-        <source>The Particl address the message was signed with</source>
-        <translation>Particl adresas, kuriuo buvo pasirašytas pranešimas</translation>
+        <source>The Rhombus address the message was signed with</source>
+        <translation>Rhombus adresas, kuriuo buvo pasirašytas pranešimas</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Particl address</source>
-        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas Particl adresas</translation>
+        <source>Verify the message to ensure it was signed with the specified Rhombus address</source>
+        <translation>Patikrinkite žinutę, jog įsitikintumėte, kad ją pasirašė nurodytas Rhombus adresas</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>

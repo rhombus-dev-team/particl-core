@@ -1,24 +1,24 @@
-Particl Core integration/staging tree
+Rhombus Core integration/staging tree
 =====================================
 
 [![Build Status](https://travis-ci.org/rhombus/rhombus-core.svg?branch=master)](https://travis-ci.org/rhombus/rhombus-core)
 
 https://rhombus.io
 
-What is Particl?
+What is Rhombus?
 ----------------
 
 An open source, decentralized privacy platform
 built for global person to person eCommerce.
 
 For more information, as well as an immediately usable, binary version of
-the Particl Core software, see https://rhombus.io.
+the Rhombus Core software, see https://rhombus.io.
 
 
 Getting Started
 ---------------
 
-A new Particl wallet will need an HD master key loaded and an initial account
+A new Rhombus wallet will need an HD master key loaded and an initial account
 derived before it will be functional.
 
 The GUI programs will guide you through the initial setup.
@@ -36,7 +36,7 @@ Remember to backup your passphrase and/or wallet.dat file!
 License
 -------
 
-Particl Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
+Rhombus Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see https://opensource.org/licenses/MIT.
 
 Development Process
@@ -44,7 +44,7 @@ Development Process
 
 The `master` branch is regularly built (see doc/build-*.md for instructions) and tested, but is not guaranteed to be
 completely stable. [Tags](https://github.com/rhombus/rhombus-core/tags) are created
-regularly to indicate new official, stable release versions of Particl Core.
+regularly to indicate new official, stable release versions of Rhombus Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)
 and useful hints for developers can be found in [doc/developer-notes.md](doc/developer-notes.md).

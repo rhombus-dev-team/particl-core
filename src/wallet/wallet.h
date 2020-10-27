@@ -962,7 +962,7 @@ public:
     int64_t IncOrderPosNext(WalletBatch *batch = nullptr) EXCLUSIVE_LOCKS_REQUIRED(cs_wallet);
     DBErrors ReorderTransactions();
 
-    //! For ParticlWallet, clear cached balances from wallet called at new block and adding new transaction
+    //! For RhombusWallet, clear cached balances from wallet called at new block and adding new transaction
     virtual void ClearCachedBalances() {};
     void MarkDirty();
 
@@ -1355,7 +1355,7 @@ public:
     //! Add a descriptor to the wallet, return a ScriptPubKeyMan & associated output type
     ScriptPubKeyMan* AddWalletDescriptor(WalletDescriptor& desc, const FlatSigningProvider& signing_provider, const std::string& label);
 
-    // Particl
+    // Rhombus
     bool HaveKey(const CKeyID &address) const override { return false; };
     bool GetKey(const CKeyID &address, CKey &keyOut) const override { return false; };
     bool GetPubKey(const CKeyID &address, CPubKey &pkOut) const override { return false; };

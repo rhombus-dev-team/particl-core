@@ -1884,7 +1884,7 @@ static UniValue getblockstats(const JSONRPCRequest& request)
 
         if (loop_inputs) {
             CAmount tx_total_in = 0;
-            const auto& txundo = blockUndo.vtxundo.at(fRhombusMode ? i : i - 1); // Particl includes coinbase/coinstake in undo data
+            const auto& txundo = blockUndo.vtxundo.at(fRhombusMode ? i : i - 1); // Rhombus includes coinbase/coinstake in undo data
             for (const Coin& coin: txundo.vprevout) {
                 const CTxOut& prevoutput = coin.out;
 

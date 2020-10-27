@@ -1,4 +1,4 @@
-// Copyright (c) 2018-2020 The Particl Core developers
+// Copyright (c) 2018-2020 The Rhombus Core developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -996,7 +996,7 @@ static UniValue devicegetnewstealthaddress(const JSONRPCRequest &request)
     }
 
             RPCHelpMan{"devicegetnewstealthaddress",
-                "\nReturns a new Particl stealth address for receiving payments." +
+                "\nReturns a new Rhombus stealth address for receiving payments." +
                     HELP_REQUIRING_PASSPHRASE,
                 {
                     {"label", RPCArg::Type::STR, /* default */ "", "If \"label\" is specified the new address will be added to the address book."},

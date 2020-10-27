@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2020 The Particl Core developers
+# Copyright (c) 2017-2020 The Rhombus Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -8,7 +8,7 @@ import json
 import subprocess
 import textwrap
 
-from test_framework.test_rhombus import ParticlTestFramework
+from test_framework.test_rhombus import RhombusTestFramework
 from test_framework.authproxy import JSONRPCException
 from test_framework.util import assert_raises_rpc_error, assert_equal
 
@@ -35,7 +35,7 @@ def read_dump(file_name):
     return sJson, nLines
 
 
-class WalletParticlTest(ParticlTestFramework):
+class WalletRhombusTest(RhombusTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 4
@@ -328,7 +328,7 @@ class WalletParticlTest(ParticlTestFramework):
 
         Bitcoin Testnet
         Purpose: 44
-        Coin: 1 (Particl testnet)
+        Coin: 1 (Rhombus testnet)
         Account: 0
         Ext/Internal: 0
 
@@ -762,5 +762,5 @@ class WalletParticlTest(ParticlTestFramework):
 
 
 if __name__ == '__main__':
-    WalletParticlTest().main()
+    WalletRhombusTest().main()
 

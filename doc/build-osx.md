@@ -43,17 +43,17 @@ from the root of the repository.
 
 **Note**: You only need Berkeley DB if the wallet is enabled (see [*Disable-wallet mode*](/doc/build-osx.md#disable-wallet-mode)).
 
-## Build Particl Core
+## Build Rhombus Core
 
-1. Clone the Particl Core source code:
+1. Clone the Rhombus Core source code:
     ```shell
     git clone https://github.com/rhombus/rhombus-core
     cd rhombus-core
     ```
 
-2.  Build Particl Core:
+2.  Build Rhombus Core:
 
-    Configure and build the headless Particl Core binaries as well as the GUI (if Qt is found).
+    Configure and build the headless Rhombus Core binaries as well as the GUI (if Qt is found).
 
     You can disable the GUI build by passing `--without-gui` to configure.
     ```shell
@@ -73,7 +73,7 @@ from the root of the repository.
     ```
 
 ## `disable-wallet` mode
-When the intention is to run only a P2P node without a wallet, Particl Core may be
+When the intention is to run only a P2P node without a wallet, Rhombus Core may be
 compiled in `disable-wallet` mode with:
 ```shell
 ./configure --disable-wallet
@@ -84,15 +84,15 @@ In this case there is no dependency on Berkeley DB 4.8.
 Mining is also possible in disable-wallet mode using the `getblocktemplate` RPC call.
 
 ## Running
-Particl Core is now available at `./src/rhombusd`
+Rhombus Core is now available at `./src/rhombusd`
 
 Before running, you may create an empty configuration file:
 ```shell
-mkdir -p "/Users/${USER}/Library/Application Support/Particl"
+mkdir -p "/Users/${USER}/Library/Application Support/Rhombus"
 
-touch "/Users/${USER}/Library/Application Support/Particl/rhombus.conf"
+touch "/Users/${USER}/Library/Application Support/Rhombus/rhombus.conf"
 
-chmod 600 "/Users/${USER}/Library/Application Support/Particl/rhombus.conf"
+chmod 600 "/Users/${USER}/Library/Application Support/Rhombus/rhombus.conf"
 ```
 
 The first time you run rhombusd, it will start downloading the blockchain. This process could
@@ -100,7 +100,7 @@ take many hours, or even days on slower than average systems.
 
 You can monitor the download process by looking at the debug.log file:
 ```shell
-tail -f $HOME/Library/Application\ Support/Particl/debug.log
+tail -f $HOME/Library/Application\ Support/Rhombus/debug.log
 ```
 
 ## Other commands:

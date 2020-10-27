@@ -62,8 +62,8 @@
         <translation>Adresa na koju se prima</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Ovo su Vaše Particl adrese na koju se vrše uplate. Uvek proverite iznos i prijemnu adresu pre slanja novčića.</translation>
+        <source>These are your Rhombus addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Ovo su Vaše Rhombus adrese na koju se vrše uplate. Uvek proverite iznos i prijemnu adresu pre slanja novčića.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -310,8 +310,8 @@
         <translation>Ponovo obeležavam blokove na disku...</translation>
     </message>
     <message>
-        <source>Send coins to a Particl address</source>
-        <translation>Pošalji novčiće na Particl adresu</translation>
+        <source>Send coins to a Rhombus address</source>
+        <translation>Pošalji novčiće na Rhombus adresu</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -346,12 +346,12 @@
         <translation>Enkriptuj privatne ključeve novčanika</translation>
     </message>
     <message>
-        <source>Sign messages with your Particl addresses to prove you own them</source>
-        <translation>Potpišite poruke sa svojim Particl adresama da biste dokazali njihovo vlasništvo</translation>
+        <source>Sign messages with your Rhombus addresses to prove you own them</source>
+        <translation>Potpišite poruke sa svojim Rhombus adresama da biste dokazali njihovo vlasništvo</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Particl addresses</source>
-        <translation>Proverite poruke da biste utvrdili sa kojim Particl adresama su potpisane</translation>
+        <source>Verify messages to ensure they were signed with specified Rhombus addresses</source>
+        <translation>Proverite poruke da biste utvrdili sa kojim Rhombus adresama su potpisane</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -481,8 +481,8 @@
 <context>
     <name>Intro</name>
     <message>
-        <source>Particl</source>
-        <translation>Particl</translation>
+        <source>Rhombus</source>
+        <translation>Rhombus</translation>
     </message>
     <message>
         <source>Error</source>

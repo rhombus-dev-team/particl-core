@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Copyright (c) 2018-2019 The Particl Core developers
+# Copyright (c) 2018-2019 The Rhombus Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-from test_framework.test_rhombus import ParticlTestFramework, connect_nodes_bi
+from test_framework.test_rhombus import RhombusTestFramework, connect_nodes_bi
 
 
-class WalletParticlUnloadSpentTest(ParticlTestFramework):
+class WalletRhombusUnloadSpentTest(RhombusTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 2
@@ -62,4 +62,4 @@ class WalletParticlUnloadSpentTest(ParticlTestFramework):
 
 
 if __name__ == '__main__':
-    WalletParticlUnloadSpentTest().main()
+    WalletRhombusUnloadSpentTest().main()

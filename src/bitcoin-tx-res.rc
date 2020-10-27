@@ -16,8 +16,8 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "Particl"
-            VALUE "FileDescription",    "rhombus-tx (CLI Particl transaction editor utility)"
+            VALUE "CompanyName",        "Rhombus"
+            VALUE "FileDescription",    "rhombus-tx (CLI Rhombus transaction editor utility)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "rhombus-tx"
             VALUE "LegalCopyright",     COPYRIGHT_STR

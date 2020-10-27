@@ -62,8 +62,8 @@
         <translation>Ontvang adresse</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Dit is jou Particl-adresse vir die stuur van betalings. Kontroleer altyd die bedrag en die ontvangsadres voordat u munte stuur.</translation>
+        <source>These are your Rhombus addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Dit is jou Rhombus-adresse vir die stuur van betalings. Kontroleer altyd die bedrag en die ontvangsadres voordat u munte stuur.</translation>
     </message>
     <message>
         <source>&amp;Copy Address</source>
@@ -310,8 +310,8 @@
         <translation>Herindekseer blokke op skyf...</translation>
     </message>
     <message>
-        <source>Send coins to a Particl address</source>
-        <translation>Stuur muntstukke na 'n Particl adres</translation>
+        <source>Send coins to a Rhombus address</source>
+        <translation>Stuur muntstukke na 'n Rhombus adres</translation>
     </message>
     <message>
         <source>Backup wallet to another location</source>
@@ -346,12 +346,12 @@
         <translation>Versleutel die private sleutels wat aan u beursie behoort</translation>
     </message>
     <message>
-        <source>Sign messages with your Particl addresses to prove you own them</source>
-        <translation>Teken boodskappe met u Particl adresse om te bewys dat u hul besit</translation>
+        <source>Sign messages with your Rhombus addresses to prove you own them</source>
+        <translation>Teken boodskappe met u Rhombus adresse om te bewys dat u hul besit</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Particl addresses</source>
-        <translation>Bevestig boodskappe om te verseker dat hulle geteken was met gespesifiseerde Particl adresse</translation>
+        <source>Verify messages to ensure they were signed with specified Rhombus addresses</source>
+        <translation>Bevestig boodskappe om te verseker dat hulle geteken was met gespesifiseerde Rhombus adresse</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -422,8 +422,8 @@
         <translation>Op datum</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Particl command-line options</source>
-        <translation>Wys die %1 hulpboodskap om 'n lys met moontlike Particl bevel-lyn opsies te verkry</translation>
+        <source>Show the %1 help message to get a list with possible Rhombus command-line options</source>
+        <translation>Wys die %1 hulpboodskap om 'n lys met moontlike Rhombus bevel-lyn opsies te verkry</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -500,8 +500,8 @@
         <translation>Beursie is &lt;b&gt;versleutel&lt;/b&gt; en is tans &lt;b&gt;gesluit&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Particl can no longer continue safely and will quit.</source>
-        <translation>'n Noodlottige fout het voorgekom. Particl kan nie langer voortgaan nie en sal afsluit.</translation>
+        <source>A fatal error occurred. Rhombus can no longer continue safely and will quit.</source>
+        <translation>'n Noodlottige fout het voorgekom. Rhombus kan nie langer voortgaan nie en sal afsluit.</translation>
     </message>
 </context>
 <context>
@@ -696,8 +696,8 @@
         <translation>Wysig stuurende adres</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Particl address.</source>
-        <translation>Die ingeskrewe adres "%1" is nie 'n geldige Particl adres nie.</translation>
+        <source>The entered address "%1" is not a valid Rhombus address.</source>
+        <translation>Die ingeskrewe adres "%1" is nie 'n geldige Rhombus adres nie.</translation>
     </message>
     <message>
         <source>Could not unlock wallet.</source>
@@ -765,8 +765,8 @@
         <translation>Gebruik 'n persoonlike data gids:</translation>
     </message>
     <message>
-        <source>Particl</source>
-        <translation>Particl</translation>
+        <source>Rhombus</source>
+        <translation>Rhombus</translation>
     </message>
     <message>
         <source>The wallet will also be stored in this directory.</source>
@@ -1069,8 +1069,8 @@
         <translation>Bedrag</translation>
     </message>
     <message>
-        <source>Enter a Particl address (e.g. %1)</source>
-        <translation>Voer in 'n Particl adres (bv. %1)</translation>
+        <source>Enter a Rhombus address (e.g. %1)</source>
+        <translation>Voer in 'n Rhombus adres (bv. %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1635,8 +1635,8 @@ transaksievertragingsrisiko.</translation>
         <translation>Betalings versoek verstryk.</translation>
     </message>
     <message>
-        <source>Warning: Invalid Particl address</source>
-        <translation>Waarskuwing: Ongeldige Particladres</translation>
+        <source>Warning: Invalid Rhombus address</source>
+        <translation>Waarskuwing: Ongeldige Rhombusadres</translation>
     </message>
     <message>
         <source>The address you selected for change is not part of this wallet. Any or all funds in your wallet may be sent to this address. Are you sure?</source>
@@ -1668,8 +1668,8 @@ Is u seker?</translation>
         <translation>Kies voorheen gebruikte adres</translation>
     </message>
     <message>
-        <source>The Particl address to send the payment to</source>
-        <translation>Die Particladres waarheen die betaling gestuur word</translation>
+        <source>The Rhombus address to send the payment to</source>
+        <translation>Die Rhombusadres waarheen die betaling gestuur word</translation>
     </message>
     <message>
         <source>Alt+A</source>

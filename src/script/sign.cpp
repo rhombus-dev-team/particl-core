@@ -500,18 +500,18 @@ public:
     }
 };
 
-class DummySignatureCheckerParticl : public DummySignatureChecker
+class DummySignatureCheckerRhombus : public DummySignatureChecker
 {
 // IsRhombusVersion() must return true to skip stack evaluation
 public:
-    DummySignatureCheckerParticl() : DummySignatureChecker() {}
+    DummySignatureCheckerRhombus() : DummySignatureChecker() {}
     bool IsRhombusVersion() const override { return true; }
 };
-const DummySignatureCheckerParticl DUMMY_CHECKER_PARTICL;
+const DummySignatureCheckerRhombus DUMMY_CHECKER_PARTICL;
 
-class DummySignatureCreatorParticl : public DummySignatureCreator {
+class DummySignatureCreatorRhombus : public DummySignatureCreator {
 public:
-    DummySignatureCreatorParticl() : DummySignatureCreator(33, 32) {}
+    DummySignatureCreatorRhombus() : DummySignatureCreator(33, 32) {}
     const BaseSignatureChecker& Checker() const override { return DUMMY_CHECKER_PARTICL; }
     bool IsRhombusVersion() const override { return true; }
 };
@@ -531,7 +531,7 @@ bool LookupHelper(const M& map, const K& key, V& value)
 
 const BaseSignatureCreator& DUMMY_SIGNATURE_CREATOR = DummySignatureCreator(32, 32);
 const BaseSignatureCreator& DUMMY_MAXIMUM_SIGNATURE_CREATOR = DummySignatureCreator(33, 32);
-const BaseSignatureCreator& DUMMY_SIGNATURE_CREATOR_PARTICL = DummySignatureCreatorParticl();
+const BaseSignatureCreator& DUMMY_SIGNATURE_CREATOR_PARTICL = DummySignatureCreatorRhombus();
 
 bool IsSolvable(const SigningProvider& provider, const CScript& script)
 {

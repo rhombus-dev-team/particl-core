@@ -167,7 +167,7 @@ std::shared_ptr<CWallet> LoadWallet(interfaces::Chain& chain, const WalletLocati
             return nullptr;
         }
         if (fRhombusMode && !((CHDWallet*)wallet.get())->Initialise()) {
-            error = Untranslated("Particl wallet initialisation failed.");
+            error = Untranslated("Rhombus wallet initialisation failed.");
             return nullptr;
         }
 

@@ -60,7 +60,7 @@
 #include <boost/thread.hpp>
 
 #if defined(NDEBUG)
-# error "Particl cannot be compiled without assertions."
+# error "Rhombus cannot be compiled without assertions."
 #endif
 
 #define MICRO 0.000001
@@ -2501,7 +2501,7 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
     // Special case for the genesis block, skipping connection of its transactions
     // (its coinbase is unspendable)
     if (!fRhombusMode
-      // genesis coinbase is spendable when in Particl mode
+      // genesis coinbase is spendable when in Rhombus mode
         && fIsGenesisBlock) {
         if (!fJustCheck)
             view.SetBestBlock(pindex->GetBlockHash(), pindex->nHeight);

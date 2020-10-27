@@ -44,10 +44,10 @@ public:
     //! at which height this containing transaction was included in the active block chain
     uint32_t nHeight : 31;
 
-    //! type of output (Particl)
+    //! type of output (Rhombus)
     uint8_t nType = OUTPUT_STANDARD;
 
-    //! commitment used for CT outputs (Particl)
+    //! commitment used for CT outputs (Rhombus)
     secp256k1_pedersen_commitment commitment;
 
     //! construct a Coin from a CTxOut and height/coinbase information.

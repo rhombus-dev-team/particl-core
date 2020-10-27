@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-# Copyright (c) 2017-2019 The Particl Core developers
+# Copyright (c) 2017-2019 The Rhombus Core developers
 # Distributed under the MIT software license, see the accompanying
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 import json
 
-from test_framework.test_rhombus import ParticlTestFramework, isclose, connect_nodes_bi
+from test_framework.test_rhombus import RhombusTestFramework, isclose, connect_nodes_bi
 
 
-class ExtKeyTest(ParticlTestFramework):
+class ExtKeyTest(RhombusTestFramework):
     def set_test_params(self):
         self.setup_clean_chain = True
         self.num_nodes = 3

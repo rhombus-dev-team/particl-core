@@ -1,15 +1,15 @@
-Particl Core
+Rhombus Core
 =============
 
 Setup
 ---------------------
-Particl Core is the original Particl client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Particl transactions, which requires a few gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
+Rhombus Core is the original Rhombus client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Rhombus transactions, which requires a few gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Particl Core, visit [rhombus.io](https://rhombus.io/downloads/).
+To download Rhombus Core, visit [rhombus.io](https://rhombus.io/downloads/).
 
 Running
 ---------------------
-The following are some helpful notes on how to run Particl Core on your native platform.
+The following are some helpful notes on how to run Rhombus Core on your native platform.
 
 ### Unix
 
@@ -24,18 +24,18 @@ Unpack the files into a directory, and then run rhombus-qt.exe.
 
 ### macOS
 
-Drag Particl Core to your applications folder, and then run Particl Core.
+Drag Rhombus Core to your applications folder, and then run Rhombus Core.
 
 ### Need Help?
 
-* See the documentation at the [Particl Wiki](https://rhombus.wiki/start)
+* See the documentation at the [Rhombus Wiki](https://rhombus.wiki/start)
 for help and more information.
 * Ask for help on [#rhombus](https://riot.im/app/#/room/#rhombus:matrix.org) on Riot.
 * Ask for help on [Discord](https://discord.me/rhombus).
 
 Building
 ---------------------
-The following are developer notes on how to build Particl Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
+The following are developer notes on how to build Rhombus Core on your native platform. They are not complete guides, but include notes on the necessary libraries, compile flags, etc.
 
 - [Dependencies](dependencies.md)
 - [macOS Build Notes](build-osx.md)
@@ -48,7 +48,7 @@ The following are developer notes on how to build Particl Core on your native pl
 
 Development
 ---------------------
-The Particl repo's [root README](/README.md) contains relevant information on the development process and automated testing.
+The Rhombus repo's [root README](/README.md) contains relevant information on the development process and automated testing.
 
 - [Developer Notes](developer-notes.md)
 - [Productivity Notes](productivity.md)

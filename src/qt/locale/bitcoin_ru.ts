@@ -66,11 +66,11 @@
         <translation>Адреса получения</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <source>These are your Rhombus addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
         <translation>Это ваши Биткойн-адреса для отправки платежей. Всегда проверяйте количество и адрес получателя перед отправкой перевода.</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
+        <source>These are your Rhombus addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
         <translation>Это ваши Биткойн-адреса для приёма платежей. Используйте кнопку «Создать новый адрес для получения» на вкладке Получить, чтобы создать новые адреса.</translation>
     </message>
     <message>
@@ -362,7 +362,7 @@
         <translation>Прокси &lt;b&gt;включен&lt;/b&gt;: %1</translation>
     </message>
     <message>
-        <source>Send coins to a Particl address</source>
+        <source>Send coins to a Rhombus address</source>
         <translation>Послать средства на Биткойн-адрес</translation>
     </message>
     <message>
@@ -398,11 +398,11 @@
         <translation>Зашифровать приватные ключи, принадлежащие вашему кошельку</translation>
     </message>
     <message>
-        <source>Sign messages with your Particl addresses to prove you own them</source>
+        <source>Sign messages with your Rhombus addresses to prove you own them</source>
         <translation>Подписывайте сообщения Биткойн-адресами чтобы подтвердить что это написали именно Вы</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Particl addresses</source>
+        <source>Verify messages to ensure they were signed with specified Rhombus addresses</source>
         <translation>Проверяйте сообщения чтобы убедиться что они подписаны конкретными Биткойн-адресами</translation>
     </message>
     <message>
@@ -438,8 +438,8 @@
         <translation>Опции командной строки</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Particl network</source>
-        <translation><numerusform>%n активное подключение к сети Particl</numerusform><numerusform>%n активных подключения к сети Particl</numerusform><numerusform>%n активных подключений к сети Particl</numerusform><numerusform>%n активных подключений к сети Биткойн</numerusform></translation>
+        <source>%n active connection(s) to Rhombus network</source>
+        <translation><numerusform>%n активное подключение к сети Rhombus</numerusform><numerusform>%n активных подключения к сети Rhombus</numerusform><numerusform>%n активных подключений к сети Rhombus</numerusform><numerusform>%n активных подключений к сети Биткойн</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -506,7 +506,7 @@
         <translation>Закрыть кошелёк</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Particl command-line options</source>
+        <source>Show the %1 help message to get a list with possible Rhombus command-line options</source>
         <translation>Показать помощь по %1, чтобы получить список доступных параметров командной строки</translation>
     </message>
     <message>
@@ -618,7 +618,7 @@
         <translation>Кошелёк &lt;b&gt;зашифрован&lt;/b&gt; и сейчас &lt;b&gt;заблокирован&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Particl can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Rhombus can no longer continue safely and will quit.</source>
         <translation>Произошла критическая ошибка. Биткойн больше не может продолжать безопасную работу и будет закрыт.</translation>
     </message>
 </context>
@@ -862,7 +862,7 @@
         <translation>Изменить адрес отправки</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Particl address.</source>
+        <source>The entered address "%1" is not a valid Rhombus address.</source>
         <translation>Введенный адрес "%1" не является действительным Биткойн-адресом.</translation>
     </message>
     <message>
@@ -959,8 +959,8 @@
         <translation>Использовать пользовательскую директорию данных</translation>
     </message>
     <message>
-        <source>Particl</source>
-        <translation>Particl Core</translation>
+        <source>Rhombus</source>
+        <translation>Rhombus Core</translation>
     </message>
     <message>
         <source>Discard blocks after verification, except most recent %1 GB (prune)</source>
@@ -975,7 +975,7 @@
         <translation>Приблизительно %1 ГБ данных будет сохранено в эту директорию.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Particl block chain.</source>
+        <source>%1 will download and store a copy of the Rhombus block chain.</source>
         <translation>%1 скачает и сохранит копию цепи блоков.</translation>
     </message>
     <message>
@@ -1199,7 +1199,7 @@
         <translation>&amp;Тратить неподтвержденную сдачу</translation>
     </message>
     <message>
-        <source>Automatically open the Particl client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the Rhombus client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Автоматически открыть порт для Биткойн-клиента на маршрутизаторе. Работает только если Ваш маршрутизатор поддерживает UPnP, и данная функция включена.</translation>
     </message>
     <message>
@@ -1215,7 +1215,7 @@
         <translation>Разрешить входящие подключения</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a SOCKS5 proxy.</source>
+        <source>Connect to the Rhombus network through a SOCKS5 proxy.</source>
         <translation>Подключится к сети Биткойн через прокси SOCKS5.</translation>
     </message>
     <message>
@@ -1251,7 +1251,7 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <source>Connect to the Rhombus network through a separate SOCKS5 proxy for Tor hidden services.</source>
         <translation>Подключатся к Биткойн-сети через отдельный прокси SOCKS5 для скрытых сервисов Tor.</translation>
     </message>
     <message>
@@ -1362,7 +1362,7 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Particl network after a connection is established, but this process has not completed yet.</source>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rhombus network after a connection is established, but this process has not completed yet.</source>
         <translation>Отображаемая информация может быть устаревшей. Ваш кошелёк автоматически синхронизируется с сетью Биткойн после подключения, но этот процесс пока не завершён.</translation>
     </message>
     <message>
@@ -1461,7 +1461,7 @@
         <translation>Неверный адрес %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Particl address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Rhombus address or malformed URI parameters.</source>
         <translation>Не удалось обработать идентификатор! Это может быть связано с неверным Биткойн-адресом или неправильными параметрами идентификатора.</translation>
     </message>
     <message>
@@ -1503,7 +1503,7 @@
         <translation>Количество</translation>
     </message>
     <message>
-        <source>Enter a Particl address (e.g. %1)</source>
+        <source>Enter a Rhombus address (e.g. %1)</source>
         <translation>Введите биткойн-адрес (напр. %1)</translation>
     </message>
     <message>
@@ -1960,7 +1960,7 @@
         <translation>&amp;Сообщение:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Particl network.</source>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rhombus network.</source>
         <translation>Необязательное сообщение для запроса платежа, которое будет показано при открытии запроса. Заметьте: сообщение не будет отправлено вместе с платежом через сеть Биткойн.</translation>
     </message>
     <message>
@@ -2389,7 +2389,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation><numerusform>Предполагаемое подтверждение в течение %n блока.</numerusform><numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform><numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform><numerusform>Предполагаемое подтверждение в течение %n блоков.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid Particl address</source>
+        <source>Warning: Invalid Rhombus address</source>
         <translation>Предупреждение: Неверный Биткойн-адрес</translation>
     </message>
     <message>
@@ -2428,7 +2428,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Выбрать предыдущий использованный адрес</translation>
     </message>
     <message>
-        <source>The Particl address to send the payment to</source>
+        <source>The Rhombus address to send the payment to</source>
         <translation>Биткойн-адрес, на который отправить платёж</translation>
     </message>
     <message>
@@ -2476,7 +2476,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Введите метку для этого адреса, чтобы добавить его в список используемых адресов</translation>
     </message>
     <message>
-        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rhombus network.</source>
         <translation>Сообщение прикрепленное к биткойн идентификатору будет сохранено вместе с транзакцией для вашего сведения. Заметьте: Сообщение не будет отправлено через сеть Биткойн.</translation>
     </message>
     <message>
@@ -2514,7 +2514,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Вы можете подписывать сообщения/соглашения своими адресами, чтобы доказать свою возможность получать биткойны на них. Будьте осторожны, не подписывайте что-то неопределённое или случайное, так как фишинговые атаки могут обманным путём заставить вас подписать нежелательные сообщения. Подписывайте только те сообщения, с которыми вы согласны вплоть до мелочей.</translation>
     </message>
     <message>
-        <source>The Particl address to sign the message with</source>
+        <source>The Rhombus address to sign the message with</source>
         <translation>Биткойн-адрес, которым подписать сообщение</translation>
     </message>
     <message>
@@ -2546,7 +2546,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Скопировать текущую подпись в буфер обмена системы</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Particl address</source>
+        <source>Sign the message to prove you own this Rhombus address</source>
         <translation>Подписать сообщение, чтобы доказать владение Биткойн-адресом</translation>
     </message>
     <message>
@@ -2570,11 +2570,11 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Введите ниже адрес получателя, сообщение (убедитесь, что переводы строк, пробелы, табы и т.п. в точности скопированы) и подпись, чтобы проверить сообщение. Убедитесь, что не скопировали лишнего в подпись, по сравнению с самим подписываемым сообщением, чтобы не стать жертвой атаки "man-in-the-middle". Заметьте, что эта операция удостоверяет лишь авторство подписавшего, но не может удостоверить отправителя транзакции.</translation>
     </message>
     <message>
-        <source>The Particl address the message was signed with</source>
+        <source>The Rhombus address the message was signed with</source>
         <translation>Биткойн-адрес, которым было подписано сообщение</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Particl address</source>
+        <source>Verify the message to ensure it was signed with the specified Rhombus address</source>
         <translation>Проверить сообщение, чтобы убедиться, что оно было подписано указанным Биткойн-адресом</translation>
     </message>
     <message>

@@ -66,11 +66,11 @@
         <translation>Адреси отримання</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
-        <translation>Це ваші адреси Particl для надсилання платежів. Завжди перевіряйте суму та адресу одержувача перед відправленням монет.</translation>
+        <source>These are your Rhombus addresses for sending payments. Always check the amount and the receiving address before sending coins.</source>
+        <translation>Це ваші адреси Rhombus для надсилання платежів. Завжди перевіряйте суму та адресу одержувача перед відправленням монет.</translation>
     </message>
     <message>
-        <source>These are your Particl addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
+        <source>These are your Rhombus addresses for receiving payments. Use the 'Create new receiving address' button in the receive tab to create new addresses.</source>
         <translation>Це ваші біткойн-адреси для отримання платежів. Використовуйте кнопку "Створити нову адресу прийому" на вкладці отримання, для створення нових адрес.</translation>
     </message>
     <message>
@@ -362,7 +362,7 @@
         <translation>Проксі &lt;b&gt;увімкнено&lt;/b&gt;: %1</translation>
     </message>
     <message>
-        <source>Send coins to a Particl address</source>
+        <source>Send coins to a Rhombus address</source>
         <translation>Відправити монети на вказану адресу</translation>
     </message>
     <message>
@@ -398,12 +398,12 @@
         <translation>Зашифрувати закриті ключі, що знаходяться у вашому гаманці</translation>
     </message>
     <message>
-        <source>Sign messages with your Particl addresses to prove you own them</source>
-        <translation>Підтвердіть, що Ви є власником повідомлення підписавши його Вашою Particl-адресою</translation>
+        <source>Sign messages with your Rhombus addresses to prove you own them</source>
+        <translation>Підтвердіть, що Ви є власником повідомлення підписавши його Вашою Rhombus-адресою</translation>
     </message>
     <message>
-        <source>Verify messages to ensure they were signed with specified Particl addresses</source>
-        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Particl-адресою</translation>
+        <source>Verify messages to ensure they were signed with specified Rhombus addresses</source>
+        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Rhombus-адресою</translation>
     </message>
     <message>
         <source>&amp;File</source>
@@ -438,8 +438,8 @@
         <translation>П&amp;араметри командного рядка</translation>
     </message>
     <message numerus="yes">
-        <source>%n active connection(s) to Particl network</source>
-        <translation><numerusform>%n активне з'єднання з мережею Particl</numerusform><numerusform>%n активні з'єднання з мережею Particl</numerusform><numerusform>%n активних з'єднань з мережею Particl</numerusform><numerusform>%n активних з'єднань з мережею Particl</numerusform></translation>
+        <source>%n active connection(s) to Rhombus network</source>
+        <translation><numerusform>%n активне з'єднання з мережею Rhombus</numerusform><numerusform>%n активні з'єднання з мережею Rhombus</numerusform><numerusform>%n активних з'єднань з мережею Rhombus</numerusform><numerusform>%n активних з'єднань з мережею Rhombus</numerusform></translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>
@@ -518,7 +518,7 @@
         <translation>Закрити гаманець</translation>
     </message>
     <message>
-        <source>Show the %1 help message to get a list with possible Particl command-line options</source>
+        <source>Show the %1 help message to get a list with possible Rhombus command-line options</source>
         <translation>Показати довідку %1 для отримання переліку можливих параметрів командного рядка.</translation>
     </message>
     <message>
@@ -630,7 +630,7 @@
         <translation>&lt;b&gt;Зашифрований&lt;/b&gt; гаманець &lt;b&gt;заблоковано&lt;/b&gt;</translation>
     </message>
     <message>
-        <source>A fatal error occurred. Particl can no longer continue safely and will quit.</source>
+        <source>A fatal error occurred. Rhombus can no longer continue safely and will quit.</source>
         <translation>Сталася фатальна помилка. Гаманець буде закрито.</translation>
     </message>
 </context>
@@ -874,8 +874,8 @@
         <translation>Редагувати адресу для відправлення</translation>
     </message>
     <message>
-        <source>The entered address "%1" is not a valid Particl address.</source>
-        <translation>Введена адреса "%1" не є адресою в мережі Particl.</translation>
+        <source>The entered address "%1" is not a valid Rhombus address.</source>
+        <translation>Введена адреса "%1" не є адресою в мережі Rhombus.</translation>
     </message>
     <message>
         <source>Address "%1" already exists as a receiving address with label "%2" and so cannot be added as a sending address.</source>
@@ -971,8 +971,8 @@
         <translation>Використовувати свій каталог даних:</translation>
     </message>
     <message>
-        <source>Particl</source>
-        <translation>Particl</translation>
+        <source>Rhombus</source>
+        <translation>Rhombus</translation>
     </message>
     <message>
         <source>At least %1 GB of data will be stored in this directory, and it will grow over time.</source>
@@ -983,7 +983,7 @@
         <translation>Близько %1 Гб даних буде збережено в цьому каталозі.</translation>
     </message>
     <message>
-        <source>%1 will download and store a copy of the Particl block chain.</source>
+        <source>%1 will download and store a copy of the Rhombus block chain.</source>
         <translation>%1 буде завантажувати та зберігати копію ланцюжка блоків біткінів.</translation>
     </message>
     <message>
@@ -1215,7 +1215,7 @@
         <translation>&amp;Витрачати непідтверджену решту</translation>
     </message>
     <message>
-        <source>Automatically open the Particl client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <source>Automatically open the Rhombus client port on the router. This only works when your router supports UPnP and it is enabled.</source>
         <translation>Автоматично відкривати порт для клієнту біткоін на роутері. Працює лише якщо ваш роутер підтримує UPnP і ця функція увімкнена.</translation>
     </message>
     <message>
@@ -1231,8 +1231,8 @@
         <translation>Дозволити вхідні з'єднання</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a SOCKS5 proxy.</source>
-        <translation>Підключення до мережі Particl через SOCKS5 проксі.</translation>
+        <source>Connect to the Rhombus network through a SOCKS5 proxy.</source>
+        <translation>Підключення до мережі Rhombus через SOCKS5 проксі.</translation>
     </message>
     <message>
         <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
@@ -1267,8 +1267,8 @@
         <translation>Tor</translation>
     </message>
     <message>
-        <source>Connect to the Particl network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Підключатися до мережі Particl через окремий SOCKS5 проксі для прихованих сервісів Tor.</translation>
+        <source>Connect to the Rhombus network through a separate SOCKS5 proxy for Tor hidden services.</source>
+        <translation>Підключатися до мережі Rhombus через окремий SOCKS5 проксі для прихованих сервісів Tor.</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -1378,8 +1378,8 @@
         <translation>Форма</translation>
     </message>
     <message>
-        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Particl network after a connection is established, but this process has not completed yet.</source>
-        <translation>Показана інформація вже може бути застарілою. Ваш гаманець буде автоматично синхронізовано з мережею Particl після встановлення підключення, але цей процес ще не завершено.</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Rhombus network after a connection is established, but this process has not completed yet.</source>
+        <translation>Показана інформація вже може бути застарілою. Ваш гаманець буде автоматично синхронізовано з мережею Rhombus після встановлення підключення, але цей процес ще не завершено.</translation>
     </message>
     <message>
         <source>Watch-only:</source>
@@ -1481,7 +1481,7 @@
         <translation>Помилка в адресі платежу %1</translation>
     </message>
     <message>
-        <source>URI cannot be parsed! This can be caused by an invalid Particl address or malformed URI parameters.</source>
+        <source>URI cannot be parsed! This can be caused by an invalid Rhombus address or malformed URI parameters.</source>
         <translation>Неможливо обробити URI! Причиною цього може бути некоректна Біткойн-адреса або неправильні параметри URI.</translation>
     </message>
     <message>
@@ -1523,8 +1523,8 @@
         <translation>Кількість</translation>
     </message>
     <message>
-        <source>Enter a Particl address (e.g. %1)</source>
-        <translation>Введіть адресу Particl (наприклад %1)</translation>
+        <source>Enter a Rhombus address (e.g. %1)</source>
+        <translation>Введіть адресу Rhombus (наприклад %1)</translation>
     </message>
     <message>
         <source>%1 d</source>
@@ -1984,8 +1984,8 @@
         <translation>&amp;Повідомлення:</translation>
     </message>
     <message>
-        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Particl network.</source>
-        <translation>Необов'язкове повідомлення на додаток до запиту платежу, котре буде показане під час відкриття запиту. Примітка: Це повідомлення не буде відправлено з платежем через мережу Particl.</translation>
+        <source>An optional message to attach to the payment request, which will be displayed when the request is opened. Note: The message will not be sent with the payment over the Rhombus network.</source>
+        <translation>Необов'язкове повідомлення на додаток до запиту платежу, котре буде показане під час відкриття запиту. Примітка: Це повідомлення не буде відправлено з платежем через мережу Rhombus.</translation>
     </message>
     <message>
         <source>An optional label to associate with the new receiving address.</source>
@@ -2337,8 +2337,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>С&amp;творити непідписану</translation>
     </message>
     <message>
-        <source>Creates a Partially Signed Particl Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
-        <translation>Створює частково підписану транзакцію Particl (PSBT) для використання, наприклад, офлайн-гаманець %1 або гаманця, сумісного з PSBT.</translation>
+        <source>Creates a Partially Signed Rhombus Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Створює частково підписану транзакцію Rhombus (PSBT) для використання, наприклад, офлайн-гаманець %1 або гаманця, сумісного з PSBT.</translation>
     </message>
     <message>
         <source> from wallet '%1'</source>
@@ -2361,8 +2361,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Ви впевнені, що хочете відправити?</translation>
     </message>
     <message>
-        <source>Please, review your transaction proposal. This will produce a Partially Signed Particl Transaction (PSBT) which you can copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
-        <translation>Перегляньте пропозицію щодо транзакцій. Це призведе до частково підписаної трансакції Particl (PSBT), яку ви можете скопіювати та підписати, наприклад, офлайн-гаманецем %1 або гаманцем, сумісний з PSBT.</translation>
+        <source>Please, review your transaction proposal. This will produce a Partially Signed Rhombus Transaction (PSBT) which you can copy and then sign with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation>Перегляньте пропозицію щодо транзакцій. Це призведе до частково підписаної трансакції Rhombus (PSBT), яку ви можете скопіювати та підписати, наприклад, офлайн-гаманецем %1 або гаманцем, сумісний з PSBT.</translation>
     </message>
     <message>
         <source>or</source>
@@ -2453,7 +2453,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation><numerusform>Очікуваний початок підтвердження через %n блок.</numerusform><numerusform>Очікуваний початок підтвердження протягом %n блоків.</numerusform><numerusform>Очікуваний початок підтвердження протягом %n блоків.</numerusform><numerusform>Очікуваний початок підтвердження протягом %n блоків.</numerusform></translation>
     </message>
     <message>
-        <source>Warning: Invalid Particl address</source>
+        <source>Warning: Invalid Rhombus address</source>
         <translation>Увага: Неприпустима Біткойн-адреса.</translation>
     </message>
     <message>
@@ -2492,8 +2492,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Обрати ранiш використовувану адресу</translation>
     </message>
     <message>
-        <source>The Particl address to send the payment to</source>
-        <translation>Адреса Particl для відправлення платежу</translation>
+        <source>The Rhombus address to send the payment to</source>
+        <translation>Адреса Rhombus для відправлення платежу</translation>
     </message>
     <message>
         <source>Alt+A</source>
@@ -2544,8 +2544,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Введіть мітку для цієї адреси для додавання її в список використаних адрес</translation>
     </message>
     <message>
-        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
-        <translation>Повідомлення, що було додане до rhombus:URI та буде збережено разом з транзакцією для довідки. Примітка: Це повідомлення не буде відправлено в мережу Particl.</translation>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Rhombus network.</source>
+        <translation>Повідомлення, що було додане до rhombus:URI та буде збережено разом з транзакцією для довідки. Примітка: Це повідомлення не буде відправлено в мережу Rhombus.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2582,8 +2582,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Ви можете підписувати повідомлення/угоди своїми адресами, щоб довести можливість отримання біткоінів, що будуть надіслані на них. Остерігайтеся підписувати будь-що нечітке чи неочікуване, так як за допомогою фішинг-атаки вас можуть спробувати ввести в оману для отримання вашого підпису під чужими словами. Підписуйте лише чіткі твердження, з якими ви повністю згодні.</translation>
     </message>
     <message>
-        <source>The Particl address to sign the message with</source>
-        <translation>Адреса Particl для підпису цього повідомлення</translation>
+        <source>The Rhombus address to sign the message with</source>
+        <translation>Адреса Rhombus для підпису цього повідомлення</translation>
     </message>
     <message>
         <source>Choose previously used address</source>
@@ -2614,7 +2614,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Копіювати поточну сигнатуру до системного буферу обміну</translation>
     </message>
     <message>
-        <source>Sign the message to prove you own this Particl address</source>
+        <source>Sign the message to prove you own this Rhombus address</source>
         <translation>Підпишіть повідомлення щоб довести, що ви є власником цієї адреси</translation>
     </message>
     <message>
@@ -2638,8 +2638,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Введіть нижче адресу отримувача, повідомлення (впевніться, що ви точно скопіювали символи завершення рядка, табуляцію, пробіли тощо) та підпис для перевірки повідомлення. Впевніться, що в підпис не було додано зайвих символів: це допоможе уникнути атак типу «людина посередині». Зауважте, що це лише засвідчує можливість отримання транзакцій підписувачем, але не в стані підтвердити джерело жодної транзакції!</translation>
     </message>
     <message>
-        <source>The Particl address the message was signed with</source>
-        <translation>Адреса Particl, якою було підписано це повідомлення</translation>
+        <source>The Rhombus address the message was signed with</source>
+        <translation>Адреса Rhombus, якою було підписано це повідомлення</translation>
     </message>
     <message>
         <source>The signed message to verify</source>
@@ -2650,8 +2650,8 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of "100 satoshis p
         <translation>Підпис наданий при підписанні цього повідомлення</translation>
     </message>
     <message>
-        <source>Verify the message to ensure it was signed with the specified Particl address</source>
-        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Particl-адресою</translation>
+        <source>Verify the message to ensure it was signed with the specified Rhombus address</source>
+        <translation>Перевірте повідомлення для впевненості, що воно підписано вказаною Rhombus-адресою</translation>
     </message>
     <message>
         <source>Verify &amp;Message</source>

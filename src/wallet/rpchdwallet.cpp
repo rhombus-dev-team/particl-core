@@ -1,4 +1,4 @@
-// Copyright (c) 2017-2020 The Particl Core developers
+// Copyright (c) 2017-2020 The Rhombus Core developers
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -71,7 +71,7 @@ static int ExtractBip32InfoV(const std::vector<uint8_t> &vchKey, UniValue &keyIn
 
     CChainParams::Base58Type typePk = CChainParams::EXT_PUBLIC_KEY;
     if (memcmp(&vchKey[0], &Params().Base58Prefix(CChainParams::EXT_SECRET_KEY)[0], 4) == 0) {
-        keyInfo.pushKV("type", "Particl extended secret key");
+        keyInfo.pushKV("type", "Rhombus extended secret key");
     } else
     if (memcmp(&vchKey[0], &Params().Base58Prefix(CChainParams::EXT_SECRET_KEY_BTC)[0], 4) == 0) {
         keyInfo.pushKV("type", "Bitcoin extended secret key");
@@ -114,7 +114,7 @@ static int ExtractBip32InfoP(const std::vector<uint8_t> &vchKey, UniValue &keyIn
     CExtPubKey pk;
 
     if (memcmp(&vchKey[0], &Params().Base58Prefix(CChainParams::EXT_PUBLIC_KEY)[0], 4) == 0) {
-        keyInfo.pushKV("type", "Particl extended public key");
+        keyInfo.pushKV("type", "Rhombus extended public key");
     } else
     if (memcmp(&vchKey[0], &Params().Base58Prefix(CChainParams::EXT_PUBLIC_KEY_BTC)[0], 4) == 0)  {
         keyInfo.pushKV("type", "Bitcoin extended public key");
@@ -1638,8 +1638,8 @@ static UniValue extkeyaltversion(const JSONRPCRequest &request)
 {
             RPCHelpMan{"extkeyaltversion",
                 "\nReturns the provided ext_key encoded with alternate version bytes.\n"
-                "If the provided ext_key has a Bitcoin prefix the output will be encoded with a Particl prefix.\n"
-                "If the provided ext_key has a Particl prefix the output will be encoded with a Bitcoin prefix.\n",
+                "If the provided ext_key has a Bitcoin prefix the output will be encoded with a Rhombus prefix.\n"
+                "If the provided ext_key has a Rhombus prefix the output will be encoded with a Bitcoin prefix.\n",
                 {
                     {"ext_key", RPCArg::Type::STR, RPCArg::Optional::NO, ""},
                 },
@@ -1683,7 +1683,7 @@ static UniValue getnewextaddress(const JSONRPCRequest &request)
         return NullUniValue;
 
             RPCHelpMan{"getnewextaddress",
-                "\nReturns a new Particl ext address for receiving payments." +
+                "\nReturns a new Rhombus ext address for receiving payments." +
                 HELP_REQUIRING_PASSPHRASE,
                 {
                     {"label", RPCArg::Type::STR, /* default */ "", "If specified the key is added to the address book."},
@@ -1748,7 +1748,7 @@ static UniValue getnewstealthaddress(const JSONRPCRequest &request)
         return NullUniValue;
 
             RPCHelpMan{"getnewstealthaddress",
-                "\nReturns a new Particl stealth address for receiving payments." +
+                "\nReturns a new Rhombus stealth address for receiving payments." +
                 HELP_REQUIRING_PASSPHRASE,
                 {
                     {"label", RPCArg::Type::STR, /* default */ "", "If specified the key is added to the address book."},
@@ -3636,7 +3636,7 @@ static UniValue manageaddressbook(const JSONRPCRequest &request)
         // Try decode as segwit address
         dest = DecodeDestination(sAddress);
         if (!IsValidDestination(dest)) {
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Particl address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Rhombus address");
         }
     }
 
@@ -4079,7 +4079,7 @@ static UniValue listunspentanon(const JSONRPCRequest &request)
             const UniValue& input = inputs[idx];
             CBitcoinAddress address(input.get_str());
             if (!address.IsValidStealthAddress())
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Particl stealth address: ")+input.get_str());
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Rhombus stealth address: ")+input.get_str());
             if (setAddress.count(address))
                 throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ")+input.get_str());
            setAddress.insert(address);
@@ -4325,7 +4325,7 @@ static UniValue listunspentblind(const JSONRPCRequest &request)
             const UniValue& input = inputs[idx];
             CBitcoinAddress address(input.get_str());
             if (!address.IsValidStealthAddress())
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Particl stealth address: ")+input.get_str());
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, std::string("Invalid Rhombus stealth address: ")+input.get_str());
             if (setAddress.count(address))
                 throw JSONRPCError(RPC_INVALID_PARAMETER, std::string("Invalid parameter, duplicated address: ")+input.get_str());
            setAddress.insert(address);
@@ -4600,7 +4600,7 @@ static UniValue SendToInner(const JSONRPCRequest &request, OutputTypes typeIn, O
 
             if (typeOut == OUTPUT_RINGCT
                 && !address.IsValidStealthAddress()) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Particl stealth address");
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Rhombus stealth address");
             }
 
             if (address.IsValid() || obj.exists("script")) {
@@ -4609,7 +4609,7 @@ static UniValue SendToInner(const JSONRPCRequest &request, OutputTypes typeIn, O
                 // Try decode as segwit address
                 dest = DecodeDestination(sAddress);
                 if (!IsValidDestination(dest)) {
-                    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Particl address");
+                    throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Rhombus address");
                 }
             }
 
@@ -4677,7 +4677,7 @@ static UniValue SendToInner(const JSONRPCRequest &request, OutputTypes typeIn, O
 
         if (typeOut == OUTPUT_RINGCT
             && !address.IsValidStealthAddress()) {
-            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Particl stealth address");
+            throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Rhombus stealth address");
         }
         if (address.IsValid()) {
             dest = address.Get();
@@ -4685,7 +4685,7 @@ static UniValue SendToInner(const JSONRPCRequest &request, OutputTypes typeIn, O
             // Try decode as segwit address
             dest = DecodeDestination(sAddress);
             if (!IsValidDestination(dest)) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Particl address");
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid Rhombus address");
             }
         }
 
