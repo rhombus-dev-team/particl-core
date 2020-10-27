@@ -342,8 +342,8 @@
         <translation>Langeto-breto</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
-        <translation>Peti pagon (kreas QR-kodojn kaj URI-ojn kun prefikso particl:)</translation>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
+        <translation>Peti pagon (kreas QR-kodojn kaj URI-ojn kun prefikso rhombus:)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -899,7 +899,7 @@
         <translation>Eraro dum pagopeto</translation>
     </message>
     <message>
-        <source>Cannot start particl: click-to-pay handler</source>
+        <source>Cannot start rhombus: click-to-pay handler</source>
         <translation>Ne eblas lanĉi la ilon 'klaki-por-pagi'</translation>
     </message>
     <message>

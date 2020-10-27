@@ -338,8 +338,8 @@
         <translation>說明 &amp;H</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
-        <translation>要求付款 (產生QR碼 particl: URIs)</translation>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
+        <translation>要求付款 (產生QR碼 rhombus: URIs)</translation>
     </message>
     <message>
         <source>Indexing blocks on disk...</source>

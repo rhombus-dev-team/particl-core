@@ -188,8 +188,8 @@
         <translation>Masukan passphrase lama dan passphrase baru ke dompet</translation>
     </message>
     <message>
-        <source>Remember that encrypting your wallet cannot fully protect your particl from being stolen by malware infecting your computer.</source>
-        <translation>Mengenkripsi dompet Anda tidak dapat sepenuhnya melindungi particl Anda dari pencurian oleh malware yang menginfeksi komputer Anda.</translation>
+        <source>Remember that encrypting your wallet cannot fully protect your rhombus from being stolen by malware infecting your computer.</source>
+        <translation>Mengenkripsi dompet Anda tidak dapat sepenuhnya melindungi rhombus Anda dari pencurian oleh malware yang menginfeksi komputer Anda.</translation>
     </message>
     <message>
         <source>Wallet to be encrypted</source>
@@ -422,8 +422,8 @@
         <translation>Baris tab</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
-        <translation>Permintaan pembayaran (membuat kode QR dan particl: URIs)</translation>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
+        <translation>Permintaan pembayaran (membuat kode QR dan rhombus: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -1010,12 +1010,12 @@
         <translation>Formulir</translation>
     </message>
     <message>
-        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the particl network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet's balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the rhombus network, as detailed below.</source>
         <translation>Transaksi-transaksi terkini mungkin belum terlihat dan oleh karenanya, saldo dompet Anda mungkin tidak tepat. Informasi ini akan akurat ketika dompet Anda tersinkronisasi dengan jaringan Particl, seperti rincian berikut.</translation>
     </message>
     <message>
-        <source>Attempting to spend particl that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
-        <translation>Usaha untuk menggunakan particl yang dipengaruhi oleh transaksi yang belum terlihat tidak akan diterima oleh jaringan.</translation>
+        <source>Attempting to spend rhombus that are affected by not-yet-displayed transactions will not be accepted by the network.</source>
+        <translation>Usaha untuk menggunakan rhombus yang dipengaruhi oleh transaksi yang belum terlihat tidak akan diterima oleh jaringan.</translation>
     </message>
     <message>
         <source>Number of blocks left</source>
@@ -1252,7 +1252,7 @@
     </message>
     <message>
         <source>Connect to the Particl network through a separate SOCKS5 proxy for Tor hidden services.</source>
-        <translation>Koneksi ke jaringan particl melalui proxy SOCKS5 yang berbeda untuk layanan Tor tersembunyi.</translation>
+        <translation>Koneksi ke jaringan rhombus melalui proxy SOCKS5 yang berbeda untuk layanan Tor tersembunyi.</translation>
     </message>
     <message>
         <source>&amp;Window</source>
@@ -1437,16 +1437,16 @@
         <translation>Terjadi kesalahan pada permintaan pembayaran</translation>
     </message>
     <message>
-        <source>Cannot start particl: click-to-pay handler</source>
-        <translation>Tidak bisa memulai particl: handler click-to-pay</translation>
+        <source>Cannot start rhombus: click-to-pay handler</source>
+        <translation>Tidak bisa memulai rhombus: handler click-to-pay</translation>
     </message>
     <message>
         <source>URI handling</source>
         <translation>Pengelolaan URI</translation>
     </message>
     <message>
-        <source>'particl://' is not a valid URI. Use 'particl:' instead.</source>
-        <translation>'particl://' bukanlah alamat URI yang valid. Silakan gunakan 'particl:'.</translation>
+        <source>'rhombus://' is not a valid URI. Use 'rhombus:' instead.</source>
+        <translation>'rhombus://' bukanlah alamat URI yang valid. Silakan gunakan 'rhombus:'.</translation>
     </message>
     <message>
         <source>Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.</source>
@@ -2227,8 +2227,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Dust:</translation>
     </message>
     <message>
-        <source>When there is less transaction volume than space in the blocks, miners as well as relaying nodes may enforce a minimum fee. Paying only this minimum fee is just fine, but be aware that this can result in a never confirming transaction once there is more demand for particl transactions than the network can process.</source>
-        <translation>Ketika volume transaksi lebih sedikit daripada ruang di blok, penambang serta simpul yang menyiarkanikan dapat memberlakukan biaya minimum. Anda boleh hanya membayar biaya minimum, tetapi perlu diketahui bahwa ini dapat menghasilkan transaksi yang tidak pernah dikonfirmasi setelah ada lebih banyak permintaan untuk transaksi particl daripada yang dapat diproses jaringan.</translation>
+        <source>When there is less transaction volume than space in the blocks, miners as well as relaying nodes may enforce a minimum fee. Paying only this minimum fee is just fine, but be aware that this can result in a never confirming transaction once there is more demand for rhombus transactions than the network can process.</source>
+        <translation>Ketika volume transaksi lebih sedikit daripada ruang di blok, penambang serta simpul yang menyiarkanikan dapat memberlakukan biaya minimum. Anda boleh hanya membayar biaya minimum, tetapi perlu diketahui bahwa ini dapat menghasilkan transaksi yang tidak pernah dikonfirmasi setelah ada lebih banyak permintaan untuk transaksi rhombus daripada yang dapat diproses jaringan.</translation>
     </message>
     <message>
         <source>A too low fee might result in a never confirming transaction (read the tooltip)</source>
@@ -2434,8 +2434,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Hapus masukan ini</translation>
     </message>
     <message>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less particl than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
-        <translation>Biaya akan diambil dari jumlah yang dikirim. Penerima akan menerima particl lebih sedikit daripada yang di masukkan di bidang jumlah. Jika ada beberapa penerima, biaya dibagi rata.</translation>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less rhombus than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <translation>Biaya akan diambil dari jumlah yang dikirim. Penerima akan menerima rhombus lebih sedikit daripada yang di masukkan di bidang jumlah. Jika ada beberapa penerima, biaya dibagi rata.</translation>
     </message>
     <message>
         <source>S&amp;ubtract fee from amount</source>
@@ -2462,8 +2462,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>Masukkan label untuk alamat ini untuk dimasukan dalam daftar alamat yang pernah digunakan</translation>
     </message>
     <message>
-        <source>A message that was attached to the particl: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
-        <translation>Pesan yang dilampirkan ke particl: URI yang akan disimpan dengan transaksi untuk referensi Anda. Catatan: Pesan ini tidak akan dikirim melalui jaringan Particl.</translation>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
+        <translation>Pesan yang dilampirkan ke rhombus: URI yang akan disimpan dengan transaksi untuk referensi Anda. Catatan: Pesan ini tidak akan dikirim melalui jaringan Particl.</translation>
     </message>
     <message>
         <source>Pay To:</source>
@@ -2492,8 +2492,8 @@ Catatan: Karena biaya dihitung berdasarkan per byte, biaya "100 satoshi per kB" 
         <translation>&amp;Tandakan Pesan</translation>
     </message>
     <message>
-        <source>You can sign messages/agreements with your addresses to prove you can receive particl sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
-        <translation>Anda dapat menandatangani pesan / perjanjian dengan alamat Anda untuk membuktikan bahwa Anda dapat menerima particl yang dikirimkan kepada mereka. Berhati-hatilah untuk tidak menandatangani apa pun yang samar-samar atau acak, karena serangan phishing mungkin mencoba menipu Anda untuk menandatangani identitas Anda kepada mereka. Hanya tandatangani pernyataan terperinci yang Anda setujui.</translation>
+        <source>You can sign messages/agreements with your addresses to prove you can receive rhombus sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <translation>Anda dapat menandatangani pesan / perjanjian dengan alamat Anda untuk membuktikan bahwa Anda dapat menerima rhombus yang dikirimkan kepada mereka. Berhati-hatilah untuk tidak menandatangani apa pun yang samar-samar atau acak, karena serangan phishing mungkin mencoba menipu Anda untuk menandatangani identitas Anda kepada mereka. Hanya tandatangani pernyataan terperinci yang Anda setujui.</translation>
     </message>
     <message>
         <source>The Particl address to sign the message with</source>

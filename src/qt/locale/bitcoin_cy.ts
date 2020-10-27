@@ -378,8 +378,8 @@
         <translation>Bar offer tabiau</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
-        <translation>Gofyn taliadau (creu côd QR a particl: URIs)</translation>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
+        <translation>Gofyn taliadau (creu côd QR a rhombus: URIs)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>

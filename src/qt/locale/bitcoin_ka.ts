@@ -366,8 +366,8 @@
         <translation>ბარათების პანელი</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
-        <translation>გადახდის მოთხოვნა (შეიქმნება QR-კოდები და particl: ბმულები)</translation>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
+        <translation>გადახდის მოთხოვნა (შეიქმნება QR-კოდები და rhombus: ბმულები)</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>
@@ -973,8 +973,8 @@
         <translation>გადახდის მოთხოვნის შეცდომა</translation>
     </message>
     <message>
-        <source>Cannot start particl: click-to-pay handler</source>
-        <translation>ვერ გაიშვა particl: click-to-pay</translation>
+        <source>Cannot start rhombus: click-to-pay handler</source>
+        <translation>ვერ გაიშვა rhombus: click-to-pay</translation>
     </message>
     <message>
         <source>URI handling</source>
@@ -1500,7 +1500,7 @@
         <translation>შეიყვანეთ ამ მისამართის ნიშნული გამოყენებული მისამართების სიაში დასამატებლად</translation>
     </message>
     <message>
-        <source>A message that was attached to the particl: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
         <translation>მესიჯი, რომელიც თან ერთვის მონეტებს:  URI, რომელიც შეინახება ტრანსაქციასთან ერთად თქვენთვის. შენიშვნა: მესიჯი არ გაყვება გადახდას ბითქოინის ქსელში.</translation>
     </message>
     <message>

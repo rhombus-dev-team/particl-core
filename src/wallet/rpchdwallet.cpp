@@ -984,7 +984,7 @@ static UniValue extkey(const JSONRPCRequest &request)
             if (!eKey58.IsValid(CChainParams::EXT_SECRET_KEY)
                 && !eKey58.IsValid(CChainParams::EXT_PUBLIC_KEY_BTC)
                 && !eKey58.IsValid(CChainParams::EXT_PUBLIC_KEY)) {
-                throw JSONRPCError(RPC_INVALID_PARAMETER, "Import failed - Key must begin with a particl prefix.");
+                throw JSONRPCError(RPC_INVALID_PARAMETER, "Import failed - Key must begin with a rhombus prefix.");
             }
         }
 
@@ -3783,7 +3783,7 @@ static UniValue getstakinginfo(const JSONRPCRequest &request)
                             {RPCResult::Type::STR, "", ""},
                         }},
                         {RPCResult::Type::STR_AMOUNT, "percentyearreward", "Current stake reward percentage"},
-                        {RPCResult::Type::STR_AMOUNT, "moneysupply", "The total amount of particl in the network"},
+                        {RPCResult::Type::STR_AMOUNT, "moneysupply", "The total amount of rhombus in the network"},
                         {RPCResult::Type::STR_AMOUNT, "reserve", "The reserve balance of the wallet in " + CURRENCY_UNIT},
                         {RPCResult::Type::NUM, "currentblocksize", "The last approximate block size in bytes"},
                         {RPCResult::Type::NUM, "currentblockweight", "The last block weight"},
@@ -4020,9 +4020,9 @@ static UniValue listunspentanon(const JSONRPCRequest &request)
                 {
                     {"minconf", RPCArg::Type::NUM, /* default */ "1", "The minimum confirmations to filter"},
                     {"maxconf", RPCArg::Type::NUM, /* default */ "9999999", "The maximum confirmations to filter"},
-                    {"addresses", RPCArg::Type::ARR, /* default */ "", "A json array of particl addresses to filter",
+                    {"addresses", RPCArg::Type::ARR, /* default */ "", "A json array of rhombus addresses to filter",
                         {
-                            {"address", RPCArg::Type::STR, /* default */ "", "particl address"},
+                            {"address", RPCArg::Type::STR, /* default */ "", "rhombus address"},
                         },
                     },
                     {"include_unsafe", RPCArg::Type::BOOL, /* default */ "true", "Include outputs that are not safe to spend\n"
@@ -4044,7 +4044,7 @@ static UniValue listunspentanon(const JSONRPCRequest &request)
                         {
                             {RPCResult::Type::STR_HEX, "txid", "the transaction id"},
                             {RPCResult::Type::NUM, "vout", "the vout value"},
-                            {RPCResult::Type::STR, "address", "the particl address"},
+                            {RPCResult::Type::STR, "address", "the rhombus address"},
                             {RPCResult::Type::STR, "label", "The associated label, or \"\" for the default label"},
                             {RPCResult::Type::STR_AMOUNT, "amount", "the transaction output amount in " + CURRENCY_UNIT},
                             {RPCResult::Type::NUM, "confirmations", "The number of confirmations"},
@@ -4227,9 +4227,9 @@ static UniValue listunspentblind(const JSONRPCRequest &request)
                 {
                     {"minconf", RPCArg::Type::NUM, /* default */ "1", "The minimum confirmations to filter"},
                     {"maxconf", RPCArg::Type::NUM, /* default */ "9999999", "The maximum confirmations to filter"},
-                    {"addresses", RPCArg::Type::ARR, /* default */ "", "A json array of particl addresses to filter",
+                    {"addresses", RPCArg::Type::ARR, /* default */ "", "A json array of rhombus addresses to filter",
                         {
-                            {"address", RPCArg::Type::STR, /* default */ "", "particl address"},
+                            {"address", RPCArg::Type::STR, /* default */ "", "rhombus address"},
                         },
                     },
                     {"include_unsafe", RPCArg::Type::BOOL, /* default */ "true", "Include outputs that are not safe to spend\n"
@@ -4250,7 +4250,7 @@ static UniValue listunspentblind(const JSONRPCRequest &request)
                         {
                             {RPCResult::Type::STR_HEX, "txid", "the transaction id"},
                             {RPCResult::Type::NUM, "vout", "the vout value"},
-                            {RPCResult::Type::STR, "address", "the particl address"},
+                            {RPCResult::Type::STR, "address", "the rhombus address"},
                             {RPCResult::Type::STR, "label", "The associated label, or \"\" for the default label"},
                             {RPCResult::Type::STR, "scriptPubKey", "the script key"},
                             {RPCResult::Type::STR_AMOUNT, "amount", "the transaction output amount in " + CURRENCY_UNIT},
@@ -4485,7 +4485,7 @@ void ReadCoinControlOptions(const UniValue &obj, CHDWallet *pwallet, CCoinContro
         if (!fHaveScript) {
             CTxDestination dest = DecodeDestination(sChangeAddress);
             if (!IsValidDestination(dest)) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "changeAddress must be a valid particl address");
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "changeAddress must be a valid rhombus address");
             }
             coin_control.destChange = dest;
         }
@@ -4955,7 +4955,7 @@ static std::string SendHelp(CHDWallet *pwallet, OutputTypes typeIn, OutputTypes 
     rv += HELP_REQUIRING_PASSPHRASE;
 
     rv +=   "\nArguments:\n"
-            "1. \"address\"     (string, required) The particl address to send to.\n"
+            "1. \"address\"     (string, required) The rhombus address to send to.\n"
             "2. \"amount\"      (numeric or string, required) The amount in " + CURRENCY_UNIT + " to send. eg 0.1\n"
             "3. \"comment\"     (string, optional) A comment used to store what the transaction is for. \n"
             "                            This is not part of the transaction, just kept in your wallet.\n"
@@ -5095,7 +5095,7 @@ UniValue sendtypeto(const JSONRPCRequest &request)
                         {
                             {"", RPCArg::Type::OBJ, RPCArg::Optional::NO, "",
                                 {
-                                    {"address", RPCArg::Type::STR, /* default */ "", "The particl address to send to."},
+                                    {"address", RPCArg::Type::STR, /* default */ "", "The rhombus address to send to."},
                                     {"amount", RPCArg::Type::AMOUNT, /* default */ "", "The amount in " + CURRENCY_UNIT + " to send. eg 0.1."},
                                     {"narr", RPCArg::Type::STR, /* default */ "", "Up to 24 character narration sent with the transaction."},
                                     {"blindingfactor", RPCArg::Type::STR_HEX, /* default */ "", "The blinding factor, 32 bytes and hex encoded."},
@@ -5115,7 +5115,7 @@ UniValue sendtypeto(const JSONRPCRequest &request)
                     {"test_fee", RPCArg::Type::BOOL, /* default */ "false", "Only return the fee it would cost to send, txn is discarded."},
                     {"coin_control", RPCArg::Type::OBJ, /* default */ "", "",
                         {
-                            {"changeaddress", RPCArg::Type::STR, /* default */ "", "The particl address to receive the change"},
+                            {"changeaddress", RPCArg::Type::STR, /* default */ "", "The rhombus address to receive the change"},
                             {"inputs", RPCArg::Type::ARR, /* default */ "", "A json array of json objects",
                                 {
                                     {"", RPCArg::Type::OBJ, /* default */ "", "",
@@ -6324,7 +6324,7 @@ static UniValue createrawparttransaction(const JSONRPCRequest& request)
                         {
                             {"", RPCArg::Type::OBJ, /* default */ "", "",
                                 {
-                                    {"address", RPCArg::Type::STR, /* default */ "", "The particl address."},
+                                    {"address", RPCArg::Type::STR, /* default */ "", "The rhombus address."},
                                     {"amount", RPCArg::Type::AMOUNT, /* default */ "", "The numeric value (can be string) in " + CURRENCY_UNIT + " of the output."},
                                     {"data", RPCArg::Type::STR_HEX, /* default */ "", "The key is \"data\", the value is hex encoded data."},
                                     {"data_ct_fee", RPCArg::Type::AMOUNT, /* default */ "", "If type is \"data\" and output is at index 0, then it will be treated as a CT fee output."},
@@ -6696,7 +6696,7 @@ static UniValue fundrawtransactionfrom(const JSONRPCRequest& request)
                     },
                     {"options", RPCArg::Type::OBJ, /* default */ "", "",
                         {
-                            {"changeAddress", RPCArg::Type::STR, /* default */ "", "The particl address to receive the change."},
+                            {"changeAddress", RPCArg::Type::STR, /* default */ "", "The rhombus address to receive the change."},
                             {"changePosition", RPCArg::Type::NUM, /* default */ "random", "The index of the change output."},
                             //{"change_type", RPCArg::Type::STR, /* default */ "", "The output type to use. Only valid if changeAddress is not specified. Options are \"legacy\", \"p2sh-segwit\", and \"bech32\". Default is set by -changetype."},
                             {"includeWatching", RPCArg::Type::BOOL, /* default */ "false", "Also select inputs which are watch only."},
@@ -6705,7 +6705,7 @@ static UniValue fundrawtransactionfrom(const JSONRPCRequest& request)
                             {"subtractFeeFromOutputs", RPCArg::Type::ARR, /* default */ "", "A json array of integers.\n"
                             "                              The fee will be equally deducted from the amount of each specified output.\n"
                             "                              The outputs are specified by their zero-based index, before any change output is added.\n"
-                            "                              Those recipients will receive less particl than you enter in their corresponding amount field.\n"
+                            "                              Those recipients will receive less rhombus than you enter in their corresponding amount field.\n"
                             "                              If no outputs are specified here, the sender pays the fee.",
                                 {
                                     {"vout_index", RPCArg::Type::NUM, /* default */ "", ""},
@@ -6796,7 +6796,7 @@ static UniValue fundrawtransactionfrom(const JSONRPCRequest& request)
             CTxDestination dest = DecodeDestination(options["changeAddress"].get_str());
 
             if (!IsValidDestination(dest)) {
-                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "changeAddress must be a valid particl address");
+                throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "changeAddress must be a valid rhombus address");
             }
 
             coinControl.destChange = dest;

@@ -5,7 +5,7 @@
 
 import time
 
-from test_framework.test_particl import (
+from test_framework.test_rhombus import (
     ParticlTestFramework,
     connect_nodes_bi,
     isclose

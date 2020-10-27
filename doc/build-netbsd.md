@@ -2,7 +2,7 @@ NetBSD build guide
 ======================
 (updated for NetBSD 8.0)
 
-This guide describes how to build particld and command-line utilities on NetBSD.
+This guide describes how to build rhombusd and command-line utilities on NetBSD.
 
 This guide does not contain instructions for building the GUI.
 
@@ -22,7 +22,7 @@ libtool
 pkg-config
 python37
 
-git clone https://github.com/particl/particl-core.git
+git clone https://github.com/rhombus/rhombus-core.git
 ```
 
 See [dependencies.md](dependencies.md) for a complete overview.

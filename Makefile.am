@@ -17,8 +17,8 @@ export PYTHONPATH
 
 if BUILD_BITCOIN_LIBS
 pkgconfigdir = $(libdir)/pkgconfig
-pkgconfig_DATA = libparticlconsensus.pc
-pkgconfig_DATA = libparticlconsensus.pc
+pkgconfig_DATA = librhombusconsensus.pc
+pkgconfig_DATA = librhombusconsensus.pc
 endif
 
 BITCOIND_BIN=$(top_builddir)/src/$(BITCOIN_DAEMON_NAME)$(EXEEXT)
@@ -40,7 +40,7 @@ OSX_BACKGROUND_IMAGE_DPIS=36 72
 OSX_DSSTORE_GEN=$(top_srcdir)/contrib/macdeploy/custom_dsstore.py
 OSX_DEPLOY_SCRIPT=$(top_srcdir)/contrib/macdeploy/macdeployqtplus
 OSX_FANCY_PLIST=$(top_srcdir)/contrib/macdeploy/fancy.plist
-OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/particl.icns
+OSX_INSTALLER_ICONS=$(top_srcdir)/src/qt/res/icons/rhombus.icns
 OSX_PLIST=$(top_builddir)/share/qt/Info.plist #not installed
 OSX_QT_TRANSLATIONS = da,de,es,hu,ru,uk,zh_CN,zh_TW
 
@@ -55,7 +55,7 @@ DIST_SHARE = \
 BIN_CHECKS=$(top_srcdir)/contrib/devtools/symbol-check.py \
            $(top_srcdir)/contrib/devtools/security-check.py
 
-WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/particl.ico \
+WINDOWS_PACKAGING = $(top_srcdir)/share/pixmaps/rhombus.ico \
   $(top_srcdir)/share/pixmaps/nsis-header.bmp \
   $(top_srcdir)/share/pixmaps/nsis-wizard.bmp \
   $(top_srcdir)/doc/README_windows.txt
@@ -97,7 +97,7 @@ $(OSX_APP)/Contents/Info.plist: $(OSX_PLIST)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
-$(OSX_APP)/Contents/Resources/particl.icns: $(OSX_INSTALLER_ICONS)
+$(OSX_APP)/Contents/Resources/rhombus.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
@@ -110,7 +110,7 @@ $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings:
 	echo '{	CFBundleDisplayName = "$(PACKAGE_NAME)"; CFBundleName = "$(PACKAGE_NAME)"; }' > $@
 
 OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
-  $(OSX_APP)/Contents/Resources/particl.icns $(OSX_APP)/Contents/Info.plist \
+  $(OSX_APP)/Contents/Resources/rhombus.icns $(OSX_APP)/Contents/Info.plist \
   $(OSX_APP)/Contents/MacOS/Particl-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
 
 osx_volname:
@@ -319,27 +319,27 @@ EXTRA_DIST += \
     test/util/rpcauth-test.py
 
 EXTRA_DIST += \
-    test/util/data_particl/particl-util-test.json \
-    test/util/data_particl/blanktxv1.hex \
-    test/util/data_particl/blanktxv1.json \
-    test/util/data_particl/blanktxva0.hex \
-    test/util/data_particl/blanktxva0.json \
-    test/util/data_particl/tx14ae341f.hex \
-    test/util/data_particl/tt-delin1-out.hex \
-    test/util/data_particl/tt-delin1-out.json \
-    test/util/data_particl/tt-delout1-out.hex \
-    test/util/data_particl/tt-delout1-out.json \
-    test/util/data_particl/tt-locktime317000-out.hex \
-    test/util/data_particl/tt-locktime317000-out.json \
-    test/util/data_particl/txcreate1.hex \
-    test/util/data_particl/txcreate1.json \
-    test/util/data_particl/txcreate2.hex \
-    test/util/data_particl/txcreate2.json \
-    test/util/data_particl/txcreatesignva0.hex \
-    test/util/data_particl/txaddwitness0.hex \
-    test/util/data_particl/txdelwitness0.hex \
-    test/util/data_particl/txblindout0.hex \
-    test/util/data_particl/txoutdatatype0.hex
+    test/util/data_rhombus/rhombus-util-test.json \
+    test/util/data_rhombus/blanktxv1.hex \
+    test/util/data_rhombus/blanktxv1.json \
+    test/util/data_rhombus/blanktxva0.hex \
+    test/util/data_rhombus/blanktxva0.json \
+    test/util/data_rhombus/tx14ae341f.hex \
+    test/util/data_rhombus/tt-delin1-out.hex \
+    test/util/data_rhombus/tt-delin1-out.json \
+    test/util/data_rhombus/tt-delout1-out.hex \
+    test/util/data_rhombus/tt-delout1-out.json \
+    test/util/data_rhombus/tt-locktime317000-out.hex \
+    test/util/data_rhombus/tt-locktime317000-out.json \
+    test/util/data_rhombus/txcreate1.hex \
+    test/util/data_rhombus/txcreate1.json \
+    test/util/data_rhombus/txcreate2.hex \
+    test/util/data_rhombus/txcreate2.json \
+    test/util/data_rhombus/txcreatesignva0.hex \
+    test/util/data_rhombus/txaddwitness0.hex \
+    test/util/data_rhombus/txdelwitness0.hex \
+    test/util/data_rhombus/txblindout0.hex \
+    test/util/data_rhombus/txoutdatatype0.hex
 
 
 CLEANFILES = $(OSX_DMG) $(BITCOIN_WIN_INSTALLER)

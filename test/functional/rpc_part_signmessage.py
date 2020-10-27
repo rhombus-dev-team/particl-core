@@ -4,7 +4,7 @@
 # file COPYING or http://www.opensource.org/licenses/mit-license.php.
 """Test RPC commands for signing and verifying messages."""
 
-from test_framework.test_particl import ParticlTestFramework
+from test_framework.test_rhombus import ParticlTestFramework
 from test_framework.util import assert_equal
 
 class SignMessagesTest(ParticlTestFramework):

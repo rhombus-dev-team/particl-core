@@ -10,7 +10,7 @@ export LC_ALL=C.UTF-8
 if [ "$TRAVIS_OS_NAME" == "osx" ]; then
   echo > $HOME/Library/Application\ Support/Particl
 else
-  DOCKER_EXEC echo \> \$HOME/.particl
+  DOCKER_EXEC echo \> \$HOME/.rhombus
 fi
 
 DOCKER_EXEC mkdir -p ${DEPENDS_DIR}/SDKs ${DEPENDS_DIR}/sdk-sources

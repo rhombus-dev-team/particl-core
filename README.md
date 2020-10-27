@@ -1,9 +1,9 @@
 Particl Core integration/staging tree
 =====================================
 
-[![Build Status](https://travis-ci.org/particl/particl-core.svg?branch=master)](https://travis-ci.org/particl/particl-core)
+[![Build Status](https://travis-ci.org/rhombus/rhombus-core.svg?branch=master)](https://travis-ci.org/rhombus/rhombus-core)
 
-https://particl.io
+https://rhombus.io
 
 What is Particl?
 ----------------
@@ -12,7 +12,7 @@ An open source, decentralized privacy platform
 built for global person to person eCommerce.
 
 For more information, as well as an immediately usable, binary version of
-the Particl Core software, see https://particl.io.
+the Particl Core software, see https://rhombus.io.
 
 
 Getting Started
@@ -29,7 +29,7 @@ Loading the new mnemonic with the extkeyimportmaster command will setup the
 master HD key and first account.
 
 To create an initial new HD master key and account from random data, start
-particld or particl-qt with the parameter: -createdefaultmasterkey.
+rhombusd or rhombus-qt with the parameter: -createdefaultmasterkey.
 
 Remember to backup your passphrase and/or wallet.dat file!
 
@@ -43,7 +43,7 @@ Development Process
 -------------------
 
 The `master` branch is regularly built (see doc/build-*.md for instructions) and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/particl/particl-core/tags) are created
+completely stable. [Tags](https://github.com/rhombus/rhombus-core/tags) are created
 regularly to indicate new official, stable release versions of Particl Core.
 
 The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md)

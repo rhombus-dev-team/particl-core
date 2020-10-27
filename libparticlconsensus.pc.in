@@ -6,5 +6,5 @@ includedir=@includedir@
 Name: @PACKAGE_NAME@ consensus library
 Description: Library for the Particl consensus protocol.
 Version: @PACKAGE_VERSION@
-Libs: -L${libdir} -lparticlconsensus
+Libs: -L${libdir} -lrhombusconsensus
 Cflags: -I${includedir}

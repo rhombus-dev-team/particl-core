@@ -654,7 +654,7 @@ static UniValue smsgdumpprivkey(const JSONRPCRequest &request)
     RPCHelpMan{"smsgdumpprivkey",
         "\nReveals the private key corresponding to 'address'.\n",
         {
-            {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The particl address for the private key"},
+            {"address", RPCArg::Type::STR, RPCArg::Optional::NO, "The rhombus address for the private key"},
         },
         RPCResult{
             RPCResult::Type::STR, "key", "The private key"
@@ -779,7 +779,7 @@ static UniValue smsgsend(const JSONRPCRequest &request)
                         "options"},
                     {"coin_control", RPCArg::Type::OBJ, /* default */ "", "",
                         {
-                            {"changeaddress", RPCArg::Type::STR, /* default */ "", "The particl address to receive the change"},
+                            {"changeaddress", RPCArg::Type::STR, /* default */ "", "The rhombus address to receive the change"},
                             {"inputs", RPCArg::Type::ARR, /* default */ "", "A json array of json objects",
                                 {
                                     {"", RPCArg::Type::OBJ, /* default */ "", "",

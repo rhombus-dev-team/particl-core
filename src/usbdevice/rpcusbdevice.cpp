@@ -368,7 +368,7 @@ static UniValue getdevicexpub(const JSONRPCRequest &request)
                     {"accountpath", RPCArg::Type::STR, /* default */ GetDefaultAccountPath(), "Account path, set to empty string to ignore."},
                 },
                 RPCResult{
-                    RPCResult::Type::STR, "address", "The particl extended public key"
+                    RPCResult::Type::STR, "address", "The rhombus extended public key"
                 },
                 RPCExamples{
             HelpExampleCli("getdevicexpub", "\"0\"") +
@@ -1009,7 +1009,7 @@ static UniValue devicegetnewstealthaddress(const JSONRPCRequest &request)
                     {"bech32", RPCArg::Type::BOOL, /* default */ "true", "Use Bech32 encoding."},
                 },
                 RPCResult{
-                    RPCResult::Type::STR, "address", "The generated particl stealth address"
+                    RPCResult::Type::STR, "address", "The generated rhombus stealth address"
                 },
                 RPCExamples{
              HelpExampleCli("devicegetnewstealthaddress", "\"lblTestSxAddrPrefix\" 3 \"0b101\"") +

@@ -24,7 +24,7 @@ make
 make install # optional
 ```
 
-This will build particl-qt as well, if the dependencies are met.
+This will build rhombus-qt as well, if the dependencies are met.
 
 Dependencies
 ---------------------
@@ -106,7 +106,7 @@ ZMQ dependencies (provides ZMQ API):
 
 GUI dependencies:
 
-If you want to build particl-qt, make sure that the required packages for Qt development
+If you want to build rhombus-qt, make sure that the required packages for Qt development
 are installed. Qt 5 is necessary to build the GUI.
 To build without GUI pass `--without-gui`.
 
@@ -124,7 +124,7 @@ To build with USB Device support you need the following:
 
 sudo apt-get install libprotobuf-dev protobuf-compiler libhidapi-dev
 
-Once these are installed, they will be found by configure and a particl-qt executable will be
+Once these are installed, they will be found by configure and a rhombus-qt executable will be
 built by default.
 
 
@@ -158,7 +158,7 @@ protobuf (optional) can be installed with:
 
 Notes
 -----
-The release is built with GCC and then "strip particld" to strip the debug
+The release is built with GCC and then "strip rhombusd" to strip the debug
 symbols, which reduces the executable size by about 90%.
 
 
@@ -221,7 +221,7 @@ Hardening enables the following features:
 
     To test that you have built PIE executable, install scanelf, part of paxutils, and use:
 
-    	scanelf -e ./particl
+    	scanelf -e ./rhombus
 
     The output should contain:
 
@@ -235,7 +235,7 @@ Hardening enables the following features:
     executable without the non-executable stack protection.
 
     To verify that the stack is non-executable after compiling use:
-    `scanelf -e ./particl`
+    `scanelf -e ./rhombus`
 
     The output should contain:
 	STK/REL/PTL
@@ -266,8 +266,8 @@ Setup and Build Example: Arch Linux
 This example lists the steps necessary to setup and build a command line only, non-wallet distribution of the latest changes on Arch Linux:
 
     pacman -S git base-devel boost libevent python
-    git clone https://github.com/particl/particl-core.git
-    cd particl-core/
+    git clone https://github.com/rhombus/rhombus-core.git
+    cd rhombus-core/
     ./autogen.sh
     ./configure --disable-wallet --without-gui --without-miniupnpc
     make check

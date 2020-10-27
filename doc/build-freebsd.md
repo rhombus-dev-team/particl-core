@@ -2,7 +2,7 @@ FreeBSD build guide
 ======================
 (updated for FreeBSD 12.0)
 
-This guide describes how to build particld and command-line utilities on FreeBSD.
+This guide describes how to build rhombusd and command-line utilities on FreeBSD.
 
 This guide does not contain instructions for building the GUI.
 
@@ -13,7 +13,7 @@ You will need the following dependencies, which can be installed as root via pkg
 ```bash
 pkg install autoconf automake boost-libs git gmake libevent libtool pkgconf
 
-git clone https://github.com/particl/particl-core.git
+git clone https://github.com/rhombus/rhombus-core.git
 ```
 
 In order to run the test suite (recommended), you will need to have Python 3 installed:

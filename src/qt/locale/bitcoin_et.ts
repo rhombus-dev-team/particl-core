@@ -346,8 +346,8 @@
         <translation>Vahelehe tööriistariba</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
-        <translation>Loo maksepäring (genereerib QR koodid ja particli: URId)</translation>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
+        <translation>Loo maksepäring (genereerib QR koodid ja rhombusi: URId)</translation>
     </message>
     <message>
         <source>&amp;Command-line options</source>
@@ -843,7 +843,7 @@
         <translation>Maksepäringu tõrge</translation>
     </message>
     <message>
-        <source>Cannot start particl: click-to-pay handler</source>
+        <source>Cannot start rhombus: click-to-pay handler</source>
         <translation>Particl ei käivitu: vajuta-maksa toiming</translation>
     </message>
     <message>

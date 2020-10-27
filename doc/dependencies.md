@@ -26,7 +26,7 @@ These are the dependencies currently used by Particl Core. You can find instruct
 | ZeroMQ | [4.3.1](https://github.com/zeromq/libzmq/releases) | 4.0.0 | No |  |  |
 | zlib | [1.2.11](https://zlib.net/) |  |  |  | No |
 | protobuf | [2.6.1](https://github.com/google/protobuf/releases) |  | No |  |  |
-| hidapi | [0.9.0-rc1](https://github.com/particl/hidapi/releases) |  | No |  |  |
+| hidapi | [0.9.0-rc1](https://github.com/rhombus/hidapi/releases) |  | No |  |  |
 | libusb | [1.0.23](https://github.com/libusb/libusb/releases) |  | No |  |  |
 
 

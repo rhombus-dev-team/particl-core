@@ -3,8 +3,8 @@ How to Upgrade
 
 If you are running an older version, shut it down. Wait until it has completely
 shut down (which might take a few minutes for older versions), then run the 
-installer (on Windows) or just copy over `/Applications/particl-Qt` (on Mac)
-or `particld`/`particl-qt` (on Linux).
+installer (on Windows) or just copy over `/Applications/rhombus-Qt` (on Mac)
+or `rhombusd`/`rhombus-qt` (on Linux).
 
 The first time you run version 0.15.0.2, your chainstate database will be converted to a
 new format, which will take anywhere from a few seconds to a minute,
@@ -148,13 +148,13 @@ Particl Core now supports loading multiple, separate wallets (See [PR 8694](http
 
 Multi-wallet is enabled by using more than one `-wallet` argument when starting Particl, either on the command line or in the Particl config file.
 
-**In particl-Qt, only the first wallet will be displayed and accessible for creating and signing transactions.** GUI selectable multiple wallets will be supported in a future version. However, even in 0.15 other loaded wallets will remain synchronized to the node's current tip in the background. This can be useful if running a pruned node, since loading a wallet where the most recent sync is beyond the pruned height results in having to download and revalidate the whole blockchain. Continuing to synchronize all wallets in the background avoids this problem.
+**In rhombus-Qt, only the first wallet will be displayed and accessible for creating and signing transactions.** GUI selectable multiple wallets will be supported in a future version. However, even in 0.15 other loaded wallets will remain synchronized to the node's current tip in the background. This can be useful if running a pruned node, since loading a wallet where the most recent sync is beyond the pruned height results in having to download and revalidate the whole blockchain. Continuing to synchronize all wallets in the background avoids this problem.
 
-Particl Core 0.15.1 contains the following changes to the RPC interface and `particl-cli` for multi-wallet:
+Particl Core 0.15.1 contains the following changes to the RPC interface and `rhombus-cli` for multi-wallet:
 
-* When running Particl Core with a single wallet, there are **no** changes to the RPC interface or `particl-cli`. All RPC calls and `particl-cli` commands continue to work as before.
-* When running Particl Core with multi-wallet, all *node-level* RPC methods continue to work as before. HTTP RPC requests should be send to the normal `<RPC IP address>:<RPC port>/` endpoint, and `particl-cli` commands should be run as before. A *node-level* RPC method is any method which does not require access to the wallet.
-* When running Particl Core with multi-wallet, *wallet-level* RPC methods must specify the wallet for which they're intended in every request. HTTP RPC requests should be send to the `<RPC IP address>:<RPC port>/wallet/<wallet name>/` endpoint, for example `127.0.0.1:8332/wallet/wallet1.dat/`. `particl-cli` commands should be run with a `-rpcwallet` option, for example `particl-cli -rpcwallet=wallet1.dat getbalance`.
+* When running Particl Core with a single wallet, there are **no** changes to the RPC interface or `rhombus-cli`. All RPC calls and `rhombus-cli` commands continue to work as before.
+* When running Particl Core with multi-wallet, all *node-level* RPC methods continue to work as before. HTTP RPC requests should be send to the normal `<RPC IP address>:<RPC port>/` endpoint, and `rhombus-cli` commands should be run as before. A *node-level* RPC method is any method which does not require access to the wallet.
+* When running Particl Core with multi-wallet, *wallet-level* RPC methods must specify the wallet for which they're intended in every request. HTTP RPC requests should be send to the `<RPC IP address>:<RPC port>/wallet/<wallet name>/` endpoint, for example `127.0.0.1:8332/wallet/wallet1.dat/`. `rhombus-cli` commands should be run with a `-rpcwallet` option, for example `rhombus-cli -rpcwallet=wallet1.dat getbalance`.
 * A new *node-level* `listwallets` RPC method is added to display which wallets are currently loaded. The names returned by this method are the same as those used in the HTTP endpoint and for the `rpcwallet` argument.
 
 Note that while multi-wallet is now fully supported, the RPC multi-wallet interface should be considered unstable for version 0.15.1, and there may backwards-incompatible changes in future versions.
@@ -201,7 +201,7 @@ Version 0.15 introduces several new RPC methods:
   in the chain (See [PR 9733](https://github.com/bitcoin/bitcoin/pull/9733)).
 - `listwallets` lists wallets which are currently loaded. See the *Multi-wallet* section
   of these release notes for full details (See [Multi-wallet support](#multi-wallet-support)).
-- `uptime` returns the total runtime of the `particld` server since its last start (See [PR 10400](https://github.com/bitcoin/bitcoin/pull/10400)).
+- `uptime` returns the total runtime of the `rhombusd` server since its last start (See [PR 10400](https://github.com/bitcoin/bitcoin/pull/10400)).
 
 Low-level RPC changes
 ---------------------
@@ -270,13 +270,13 @@ Low-level RPC changes
   or subnet is invalid. Previously returned RPC_CLIENT_NODE_ALREADY_ADDED.
   - `setban` now returns RPC_CLIENT_INVALID_IP_OR_SUBNET if the user tries to unban
   a node that has not previously been banned. Previously returned RPC_MISC_ERROR.
-  - `removeprunedfunds` now returns RPC_WALLET_ERROR if `particld` is unable to remove
+  - `removeprunedfunds` now returns RPC_WALLET_ERROR if `rhombusd` is unable to remove
   the transaction. Previously returned RPC_INTERNAL_ERROR.
   - `removeprunedfunds` now returns RPC_INVALID_PARAMETER if the transaction does not
   exist in the wallet. Previously returned RPC_INTERNAL_ERROR.
   - `fundrawtransaction` now returns RPC_INVALID_ADDRESS_OR_KEY if an invalid change
   address is provided. Previously returned RPC_INVALID_PARAMETER.
-  - `fundrawtransaction` now returns RPC_WALLET_ERROR if `particld` is unable to create
+  - `fundrawtransaction` now returns RPC_WALLET_ERROR if `rhombusd` is unable to create
   the transaction. The error message provides further details. Previously returned
   RPC_INTERNAL_ERROR.
   - `bumpfee` now returns RPC_INVALID_PARAMETER if the provided transaction has
@@ -310,4 +310,4 @@ Thanks to Particl Team and everyone at Bitcoin Core who contributed to these cha
 
 WARNING
 Despite this version being heavily tested, this version may still contain bugs. 
-Always backup your wallet.dat file before upgrading. If you encounter any issues, please let us know by reporting them at https://github.com/particl/particl-core/issues
+Always backup your wallet.dat file before upgrading. If you encounter any issues, please let us know by reporting them at https://github.com/rhombus/rhombus-core/issues

@@ -629,7 +629,7 @@ int CTrezorDevice::CompleteTransaction(CMutableTransaction* tx)
             if (ci->second.m_shared_secret.size() == 32) {
                 const std::vector<uint8_t>& shared_secret = ci->second.m_shared_secret;
                 std::string s(shared_secret.begin(), shared_secret.end());
-                msg_input->set_particl_shared_secret(s);
+                msg_input->set_rhombus_shared_secret(s);
             }
 
             std::string hash;

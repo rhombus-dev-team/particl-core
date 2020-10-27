@@ -340,7 +340,7 @@
         <translation>Barra de pestañas</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
         <translation>Solicitar pagos (genera codigo QR y URL's de Particl)</translation>
     </message>
     <message>
@@ -867,8 +867,8 @@
         <translation>Error en petición de pago</translation>
     </message>
     <message>
-        <source>Cannot start particl: click-to-pay handler</source>
-        <translation>No se pudo iniciar particl: manejador de pago-al-clic</translation>
+        <source>Cannot start rhombus: click-to-pay handler</source>
+        <translation>No se pudo iniciar rhombus: manejador de pago-al-clic</translation>
     </message>
     <message>
         <source>URI handling</source>

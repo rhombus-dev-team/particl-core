@@ -597,7 +597,7 @@
 <context>
     <name>PaymentServer</name>
     <message>
-        <source>Cannot start particl: click-to-pay handler</source>
+        <source>Cannot start rhombus: click-to-pay handler</source>
         <translation>Particl incipere non potest: cliccare-ad-pensandum handler</translation>
     </message>
     <message>

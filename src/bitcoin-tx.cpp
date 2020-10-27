@@ -111,9 +111,9 @@ static int AppInitRawTx(int argc, char* argv[])
 
     if (argc < 2 || HelpRequested(gArgs)) {
         // First part of help message is specific to this utility
-        std::string strUsage = PACKAGE_NAME " particl-tx utility version " + FormatFullVersion() + "\n\n" +
-            "Usage:  particl-tx [options] <hex-tx> [commands]  Update hex-encoded transaction\n" +
-            "or:     particl-tx [options] -create [commands]   Create hex-encoded transaction\n" +
+        std::string strUsage = PACKAGE_NAME " rhombus-tx utility version " + FormatFullVersion() + "\n\n" +
+            "Usage:  rhombus-tx [options] <hex-tx> [commands]  Update hex-encoded transaction\n" +
+            "or:     rhombus-tx [options] -create [commands]   Create hex-encoded transaction\n" +
             "\n";
         strUsage += gArgs.GetHelpMessage();
 
@@ -815,7 +815,7 @@ static void MutateTxSign(CMutableTransaction& tx, const std::string& flagStr)
 static void MutateTxAddOutBlind(CMutableTransaction& tx, const std::string& strInput)
 {
     if (!tx.IsRhombusVersion())
-        throw std::runtime_error("tx not particl version.");
+        throw std::runtime_error("tx not rhombus version.");
     // separate COMMITMENT:SCRIPT:RANGEPROOF[:DATA]
     std::vector<std::string> vStrInputParts;
     boost::split(vStrInputParts, strInput, boost::is_any_of(":"));
@@ -861,7 +861,7 @@ static void MutateTxAddOutBlind(CMutableTransaction& tx, const std::string& strI
 static void MutateTxAddOutDataType(CMutableTransaction& tx, const std::string& strInput)
 {
     if (!tx.IsRhombusVersion())
-        throw std::runtime_error("tx not particl version.");
+        throw std::runtime_error("tx not rhombus version.");
     if (!IsHex(strInput))
         throw std::runtime_error("invalid TX output data");
 

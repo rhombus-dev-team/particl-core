@@ -17,7 +17,7 @@ Next Major Version
 ==============
 
 - Merged Bitcoin 0.19.1 backports.
-- Added generatemnemonic command to particl-wallet.
+- Added generatemnemonic command to rhombus-wallet.
 - Qt receiving addresses table displays relative paths.
 - Qt receiving addresses page can verify an address on a hardware device.
   - Window -> Receiving addresses, right click on address -> Verify Address On Hardware Wallet

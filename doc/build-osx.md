@@ -47,8 +47,8 @@ from the root of the repository.
 
 1. Clone the Particl Core source code:
     ```shell
-    git clone https://github.com/particl/particl-core
-    cd particl-core
+    git clone https://github.com/rhombus/rhombus-core
+    cd rhombus-core
     ```
 
 2.  Build Particl Core:
@@ -84,18 +84,18 @@ In this case there is no dependency on Berkeley DB 4.8.
 Mining is also possible in disable-wallet mode using the `getblocktemplate` RPC call.
 
 ## Running
-Particl Core is now available at `./src/particld`
+Particl Core is now available at `./src/rhombusd`
 
 Before running, you may create an empty configuration file:
 ```shell
 mkdir -p "/Users/${USER}/Library/Application Support/Particl"
 
-touch "/Users/${USER}/Library/Application Support/Particl/particl.conf"
+touch "/Users/${USER}/Library/Application Support/Particl/rhombus.conf"
 
-chmod 600 "/Users/${USER}/Library/Application Support/Particl/particl.conf"
+chmod 600 "/Users/${USER}/Library/Application Support/Particl/rhombus.conf"
 ```
 
-The first time you run particld, it will start downloading the blockchain. This process could
+The first time you run rhombusd, it will start downloading the blockchain. This process could
 take many hours, or even days on slower than average systems.
 
 You can monitor the download process by looking at the debug.log file:
@@ -105,9 +105,9 @@ tail -f $HOME/Library/Application\ Support/Particl/debug.log
 
 ## Other commands:
 ```shell
-./src/particld -daemon      # Starts the particl daemon.
-./src/particl-cli --help    # Outputs a list of command-line options.
-./src/particl-cli help      # Outputs a list of RPC commands when the daemon is running.
+./src/rhombusd -daemon      # Starts the rhombus daemon.
+./src/rhombus-cli --help    # Outputs a list of command-line options.
+./src/rhombus-cli help      # Outputs a list of RPC commands when the daemon is running.
 ```
 
 ## Notes

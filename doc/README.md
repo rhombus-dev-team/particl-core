@@ -5,7 +5,7 @@ Setup
 ---------------------
 Particl Core is the original Particl client and it builds the backbone of the network. It downloads and, by default, stores the entire history of Particl transactions, which requires a few gigabytes of disk space. Depending on the speed of your computer and network connection, the synchronization process can take anywhere from a few hours to a day or more.
 
-To download Particl Core, visit [particl.io](https://particl.io/downloads/).
+To download Particl Core, visit [rhombus.io](https://rhombus.io/downloads/).
 
 Running
 ---------------------
@@ -15,12 +15,12 @@ The following are some helpful notes on how to run Particl Core on your native p
 
 Unpack the files into a directory and run:
 
-- `bin/particl-qt` (GUI) or
-- `bin/particld` (headless)
+- `bin/rhombus-qt` (GUI) or
+- `bin/rhombusd` (headless)
 
 ### Windows
 
-Unpack the files into a directory, and then run particl-qt.exe.
+Unpack the files into a directory, and then run rhombus-qt.exe.
 
 ### macOS
 
@@ -28,10 +28,10 @@ Drag Particl Core to your applications folder, and then run Particl Core.
 
 ### Need Help?
 
-* See the documentation at the [Particl Wiki](https://particl.wiki/start)
+* See the documentation at the [Particl Wiki](https://rhombus.wiki/start)
 for help and more information.
-* Ask for help on [#particl](https://riot.im/app/#/room/#particl:matrix.org) on Riot.
-* Ask for help on [Discord](https://discord.me/particl).
+* Ask for help on [#rhombus](https://riot.im/app/#/room/#rhombus:matrix.org) on Riot.
+* Ask for help on [Discord](https://discord.me/rhombus).
 
 Building
 ---------------------
@@ -67,7 +67,7 @@ The Particl repo's [root README](/README.md) contains relevant information on th
 
 ### Resources
 * Discuss on [BitcoinTalk](https://bitcointalk.org/index.php?topic=1835782.0) forums.
-* Discuss project-specific development on [#particl](https://riot.im/app/#/room/#particl-dev:matrix.org) on Riot.
+* Discuss project-specific development on [#rhombus](https://riot.im/app/#/room/#rhombus-dev:matrix.org) on Riot.
 
 ### Miscellaneous
 - [Assets Attribution](assets-attribution.md)

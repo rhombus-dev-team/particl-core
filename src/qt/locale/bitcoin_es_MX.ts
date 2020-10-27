@@ -383,9 +383,9 @@ Haga clic para habilitar la actividad de red nuevamente.</translation>
         <translation>Pestañas</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
         <translation> 
-Solicitar pagos (genera códigos QR y particl: URI)
+Solicitar pagos (genera códigos QR y rhombus: URI)
  </translation>
     </message>
     <message>

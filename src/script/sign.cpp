@@ -300,8 +300,8 @@ public:
         return false;
     }
 
-    bool is_particl_tx = false;
-    bool IsRhombusVersion() const override { return is_particl_tx; }
+    bool is_rhombus_tx = false;
+    bool IsRhombusVersion() const override { return is_rhombus_tx; }
 };
 
 struct Stacks
@@ -335,7 +335,7 @@ SignatureData DataFromTransaction(const CMutableTransaction& tx, unsigned int nI
     // Get signatures
     MutableTransactionSignatureChecker tx_checker(&tx, nIn, amount);
     SignatureExtractorChecker extractor_checker(data, tx_checker);
-    extractor_checker.is_particl_tx = tx.IsRhombusVersion();
+    extractor_checker.is_rhombus_tx = tx.IsRhombusVersion();
     if (VerifyScript(data.scriptSig, scriptPubKey, &data.scriptWitness, STANDARD_SCRIPT_VERIFY_FLAGS, extractor_checker)) {
         data.complete = true;
         return data;

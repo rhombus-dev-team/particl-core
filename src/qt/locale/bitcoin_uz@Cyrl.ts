@@ -338,8 +338,8 @@
         <translation>Ички ойналар асбоблар панели</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
-        <translation>Тўловлар (QR кодлари ва particl ёрдамида яратишлар: URI’лар) сўраш</translation>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
+        <translation>Тўловлар (QR кодлари ва rhombus ёрдамида яратишлар: URI’лар) сўраш</translation>
     </message>
     <message>
         <source>Show the list of used sending addresses and labels</source>

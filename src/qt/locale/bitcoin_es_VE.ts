@@ -338,7 +338,7 @@
         <translation>Barra de pestañas</translation>
     </message>
     <message>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
         <translation>Solicitar pagos (genera codigo QR y URL's de Particl)</translation>
     </message>
     <message>

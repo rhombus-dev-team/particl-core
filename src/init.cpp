@@ -135,7 +135,7 @@ LRESULT APIENTRY MainWndProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
 int CreateMessageWindow()
 {
-    // Create a message-only window to intercept WM_CLOSE events from particld
+    // Create a message-only window to intercept WM_CLOSE events from rhombusd
 
     WNDCLASSEX WindowClassEx;
     ZeroMemory(&WindowClassEx, sizeof(WNDCLASSEX));
@@ -182,7 +182,7 @@ static const char* DEFAULT_ASMAP_FILENAME="ip_asn.map";
 /**
  * The PID file facilities.
  */
-static const char* BITCOIN_PID_FILENAME = "particl.pid";
+static const char* BITCOIN_PID_FILENAME = "rhombus.pid";
 
 static fs::path GetPidFile()
 {
@@ -232,7 +232,7 @@ NODISCARD static bool CreatePidFile()
 bool ShutdownRequestedMainThread()
 {
 #ifdef WIN32
-    // Only particld will create a hidden window to receive messages
+    // Only rhombusd will create a hidden window to receive messages
     while (winHwnd && PeekMessage(&winMsg, 0, 0, 0, PM_REMOVE)) {
         TranslateMessage(&winMsg);
         DispatchMessage(&winMsg);
@@ -733,7 +733,7 @@ void SetupServerArgs(NodeContext& node)
 
 std::string LicenseInfo()
 {
-    const std::string URL_SOURCE_CODE = "<https://github.com/particl/particl-core>";
+    const std::string URL_SOURCE_CODE = "<https://github.com/rhombus/rhombus-core>";
 
     return CopyrightHolders(strprintf(_("Copyright (C)").translated)) + "\n" +
            "\n" +

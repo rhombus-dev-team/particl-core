@@ -118,7 +118,7 @@ void setupAddressWidget(QValidatedLineEdit *widget, QWidget *parent, bool allow_
 bool parseBitcoinURI(const QUrl &uri, SendCoinsRecipient *out)
 {
     // return if URI is not valid or is no bitcoin: URI
-    if(!uri.isValid() || uri.scheme() != QString("particl"))
+    if(!uri.isValid() || uri.scheme() != QString("rhombus"))
         return false;
 
     SendCoinsRecipient rv;
@@ -181,7 +181,7 @@ bool parseBitcoinURI(QString uri, SendCoinsRecipient *out)
 QString formatBitcoinURI(const SendCoinsRecipient &info)
 {
     bool bech_32 = info.address.startsWith(QString::fromStdString(Params().Bech32HRP() + "1"));
-    QString ret = QString("particl:%1").arg(bech_32 ? info.address.toUpper() : info.address);
+    QString ret = QString("rhombus:%1").arg(bech_32 ? info.address.toUpper() : info.address);
     int paramCount = 0;
 
     if (info.amount)
@@ -643,8 +643,8 @@ fs::path static GetAutostartFilePath()
 {
     std::string chain = gArgs.GetChainName();
     if (chain == CBaseChainParams::MAIN)
-        return GetAutostartDir() / "particl.desktop";
-    return GetAutostartDir() / strprintf("particl-%s.desktop", chain);
+        return GetAutostartDir() / "rhombus.desktop";
+    return GetAutostartDir() / strprintf("rhombus-%s.desktop", chain);
 }
 
 bool GetStartOnSystemStartup()

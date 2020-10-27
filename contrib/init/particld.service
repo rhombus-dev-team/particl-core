@@ -3,15 +3,15 @@ Description=Particl daemon
 After=network.target
 
 [Service]
-User=particl
-Group=particl
+User=rhombus
+Group=rhombus
 
 Type=forking
-PIDFile=/home/particl/.particl/particld.pid
-ExecStart=/home/particl/Particl/particld -daemon -pid=/home/particl/.particl/particld.pid \
--conf=/home/particl/.particl/particl.conf -datadir=/home/particl/.particl
+PIDFile=/home/rhombus/.rhombus/rhombusd.pid
+ExecStart=/home/rhombus/Particl/rhombusd -daemon -pid=/home/rhombus/.rhombus/rhombusd.pid \
+-conf=/home/rhombus/.rhombus/rhombus.conf -datadir=/home/rhombus/.rhombus
 
-ExecStop=/home/particl/Particl/particl-cli -conf=/home/particl/.particl/particl.conf stop
+ExecStop=/home/rhombus/Particl/rhombus-cli -conf=/home/rhombus/.rhombus/rhombus.conf stop
 ExecStop=/usr/bin/sleep 25
 
 Restart=no

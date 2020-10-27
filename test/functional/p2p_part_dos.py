@@ -5,7 +5,7 @@
 
 import time
 
-from test_framework.test_particl import ParticlTestFramework
+from test_framework.test_rhombus import ParticlTestFramework
 from test_framework.messages import CBlockHeader, msg_headers
 from test_framework.util import connect_nodes
 

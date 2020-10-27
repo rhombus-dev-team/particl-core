@@ -238,7 +238,7 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>Remember that encrypting your wallet cannot fully protect your particl from being stolen by malware infecting your computer.</source>
+        <source>Remember that encrypting your wallet cannot fully protect your rhombus from being stolen by malware infecting your computer.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -368,7 +368,7 @@
     </message>
     <message>
         <location line="+11"/>
-        <source>Request payments (generates QR codes and particl: URIs)</source>
+        <source>Request payments (generates QR codes and rhombus: URIs)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -453,7 +453,7 @@
     </message>
     <message>
         <location line="+1"/>
-        <source>Open a particl: URI or payment request</source>
+        <source>Open a rhombus: URI or payment request</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1558,7 +1558,7 @@
     </message>
     <message>
         <location line="+7"/>
-        <source>Open particl app before importing, confirm on device if prompted and wait for chain rescan to complete.</source>
+        <source>Open rhombus app before importing, confirm on device if prompted and wait for chain rescan to complete.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1591,7 +1591,7 @@
     </message>
     <message>
         <location line="+119"/>
-        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the particl network, as detailed below.</source>
+        <source>Recent transactions may not yet be visible, and therefore your wallet&apos;s balance might be incorrect. This information will be correct once your wallet has finished synchronizing with the rhombus network, as detailed below.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1662,7 +1662,7 @@
     <name>OpenURIDialog</name>
     <message>
         <location filename="../forms/openuridialog.ui" line="+14"/>
-        <source>Open particl URI</source>
+        <source>Open rhombus URI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2227,12 +2227,12 @@
     </message>
     <message>
         <location line="-76"/>
-        <source>Cannot start particl: click-to-pay handler</source>
+        <source>Cannot start rhombus: click-to-pay handler</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location line="+50"/>
-        <source>&apos;particl://&apos; is not a valid URI. Use &apos;particl:&apos; instead.</source>
+        <source>&apos;rhombus://&apos; is not a valid URI. Use &apos;rhombus:&apos; instead.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3312,7 +3312,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+83"/>
-        <source>When there is less transaction volume than space in the blocks, miners as well as relaying nodes may enforce a minimum fee. Paying only this minimum fee is just fine, but be aware that this can result in a never confirming transaction once there is more demand for particl transactions than the network can process.</source>
+        <source>When there is less transaction volume than space in the blocks, miners as well as relaying nodes may enforce a minimum fee. Paying only this minimum fee is just fine, but be aware that this can result in a never confirming transaction once there is more demand for rhombus transactions than the network can process.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3708,7 +3708,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     <message>
         <location line="+7"/>
         <location line="+83"/>
-        <source>The fee will be deducted from the amount being sent. The recipient will receive less particl than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
+        <source>The fee will be deducted from the amount being sent. The recipient will receive less rhombus than you enter in the amount field. If multiple recipients are selected, the fee is split equally.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3735,7 +3735,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+10"/>
-        <source>A message that was attached to the particl: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
+        <source>A message that was attached to the rhombus: URI which will be stored with the transaction for your reference. Note: This message will not be sent over the Particl network.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3829,7 +3829,7 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
     </message>
     <message>
         <location line="+6"/>
-        <source>You can sign messages/agreements with your addresses to prove you can receive particl sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
+        <source>You can sign messages/agreements with your addresses to prove you can receive rhombus sent to them. Be careful not to sign anything vague or random, as phishing attacks may try to trick you into signing your identity over to them. Only sign fully-detailed statements you agree to.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
