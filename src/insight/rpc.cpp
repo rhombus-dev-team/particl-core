@@ -988,7 +988,6 @@ UniValue getblockreward(const JSONRPCRequest& request)
                         {RPCResult::Type::NUM_TIME, "blocktime", "The block time expressed in " + UNIX_EPOCH_TIME},
                         {RPCResult::Type::STR_AMOUNT, "stakereward", "The stake reward portion, newly minted coin"},
                         {RPCResult::Type::STR_AMOUNT, "blockreward", "The block reward, value paid to staker, including fees"},
-                        {RPCResult::Type::STR_AMOUNT, "foundationreward", "The accumulated foundation reward payout, if any"},
                         {RPCResult::Type::OBJ, "kernelscript", "", {
                             {RPCResult::Type::STR_HEX, "hex", "The script from the kernel output"},
                             {RPCResult::Type::STR, "stakeaddr", "The stake address, if output script is coldstake"},
@@ -1036,17 +1035,10 @@ UniValue getblockreward(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_MISC_ERROR, "Block not found on disk");
     }
 
-    const DevFundSettings *devfundconf = Params().GetDevFundSettings(pblockindex->GetBlockTime());
-    CScript devFundScriptPubKey;
-    if (devfundconf) {
-        CTxDestination dest = DecodeDestination(devfundconf->sDevFundAddresses);
-        devFundScriptPubKey = GetScriptForDestination(dest);
-    }
-
     const auto &tx = block.vtx[0];
 
     UniValue outputs(UniValue::VARR);
-    CAmount value_out = 0, value_in = 0, value_foundation = 0;
+    CAmount value_out = 0, value_in = 00;
     for (const auto &txout : tx->vpout) {
         if (!txout->IsStandardOutput()) {
             continue;
@@ -1056,11 +1048,6 @@ UniValue getblockreward(const JSONRPCRequest& request)
         pushScript(output, "script", txout->GetPScriptPubKey());
         output.pushKV("value", ValueFromAmount(txout->GetValue()));
         outputs.push_back(output);
-
-        if (devfundconf && *txout->GetPScriptPubKey() == devFundScriptPubKey) {
-            value_foundation += txout->GetValue();
-            continue;
-        }
 
         value_out += txout->GetValue();
     }
@@ -1099,10 +1086,6 @@ UniValue getblockreward(const JSONRPCRequest& request)
     rv.pushKV("blocktime", pblockindex->GetBlockTime());
     rv.pushKV("stakereward", ValueFromAmount(stake_reward));
     rv.pushKV("blockreward", ValueFromAmount(block_reward));
-
-    if (value_foundation > 0) {
-        rv.pushKV("foundationreward", ValueFromAmount(value_foundation));
-    }
 
     if (tx->IsCoinStake()) {
         pushScript(rv, "kernelscript", &kernel_script);

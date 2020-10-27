@@ -49,10 +49,9 @@ enum DataOutputTypes
     DO_STEALTH_PREFIX       = 4,
     DO_VOTE                 = 5,
     DO_FEE                  = 6,
-    DO_DEV_FUND_CFWD        = 7,
-    DO_FUND_MSG             = 8,
-    DO_SMSG_FEE             = 9,
-    DO_SMSG_DIFFICULTY      = 10,
+    DO_FUND_MSG             = 7,
+    DO_SMSG_FEE             = 8,
+    DO_SMSG_DIFFICULTY      = 9,
 };
 
 bool ExtractCoinStakeInt64(const std::vector<uint8_t> &vData, DataOutputTypes get_type, CAmount &out);
@@ -299,7 +298,6 @@ public:
 
     virtual bool GetCTFee(CAmount &nFee) const { return false; };
     virtual bool SetCTFee(CAmount &nFee) { return false; };
-    virtual bool GetDevFundCfwd(CAmount &nCfwd) const { return false; };
     virtual bool GetSmsgFeeRate(CAmount &nCfwd) const { return false; };
     virtual bool GetSmsgDifficulty(uint32_t &compact) const { return false; };
 
@@ -525,11 +523,6 @@ public:
         vData.push_back(DO_FEE);
         return (0 == part::PutVarInt(vData, nFee));
     }
-
-    bool GetDevFundCfwd(CAmount &nCfwd) const override
-    {
-        return ExtractCoinStakeInt64(vData, DO_DEV_FUND_CFWD, nCfwd);
-    };
 
     bool GetSmsgFeeRate(CAmount &fee_rate) const override
     {
@@ -896,14 +889,6 @@ public:
             return false;
         }
         return vpout[0]->GetCTFee(nFee);
-    }
-
-    bool GetDevFundCfwd(CAmount &nCfwd) const
-    {
-        if (vpout.size() < 1 || vpout[0]->nVersion != OUTPUT_DATA) {
-            return false;
-        }
-        return vpout[0]->GetDevFundCfwd(nCfwd);
     }
 
     bool GetSmsgFeeRate(CAmount &fee_rate) const

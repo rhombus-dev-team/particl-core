@@ -2865,7 +2865,6 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
         if (block.IsProofOfStake()) { // Only the genesis block isn't proof of stake
             CTransactionRef txCoinstake = block.vtx[0];
             CTransactionRef txPrevCoinstake = nullptr;
-            const DevFundSettings *pDevFundSettings = chainparams.GetDevFundSettings(block.nTime);
             const CAmount nCalculatedStakeReward = Params().GetProofOfStakeReward(pindex->pprev, nFees); // stake_test
 
             if (block.nTime >= consensus.smsg_fee_time) {
@@ -2926,86 +2925,17 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
                 }
             }
 
-            if (!pDevFundSettings || pDevFundSettings->nMinDevStakePercent <= 0) {
-                if (nStakeReward < 0 || nStakeReward > nCalculatedStakeReward) {
-                    LogPrintf("ERROR: %s: Coinstake pays too much(actual=%d vs calculated=%d)\n", __func__, nStakeReward, nCalculatedStakeReward);
-                    return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-amount");
-                }
-            } else {
-                assert(pDevFundSettings->nMinDevStakePercent <= 100);
-
-                CAmount nDevBfwd = 0, nDevCfwdCheck = 0;
-                CAmount nMinDevPart = (nCalculatedStakeReward * pDevFundSettings->nMinDevStakePercent) / 100;
-                CAmount nMaxHolderPart = nCalculatedStakeReward - nMinDevPart;
-                if (nMinDevPart < 0 || nMaxHolderPart < 0) {
-                    LogPrintf("ERROR: %s: Bad coinstake split amount (foundation=%d vs reward=%d)\n", __func__, nMinDevPart, nMaxHolderPart);
-                    return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-amount");
+            if (pindex->pprev->nHeight > 0) { // Genesis block is pow
+                if (!txPrevCoinstake
+                    && !coinStakeCache.GetCoinStake(pindex->pprev->GetBlockHash(), txPrevCoinstake)) {
+                    LogPrintf("ERROR: %s: Failed to get previous coinstake.\n", __func__);
+                    return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-prev");
                 }
 
-                if (pindex->pprev->nHeight > 0) { // Genesis block is pow
-                    if (!txPrevCoinstake
-                        && !coinStakeCache.GetCoinStake(pindex->pprev->GetBlockHash(), txPrevCoinstake)) {
-                        LogPrintf("ERROR: %s: Failed to get previous coinstake.\n", __func__);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-prev");
-                    }
-
-                    assert(txPrevCoinstake->IsCoinStake()); // Sanity check
-                    if (!txPrevCoinstake->GetDevFundCfwd(nDevBfwd)) {
-                        nDevBfwd = 0;
-                    }
-                }
-
-                if (pindex->nHeight % pDevFundSettings->nDevOutputPeriod == 0) {
-                    // Fund output must exist and match cfwd, cfwd data output must be unset
-                    // nStakeReward must == nDevBfwd + nCalculatedStakeReward
-
-                    if (nStakeReward != nDevBfwd + nCalculatedStakeReward) {
-                        LogPrintf("ERROR: %s: Bad stake-reward (actual=%d vs expected=%d)\n", __func__, nStakeReward, nDevBfwd + nCalculatedStakeReward);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-amount");
-                    }
-
-                    CTxDestination dfDest = CBitcoinAddress(pDevFundSettings->sDevFundAddresses).Get();
-                    if (dfDest.type() == typeid(CNoDestination)) {
-                        return error("%s: Failed to get foundation fund destination: %s.", __func__, pDevFundSettings->sDevFundAddresses);
-                    }
-                    CScript devFundScriptPubKey = GetScriptForDestination(dfDest);
-
-                    // Output 1 must be to the dev fund
-                    const CTxOutStandard *outputDF = txCoinstake->vpout[1]->GetStandardOutput();
-                    if (!outputDF) {
-                        LogPrintf("ERROR: %s: Bad foundation fund output.\n", __func__);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs");
-                    }
-                    if (outputDF->scriptPubKey != devFundScriptPubKey) {
-                        LogPrintf("ERROR: %s: Bad foundation fund output script.\n", __func__);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs");
-                    }
-                    if (outputDF->nValue < nDevBfwd + nMinDevPart) { // Max value is clamped already
-                        LogPrintf("ERROR: %s: Bad foundation-reward (actual=%d vs minfundpart=%d)\n", __func__, nStakeReward, nDevBfwd + nMinDevPart);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-fund-amount");
-                    }
-                    if (txCoinstake->GetDevFundCfwd(nDevCfwdCheck)) {
-                        LogPrintf("ERROR: %s: Coinstake foundation cfwd must be unset.\n", __func__);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-cfwd");
-                    }
-                } else {
-                    // Ensure cfwd data output is correct and nStakeReward is <= nHolderPart
-                    // cfwd must == nDevBfwd + (nCalculatedStakeReward - nStakeReward) // Allowing users to set a higher split
-
-                    if (nStakeReward < 0 || nStakeReward > nMaxHolderPart) {
-                        LogPrintf("ERROR: %s: Bad stake-reward (actual=%d vs maxholderpart=%d)\n", __func__, nStakeReward, nMaxHolderPart);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-amount");
-                    }
-                    CAmount nDevCfwd = nDevBfwd + nCalculatedStakeReward - nStakeReward;
-                    if (!txCoinstake->GetDevFundCfwd(nDevCfwdCheck)
-                        || nDevCfwdCheck != nDevCfwd) {
-                        LogPrintf("ERROR: %s: Coinstake foundation fund carried forward mismatch (actual=%d vs expected=%d)\n", __func__, nDevCfwdCheck, nDevCfwd);
-                        return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-cfwd");
-                    }
-                }
-
-                coinStakeCache.InsertCoinStake(blockHash, txCoinstake);
+                assert(txPrevCoinstake->IsCoinStake()); // Sanity check
             }
+            coinStakeCache.InsertCoinStake(blockHash, txCoinstake);
+            
         } else {
             if (block.GetHash() != chainparams.GenesisBlock().GetHash()) {
                 LogPrintf("ERROR: %s: Block isn't coinstake or genesis.\n", __func__);
@@ -4709,9 +4639,9 @@ static bool ContextualCheckBlock(const CBlock& block, BlockValidationState& stat
         // genesis block scriptSig size will be different
 
         if (block.IsProofOfStake()) {
-            // Limit the number of outputs in a coinstake txn to 6: 1 data + 1 foundation + 4 user
+            // Limit the number of outputs in a coinstake txn to 5: 1 data + 4 user
             if (nPrevTime >= consensusParams.OpIsCoinstakeTime) {
-                if (block.vtx[0]->vpout.size() > 6) {
+                if (block.vtx[0]->vpout.size() > 5) {
                     return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-outputs", "Too many outputs in coinstake");
                 }
             }

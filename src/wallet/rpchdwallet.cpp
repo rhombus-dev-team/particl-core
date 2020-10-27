@@ -2650,7 +2650,6 @@ static void ParseOutputs(
     bool                 fWithReward,
     bool                 fBech32,
     bool                 hide_zero_coinstakes,
-    std::vector<CScript> &vDevFundScripts
 ) EXCLUSIVE_LOCKS_REQUIRED(pwallet->cs_wallet)
 {
     UniValue entry(UniValue::VOBJ);
@@ -2796,16 +2795,6 @@ static void ParseOutputs(
     if (fWithReward && !listStaked.empty()) {
         CAmount nOutput = wtx.tx->GetValueOut();
         CAmount nInput = 0;
-
-        // Remove dev fund outputs
-        if (wtx.tx->vpout.size() > 2 && wtx.tx->vpout[1]->IsStandardOutput()) {
-            for (const auto &s : vDevFundScripts) {
-                if (s == *wtx.tx->vpout[1]->GetPScriptPubKey()) {
-                    nOutput -= wtx.tx->vpout[1]->GetValue();
-                    break;
-                }
-            }
-        }
 
         for (const auto &vin : wtx.tx->vin) {
             if (vin.IsAnonInput()) {
@@ -3273,19 +3262,6 @@ static UniValue filtertransactions(const JSONRPCRequest &request)
         }
     }
 
-    std::vector<CScript> vDevFundScripts;
-    if (fWithReward) {
-        const auto v = Params().GetDevFundSettings();
-        for (const auto &s : v) {
-            CTxDestination dfDest = CBitcoinAddress(s.second.sDevFundAddresses).Get();
-            if (dfDest.type() == typeid(CNoDestination)) {
-                continue;
-            }
-            CScript script = GetScriptForDestination(dfDest);
-            vDevFundScripts.push_back(script);
-        }
-    }
-
     // for transactions and records
     UniValue transactions(UniValue::VARR);
 
@@ -3307,8 +3283,7 @@ static UniValue filtertransactions(const JSONRPCRequest &request)
                 category,
                 fWithReward,
                 fBech32,
-                hide_zero_coinstakes,
-                vDevFundScripts
+                hide_zero_coinstakes
             );
         tit++;
     }
@@ -3810,8 +3785,6 @@ static UniValue getstakinginfo(const JSONRPCRequest &request)
                         {RPCResult::Type::STR_AMOUNT, "percentyearreward", "Current stake reward percentage"},
                         {RPCResult::Type::STR_AMOUNT, "moneysupply", "The total amount of particl in the network"},
                         {RPCResult::Type::STR_AMOUNT, "reserve", "The reserve balance of the wallet in " + CURRENCY_UNIT},
-                        {RPCResult::Type::STR_AMOUNT, "walletfoundationdonationpercent", "User set percentage of the block reward ceded to the foundation"},
-                        {RPCResult::Type::STR_AMOUNT, "foundationdonationpercent", "Network enforced percentage of the block reward ceded to the foundation"},
                         {RPCResult::Type::NUM, "currentblocksize", "The last approximate block size in bytes"},
                         {RPCResult::Type::NUM, "currentblockweight", "The last block weight"},
                         {RPCResult::Type::NUM, "currentblocktx", "The number of transactions in the last block"},
@@ -3882,15 +3855,6 @@ static UniValue getstakinginfo(const JSONRPCRequest &request)
 
     if (pwallet->nReserveBalance > 0) {
         obj.pushKV("reserve", ValueFromAmount(pwallet->nReserveBalance));
-    }
-
-    if (pwallet->nWalletDevFundCedePercent > 0) {
-        obj.pushKV("walletfoundationdonationpercent", pwallet->nWalletDevFundCedePercent);
-    }
-
-    const DevFundSettings *pDevFundSettings = Params().GetDevFundSettings(nTipTime);
-    if (pDevFundSettings && pDevFundSettings->nMinDevStakePercent > 0) {
-        obj.pushKV("foundationdonationpercent", pDevFundSettings->nMinDevStakePercent);
     }
 
     obj.pushKV("currentblocksize", (uint64_t)nLastBlockSize);
@@ -5759,7 +5723,6 @@ static UniValue walletsettings(const JSONRPCRequest &request)
                 "  \"enabled\"                   (bool, optional, default=true) Toggle staking enabled on this wallet.\n"
                 "  \"stakecombinethreshold\"     (amount, optional, default=1000) Join outputs below this value.\n"
                 "  \"stakesplitthreshold\"       (amount, optional, default=2000) Split outputs above this value.\n"
-                "  \"foundationdonationpercent\" (int, optional, default=0) Set the percentage of each block reward to donate to the foundation.\n"
                 "  \"rewardaddress\"             (string, optional, default=none) An address which the user portion of the block reward gets sent to.\n"
                 "  \"smsgfeeratetarget\"         (amount, optional, default=0) If non-zero an amount to move the smsgfeerate towards.\n"
                 "  \"smsgdifficultytarget\"      (string, optional, default=0) A 32 byte hex value to move the smsgdifficulty towards.\n"
@@ -5935,11 +5898,6 @@ static UniValue walletsettings(const JSONRPCRequest &request)
             if (sKey == "stakesplitthreshold") {
                 if (AmountFromValue(json["stakesplitthreshold"]) < 0) {
                     throw JSONRPCError(RPC_INVALID_PARAMETER, "stakesplitthreshold can't be negative.");
-                }
-            } else
-            if (sKey == "foundationdonationpercent") {
-                if (!json["foundationdonationpercent"].isNum()) {
-                    throw JSONRPCError(RPC_INVALID_PARAMETER, "foundationdonationpercent must be a number.");
                 }
             } else
             if (sKey == "rewardaddress") {

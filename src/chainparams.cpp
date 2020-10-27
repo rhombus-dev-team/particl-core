@@ -67,17 +67,6 @@ bool CChainParams::CheckImportCoinbase(int nHeight, uint256 &hash) const
 };
 
 
-const DevFundSettings *CChainParams::GetDevFundSettings(int64_t nTime) const
-{
-    for (auto i = vDevFundSettings.rbegin(); i != vDevFundSettings.rend(); ++i) {
-        if (nTime > i->first) {
-            return &i->second;
-        }
-    }
-
-    return nullptr;
-};
-
 bool CChainParams::IsBech32Prefix(const std::vector<unsigned char> &vchPrefixIn) const
 {
     for (auto &hrp : bech32Prefixes)  {
@@ -508,12 +497,6 @@ public:
         vSeeds.emplace_back("dnsseed.tecnovert.net");
 
 
-        vDevFundSettings.emplace_back(0,
-            DevFundSettings("RJAPhgckEgRGVPZa9WoGSWW24spskSfLTQ", 10, 60));
-        vDevFundSettings.emplace_back(consensus.OpIsCoinstakeTime,
-            DevFundSettings("RBiiQBnQsVPPQkUaJVQTjsZM9K2xMKozST", 10, 60));
-
-
         base58Prefixes[PUBKEY_ADDRESS]     = {0x38}; // P
         base58Prefixes[SCRIPT_ADDRESS]     = {0x3c};
         base58Prefixes[PUBKEY_ADDRESS_256] = {0x39};
@@ -687,8 +670,6 @@ public:
         vSeeds.emplace_back("testnet-seed.particl.io");
         vSeeds.emplace_back("dnsseed-testnet.particl.io");
         vSeeds.emplace_back("dnsseed-testnet.tecnovert.net");
-
-        vDevFundSettings.push_back(std::make_pair(0, DevFundSettings("rTvv9vsbu269mjYYEecPYinDG8Bt7D86qD", 10, 60)));
 
         base58Prefixes[PUBKEY_ADDRESS]     = {0x76}; // p
         base58Prefixes[SCRIPT_ADDRESS]     = {0x7a};

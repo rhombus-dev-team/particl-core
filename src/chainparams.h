@@ -49,18 +49,6 @@ public:
     uint256 hash; // hash of output data
 };
 
-class DevFundSettings
-{
-public:
-    DevFundSettings(std::string sAddrTo, int nMinDevStakePercent_, int nDevOutputPeriod_)
-        : sDevFundAddresses(sAddrTo), nMinDevStakePercent(nMinDevStakePercent_), nDevOutputPeriod(nDevOutputPeriod_) {};
-
-    std::string sDevFundAddresses;
-    int nMinDevStakePercent; // [0, 100]
-    int nDevOutputPeriod; // dev fund output is created every n blocks
-    //CAmount nMinDevOutputSize; // if nDevOutputGap is -1, create a devfund output when value is > nMinDevOutputSize
-};
-
 /**
  * CChainParams defines various tweakable parameters of a given instance of the
  * Bitcoin system. There are three: the main network on which people trade goods
@@ -101,9 +89,6 @@ public:
 
     uint32_t GetStakeTimestampMask(int nHeight) const { return nStakeTimestampMask; }
     int64_t GetCoinYearReward(int64_t nTime) const;
-
-    const DevFundSettings *GetDevFundSettings(int64_t nTime) const;
-    const std::vector<std::pair<int64_t, DevFundSettings> > &GetDevFundSettings() const {return vDevFundSettings;};
 
     int64_t GetProofOfStakeReward(const CBlockIndex *pindexPrev, int64_t nFees) const;
     int64_t GetMaxSmsgFeeRateDelta(int64_t smsg_fee_prev) const;
@@ -176,8 +161,6 @@ protected:
 
     std::vector<CImportedCoinbaseTxn> vImportedCoinbaseTxns;
     uint32_t nLastImportHeight;       // set from vImportedCoinbaseTxns
-
-    std::vector<std::pair<int64_t, DevFundSettings> > vDevFundSettings;
 
 
     uint64_t nPruneAfterHeight;

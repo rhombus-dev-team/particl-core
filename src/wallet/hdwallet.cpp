@@ -120,7 +120,6 @@ void CHDWallet::AddOptions()
     gArgs.AddArg("-minstakeinterval=<n>", "Minimum time in seconds between successful stakes (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
     gArgs.AddArg("-minersleep=<n>", "Milliseconds between stake attempts. Lowering this param will not result in more stakes. (default: 500)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
     gArgs.AddArg("-reservebalance=<amount>", "Ensure available balance remains above reservebalance. (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
-    gArgs.AddArg("-foundationdonationpercent=<n>", "Percentage of block reward donated to the foundation fund, overridden by system minimum. (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
 
     return;
 };
@@ -253,7 +252,6 @@ bool CHDWallet::ProcessStakingSettings(std::string &sError)
     nStakeCombineThreshold = 1000 * COIN;
     nStakeSplitThreshold = 2000 * COIN;
     nMaxStakeCombine = 3;
-    nWalletDevFundCedePercent = gArgs.GetArg("-foundationdonationpercent", 0);
     rewardAddress = CBitcoinAddress();
     m_smsg_fee_rate_target = 0;
     m_smsg_difficulty_target = 0;
@@ -278,13 +276,6 @@ bool CHDWallet::ProcessStakingSettings(std::string &sError)
             try { nStakeSplitThreshold = AmountFromValue(json["stakesplitthreshold"]);
             } catch (std::exception &e) {
                 AppendError(sError, "\"stakesplitthreshold\" not an amount.");
-            }
-        }
-
-        if (!json["foundationdonationpercent"].isNull()) {
-            try { nWalletDevFundCedePercent = json["foundationdonationpercent"].get_int();
-            } catch (std::exception &e) {
-                AppendError(sError, "\"foundationdonationpercent\" not an integer.");
             }
         }
 
@@ -325,15 +316,6 @@ bool CHDWallet::ProcessStakingSettings(std::string &sError)
     if (nStakeSplitThreshold < nStakeCombineThreshold * 2 || nStakeSplitThreshold > 10000 * COIN) {
         AppendError(sError, "\"stakesplitthreshold\" must be >= 2x \"stakecombinethreshold\" and <= 10000.");
         nStakeSplitThreshold = nStakeCombineThreshold * 2;
-    }
-
-    if (nWalletDevFundCedePercent < 0) {
-        WalletLogPrintf("%s: Warning \"foundationdonationpercent\" out of range %d, clamped to %d\n", __func__, nWalletDevFundCedePercent, 0);
-        nWalletDevFundCedePercent = 0;
-    } else
-    if (nWalletDevFundCedePercent > 100) {
-        WalletLogPrintf("%s: \"Warning foundationdonationpercent\" out of range %d, clamped to %d\n", __func__, nWalletDevFundCedePercent, 100);
-        nWalletDevFundCedePercent = 100;
     }
 
     return true;
@@ -12809,57 +12791,7 @@ bool CHDWallet::CreateCoinStake(unsigned int nBits, int64_t nTime, int nBlockHei
     // Process development fund
     CTransactionRef txPrevCoinstake = nullptr;
     CAmount nRewardOut;
-    const DevFundSettings *pDevFundSettings = Params().GetDevFundSettings(nTime);
-    if (!pDevFundSettings || pDevFundSettings->nMinDevStakePercent <= 0) {
-        nRewardOut = nReward;
-    } else {
-        int64_t nStakeSplit = std::max(pDevFundSettings->nMinDevStakePercent, nWalletDevFundCedePercent);
-
-        CAmount nDevPart = (nReward * nStakeSplit) / 100;
-        nRewardOut = nReward - nDevPart;
-
-        CAmount nDevBfwd = 0;
-        if (nBlockHeight > 1) { // genesis block is pow
-            LOCK(cs_main);
-            if (!coinStakeCache.GetCoinStake(pindexPrev->GetBlockHash(), txPrevCoinstake)) {
-                return werror("%s: Failed to get previous coinstake: %s.", __func__, pindexPrev->GetBlockHash().ToString());
-            }
-
-            if (!txPrevCoinstake->GetDevFundCfwd(nDevBfwd)) {
-                nDevBfwd = 0;
-            }
-        }
-
-        CAmount nDevCfwd = nDevBfwd + nDevPart;
-        if (nBlockHeight % pDevFundSettings->nDevOutputPeriod == 0) {
-            // Place dev fund output
-            OUTPUT_PTR<CTxOutStandard> outDevSplit = MAKE_OUTPUT<CTxOutStandard>();
-            outDevSplit->nValue = nDevCfwd;
-
-            CTxDestination dfDest = CBitcoinAddress(pDevFundSettings->sDevFundAddresses).Get();
-            if (dfDest.type() == typeid(CNoDestination)) {
-                return werror("%s: Failed to get foundation fund destination: %s.", __func__, pDevFundSettings->sDevFundAddresses);
-            }
-            outDevSplit->scriptPubKey = GetScriptForDestination(dfDest);
-
-            txNew.vpout.insert(txNew.vpout.begin()+1, outDevSplit);
-        } else {
-            // Add to carried forward
-            std::vector<uint8_t> vCfwd(1), &vData = *txNew.vpout[0]->GetPData();
-            vCfwd[0] = DO_DEV_FUND_CFWD;
-            if (0 != part::PutVarInt(vCfwd, nDevCfwd)) {
-                return werror("%s: PutVarInt failed: %d.", __func__, nDevCfwd);
-            }
-            vData.insert(vData.end(), vCfwd.begin(), vCfwd.end());
-            CAmount test_cfwd = 0;
-            assert(ExtractCoinStakeInt64(vData, DO_DEV_FUND_CFWD, test_cfwd));
-            assert(test_cfwd == nDevCfwd);
-        }
-        if (LogAcceptCategory(BCLog::POS)) {
-            WalletLogPrintf("%s: Coinstake reward split %d%%, foundation %s, reward %s.\n",
-                __func__, nStakeSplit, FormatMoney(nDevPart), FormatMoney(nRewardOut));
-        }
-    }
+    nRewardOut = nReward;
 
     // Place SMSG fee rate
     if (nTime >= consensusParams.smsg_fee_time) {
