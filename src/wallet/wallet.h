@@ -534,7 +534,7 @@ public:
     // Get the marginal bytes if spending the specified output from this transaction
     int GetSpendSize(unsigned int out, bool use_max_sig = false) const
     {
-        if (tx->IsParticlVersion()) {
+        if (tx->IsRhombusVersion()) {
             assert(tx->vpout[out]->IsStandardOutput());
             CTxOut txout;
             txout.nValue = tx->vpout[out]->GetValue();
@@ -796,7 +796,7 @@ private:
     std::map<uint256, std::unique_ptr<ScriptPubKeyMan>> m_spk_managers;
 
 public:
-    bool IsParticlWallet() const override { return false; };
+    bool IsRhombusWallet() const override { return false; };
     /*
      * Main wallet lock.
      * This lock protects all the fields added by CWallet.

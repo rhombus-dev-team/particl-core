@@ -120,7 +120,7 @@ bool SequenceLocks(const CTransaction &tx, int flags, std::vector<int>* prevHeig
 unsigned int GetLegacySigOpCount(const CTransaction& tx)
 {
     unsigned int nSigOps = 0;
-    if (!tx.IsParticlVersion())
+    if (!tx.IsRhombusVersion())
     {
         for (const auto& txin : tx.vin)
         {
@@ -195,7 +195,7 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, TxValidationState& state, 
         state.m_consensus_params = &::Params().GetConsensus();
     }
 
-    bool is_particl_tx = tx.IsParticlVersion();
+    bool is_particl_tx = tx.IsRhombusVersion();
     if (is_particl_tx && tx.vin.size() < 1) { // early out
         return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-txn-no-inputs",
                          strprintf("%s: no inputs", __func__));
@@ -517,7 +517,7 @@ bool CheckTransaction(const CTransaction& tx, TxValidationState &state)
     if (::GetSerializeSize(tx, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) * WITNESS_SCALE_FACTOR > MAX_BLOCK_WEIGHT)
         return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-txns-oversize");
 
-    if (tx.IsParticlVersion()) {
+    if (tx.IsRhombusVersion()) {
         if (tx.vpout.empty()) {
             return state.Invalid(TxValidationResult::TX_CONSENSUS, "bad-txns-vpout-empty");
         }

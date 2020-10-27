@@ -209,7 +209,7 @@ static void MutateTxVersion(CMutableTransaction& tx, const std::string& cmdVal)
     if (!ParseInt64(cmdVal, &newVersion) || newVersion < 1 || newVersion > CTransaction::MAX_STANDARD_PARTICL_VERSION)
         throw std::runtime_error("Invalid TX version requested: '" + cmdVal + "'");
 
-    if (!tx.IsParticlVersion() && IsParticlTxVersion(newVersion)) {
+    if (!tx.IsRhombusVersion() && IsRhombusTxVersion(newVersion)) {
         for (const auto& txout : tx.vout) {
             tx.vpout.push_back(MAKE_OUTPUT<CTxOutStandard>(txout.nValue, txout.scriptPubKey));
         }
@@ -224,7 +224,7 @@ static void MutateTxVersion(CMutableTransaction& tx, const std::string& cmdVal)
             txin.scriptSig.clear();
         }
     } else
-    if (tx.IsParticlVersion() && !IsParticlTxVersion(newVersion)) {
+    if (tx.IsRhombusVersion() && !IsRhombusTxVersion(newVersion)) {
         for (const auto &txout : tx.vpout) {
             if (!txout->IsStandardOutput()) {
                 throw std::runtime_error("Can't convert non-standard output.");
@@ -392,7 +392,7 @@ static void MutateTxAddOutAddr(CMutableTransaction& tx, const std::string& strIn
     CScript scriptPubKey = GetScriptForDestination(destination);
 
     // construct TxOut, append to transaction output list
-    if (tx.IsParticlVersion()) {
+    if (tx.IsRhombusVersion()) {
         if (destination.type() == typeid(CStealthAddress)) {
             CStealthAddress sx = boost::get<CStealthAddress>(destination);
             OUTPUT_PTR<CTxOutData> outData = MAKE_OUTPUT<CTxOutData>();
@@ -454,7 +454,7 @@ static void MutateTxAddOutPubKey(CMutableTransaction& tx, const std::string& str
     }
 
     // construct TxOut, append to transaction output list
-    if (tx.IsParticlVersion()) {
+    if (tx.IsRhombusVersion()) {
         tx.vpout.push_back(MAKE_OUTPUT<CTxOutStandard>(value, scriptPubKey));
         return;
     }
@@ -533,7 +533,7 @@ static void MutateTxAddOutMultiSig(CMutableTransaction& tx, const std::string& s
     }
 
     // construct TxOut, append to transaction output list
-    if (tx.IsParticlVersion()) {
+    if (tx.IsRhombusVersion()) {
         tx.vpout.push_back(MAKE_OUTPUT<CTxOutStandard>(value, scriptPubKey));
         return;
     }
@@ -564,7 +564,7 @@ static void MutateTxAddOutData(CMutableTransaction& tx, const std::string& strIn
 
     std::vector<unsigned char> data = ParseHex(strData);
 
-    if (tx.IsParticlVersion()) {
+    if (tx.IsRhombusVersion()) {
         // TODO OUTPUT_DATA
         tx.vpout.push_back(MAKE_OUTPUT<CTxOutStandard>(value, CScript() << OP_RETURN << data));
         return;
@@ -614,7 +614,7 @@ static void MutateTxAddOutScript(CMutableTransaction& tx, const std::string& str
     }
 
     // construct TxOut, append to transaction output list
-    if (tx.IsParticlVersion()) {
+    if (tx.IsRhombusVersion()) {
         tx.vpout.push_back(MAKE_OUTPUT<CTxOutStandard>(value, scriptPubKey));
         return;
     }
@@ -642,7 +642,7 @@ static void MutateTxDelOutput(CMutableTransaction& tx, const std::string& strOut
         throw std::runtime_error("Invalid TX output index '" + strOutIdx + "'");
     }
 
-    if (tx.IsParticlVersion()) {
+    if (tx.IsRhombusVersion()) {
         // delete output from transaction
         tx.vpout.erase(tx.vpout.begin() + outIdx);
         return;
@@ -796,7 +796,7 @@ static void MutateTxSign(CMutableTransaction& tx, const std::string& flagStr)
         const CScript& prevPubKey = coin.out.scriptPubKey;
         const CAmount& amount = coin.out.nValue;
 
-        if (tx.IsParticlVersion() && amount == 0) {
+        if (tx.IsRhombusVersion() && amount == 0) {
             throw std::runtime_error("expected amount for prevtx");
         }
 
@@ -814,7 +814,7 @@ static void MutateTxSign(CMutableTransaction& tx, const std::string& flagStr)
 
 static void MutateTxAddOutBlind(CMutableTransaction& tx, const std::string& strInput)
 {
-    if (!tx.IsParticlVersion())
+    if (!tx.IsRhombusVersion())
         throw std::runtime_error("tx not particl version.");
     // separate COMMITMENT:SCRIPT:RANGEPROOF[:DATA]
     std::vector<std::string> vStrInputParts;
@@ -860,7 +860,7 @@ static void MutateTxAddOutBlind(CMutableTransaction& tx, const std::string& strI
 
 static void MutateTxAddOutDataType(CMutableTransaction& tx, const std::string& strInput)
 {
-    if (!tx.IsParticlVersion())
+    if (!tx.IsRhombusVersion())
         throw std::runtime_error("tx not particl version.");
     if (!IsHex(strInput))
         throw std::runtime_error("invalid TX output data");

@@ -168,7 +168,7 @@ public:
     DeviceSignatureCreator(CUSBDevice *pDeviceIn, const CMutableTransaction *txToIn, unsigned int nInIn, const std::vector<uint8_t> &amountIn, int nHashTypeIn=SIGHASH_ALL);
     const BaseSignatureChecker &Checker() const override { return checker; }
 
-    bool IsParticlVersion() const override { return txTo && txTo->IsParticlVersion(); }
+    bool IsRhombusVersion() const override { return txTo && txTo->IsRhombusVersion(); }
     bool IsCoinStake() const override { return txTo && txTo->IsCoinStake(); }
 
     bool CreateSig(const SigningProvider& provider, std::vector<unsigned char> &vchSig, const CKeyID &keyid, const CScript &scriptCode, SigVersion sigversion) const override;

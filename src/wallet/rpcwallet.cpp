@@ -122,8 +122,8 @@ void EnsureWalletIsUnlocked(const CWallet* pwallet)
     if (pwallet->IsLocked())
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Please enter the wallet passphrase with walletpassphrase first.");
 
-    if (IsParticlWallet(pwallet)
-        && GetParticlWallet(pwallet)->fUnlockForStakingOnly)
+    if (IsRhombusWallet(pwallet)
+        && GetRhombusWallet(pwallet)->fUnlockForStakingOnly)
         throw JSONRPCError(RPC_WALLET_UNLOCK_NEEDED, "Error: Wallet is unlocked for staking only.");
 }
 
@@ -274,7 +274,7 @@ static UniValue getnewaddress(const JSONRPCRequest& request)
                 },
             }.Check(request);
 
-    if (!IsParticlWallet(pwallet)) {
+    if (!IsRhombusWallet(pwallet)) {
         LOCK(pwallet->cs_wallet);
         if (!pwallet->CanGetAddresses()) {
             throw JSONRPCError(RPC_WALLET_ERROR, "Error: This wallet has no available keys");
@@ -294,7 +294,7 @@ static UniValue getnewaddress(const JSONRPCRequest& request)
         }
     }
 
-    if (IsParticlWallet(pwallet)) {
+    if (IsRhombusWallet(pwallet)) {
         CKeyID keyID;
 
         bool fBech32 = request.params.size() > 1 ? GetBool(request.params[1]) : false;
@@ -309,7 +309,7 @@ static UniValue getnewaddress(const JSONRPCRequest& request)
         }
 
         CPubKey newKey;
-        CHDWallet *phdw = GetParticlWallet(pwallet);
+        CHDWallet *phdw = GetRhombusWallet(pwallet);
         {
             LOCK(phdw->cs_wallet);
             if (pwallet->IsWalletFlagSet(WALLET_FLAG_DISABLE_PRIVATE_KEYS)) {
@@ -380,8 +380,8 @@ static UniValue getrawchangeaddress(const JSONRPCRequest& request)
 
     LOCK(pwallet->cs_wallet);
 
-    if (IsParticlWallet(pwallet)) {
-        CHDWallet *phdw = GetParticlWallet(pwallet);
+    if (IsRhombusWallet(pwallet)) {
+        CHDWallet *phdw = GetRhombusWallet(pwallet);
         CPubKey pkOut;
 
         if (0 != phdw->NewKeyFromAccount(pkOut, true)) {
@@ -574,7 +574,7 @@ static UniValue sendtoaddress(const JSONRPCRequest& request)
     // We also enable partial spend avoidance if reuse avoidance is set.
     coin_control.m_avoid_partial_spends |= coin_control.m_avoid_address_reuse;
 
-    if (IsParticlWallet(pwallet)) {
+    if (IsRhombusWallet(pwallet)) {
         JSONRPCRequest newRequest;
         newRequest.fHelp = false;
         newRequest.fSkipBlock = true; // already blocked in this function
@@ -798,10 +798,10 @@ static CAmount GetReceived(const CWallet& wallet, const UniValue& params, bool b
     CAmount amount = 0;
     for (const std::pair<const uint256, CWalletTx>& wtx_pair : wallet.mapWallet) {
         const CWalletTx& wtx = wtx_pair.second;
-        if ((!wallet.IsParticlWallet() && wtx.IsCoinBase()) || !wallet.chain().checkFinalTx(*wtx.tx) || wtx.GetDepthInMainChain() < min_depth) {
+        if ((!wallet.IsRhombusWallet() && wtx.IsCoinBase()) || !wallet.chain().checkFinalTx(*wtx.tx) || wtx.GetDepthInMainChain() < min_depth) {
             continue;
         }
-        if (wallet.IsParticlWallet()) {
+        if (wallet.IsRhombusWallet()) {
             for (auto &txout : wtx.tx->vpout) {
                 if (txout->IsStandardOutput()) {
                     CTxDestination address;
@@ -1070,7 +1070,7 @@ static UniValue sendmany(const JSONRPCRequest& request)
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid estimate_mode parameter");
         }
     }
-    if (IsParticlWallet(pwallet)) {
+    if (IsRhombusWallet(pwallet)) {
         JSONRPCRequest newRequest;
         newRequest.fHelp = false;
         newRequest.fSkipBlock = true; // already blocked in this function
@@ -1639,11 +1639,11 @@ static void ListTransactions(const CWallet* const pwallet, const CWalletTx& wtx,
                 entry.pushKV("involvesWatchonly", true);
             }
 
-            if (pwallet->IsParticlWallet()
+            if (pwallet->IsRhombusWallet()
                 && r.destination.type() == typeid(PKHash)) {
                 CStealthAddress sx;
                 CKeyID idK = CKeyID(boost::get<PKHash>(r.destination));
-                if (GetParticlWallet(pwallet)->GetStealthLinked(idK, sx)) {
+                if (GetRhombusWallet(pwallet)->GetStealthLinked(idK, sx)) {
                     entry.pushKV("stealth_address", sx.Encoded());
                 }
             }
@@ -1970,10 +1970,10 @@ UniValue listtransactions(const JSONRPCRequest& request)
     // ret must be newest to oldest
     ret.reverse();
 
-    if (IsParticlWallet(pwallet)) {
+    if (IsRhombusWallet(pwallet)) {
         LOCK(pwallet->cs_wallet);
 
-        const CHDWallet *phdw = GetParticlWallet(pwallet);
+        const CHDWallet *phdw = GetRhombusWallet(pwallet);
         const RtxOrdered_t &txOrdered = phdw->rtxOrdered;
 
         // TODO: Combine finding and inserting into ret loops
@@ -2128,8 +2128,8 @@ static UniValue listsinceblock(const JSONRPCRequest& request)
         }
     }
 
-    if (IsParticlWallet(pwallet)) {
-        const CHDWallet *phdw = GetParticlWallet(pwallet);
+    if (IsRhombusWallet(pwallet)) {
+        const CHDWallet *phdw = GetRhombusWallet(pwallet);
 
         for (const auto &ri : phdw->mapRecords) {
             const uint256 &txhash = ri.first;
@@ -2156,8 +2156,8 @@ static UniValue listsinceblock(const JSONRPCRequest& request)
                 // even negative confirmation ones, hence the big negative.
                 ListTransactions(pwallet, it->second, -100000000, true, removed, filter, nullptr /* filter_label */);
             } else
-            if (IsParticlWallet(pwallet)) {
-                const CHDWallet *phdw = GetParticlWallet(pwallet);
+            if (IsRhombusWallet(pwallet)) {
+                const CHDWallet *phdw = GetRhombusWallet(pwallet);
                 const uint256 &txhash = tx->GetHash();
                 MapRecords_t::const_iterator mri = phdw->mapRecords.find(txhash);
                 if (mri != phdw->mapRecords.end()) {
@@ -2264,8 +2264,8 @@ UniValue gettransaction(const JSONRPCRequest& request)
     UniValue entry(UniValue::VOBJ);
     auto it = pwallet->mapWallet.find(hash);
     if (it == pwallet->mapWallet.end()) {
-        if (IsParticlWallet(pwallet)) {
-            CHDWallet *phdw = GetParticlWallet(pwallet);
+        if (IsRhombusWallet(pwallet)) {
+            CHDWallet *phdw = GetRhombusWallet(pwallet);
             MapRecords_t::const_iterator mri = phdw->mapRecords.find(hash);
 
             if (mri != phdw->mapRecords.end()) {
@@ -2351,7 +2351,7 @@ static UniValue abandontransaction(const JSONRPCRequest& request)
     uint256 hash(ParseHashV(request.params[0], "txid"));
 
     if (!pwallet->mapWallet.count(hash)) {
-        if (!IsParticlWallet(pwallet) || !GetParticlWallet(pwallet)->HaveTransaction(hash)) {
+        if (!IsRhombusWallet(pwallet) || !GetRhombusWallet(pwallet)->HaveTransaction(hash)) {
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, "Invalid or non-wallet transaction id");
         }
     }
@@ -2524,8 +2524,8 @@ static UniValue walletpassphrase(const JSONRPCRequest& request)
         LOCK(pwallet->cs_wallet);
         pwallet->TopUpKeyPool();
 
-        if (IsParticlWallet(pwallet)) {
-            CHDWallet *phdw = GetParticlWallet(pwallet);
+        if (IsRhombusWallet(pwallet)) {
+            CHDWallet *phdw = GetRhombusWallet(pwallet);
             phdw->fUnlockForStakingOnly = fWalletUnlockStakingOnly;
         }
         pwallet->nRelockTime = GetTime() + nSleepTime;
@@ -2811,10 +2811,10 @@ static UniValue lockunspent(const JSONRPCRequest& request)
 
         const COutPoint outpt(txid, nOutput);
 
-        if (IsParticlWallet(pwallet))  {
+        if (IsRhombusWallet(pwallet))  {
             const auto it = pwallet->mapWallet.find(outpt.hash);
             if (it == pwallet->mapWallet.end()) {
-                CHDWallet *phdw = GetParticlWallet(pwallet);
+                CHDWallet *phdw = GetRhombusWallet(pwallet);
                 const auto it = phdw->mapRecords.find(outpt.hash);
                 if (it == phdw->mapRecords.end()) {
                     throw JSONRPCError(RPC_INVALID_PARAMETER, "Invalid parameter, unknown transaction");
@@ -3021,8 +3021,8 @@ static UniValue getbalances(const JSONRPCRequest& request)
 
     LOCK(wallet.cs_wallet);
 
-    if (IsParticlWallet(&wallet)) {
-        const CHDWallet *pwhd = GetParticlWallet(&wallet);
+    if (IsRhombusWallet(&wallet)) {
+        const CHDWallet *pwhd = GetRhombusWallet(&wallet);
         CHDWalletBalances bal;
         pwhd->GetBalances(bal);
 
@@ -3154,7 +3154,7 @@ static UniValue getwalletinfo(const JSONRPCRequest& request)
     obj.pushKV("walletname", pwallet->GetName());
     obj.pushKV("walletversion", pwallet->GetVersion());
 
-    if (pwallet->IsParticlWallet()) {
+    if (pwallet->IsRhombusWallet()) {
         CHDWalletBalances bal;
         ((CHDWallet*)pwallet)->GetBalances(bal);
 
@@ -3189,12 +3189,12 @@ static UniValue getwalletinfo(const JSONRPCRequest& request)
         obj.pushKV("immature_balance", ValueFromAmount(bal.m_mine_immature));
     }
 
-    int nTxCount = (int)pwallet->mapWallet.size() + (pwallet->IsParticlWallet() ? (int)((CHDWallet*)pwallet)->mapRecords.size() : 0);
+    int nTxCount = (int)pwallet->mapWallet.size() + (pwallet->IsRhombusWallet() ? (int)((CHDWallet*)pwallet)->mapRecords.size() : 0);
     obj.pushKV("txcount",       (int)nTxCount);
 
     CKeyID seed_id;
-    if (IsParticlWallet(pwallet)) {
-        const CHDWallet *pwhd = GetParticlWallet(pwallet);
+    if (IsRhombusWallet(pwallet)) {
+        const CHDWallet *pwhd = GetRhombusWallet(pwallet);
 
         obj.pushKV("keypoololdest", pwhd->GetOldestActiveAccountTime());
         obj.pushKV("keypoolsize",   pwhd->CountActiveAccountKeys());
@@ -3575,8 +3575,8 @@ static UniValue resendwallettransactions(const JSONRPCRequest& request)
 
     std::vector<uint256> txids = pwallet->ResendWalletTransactionsBefore(GetTime());
     UniValue result(UniValue::VARR);
-    if (IsParticlWallet(pwallet)) {
-        CHDWallet *phdw = GetParticlWallet(pwallet);
+    if (IsRhombusWallet(pwallet)) {
+        CHDWallet *phdw = GetRhombusWallet(pwallet);
         std::vector<uint256> txidsRec;
         txidsRec = phdw->ResendRecordTransactionsBefore(GetTime());
 
@@ -3759,7 +3759,7 @@ static UniValue listunspent(const JSONRPCRequest& request)
         CAmount nValue;
         CTxDestination address;
         const CScript *scriptPubKey;
-        if (pwallet->IsParticlWallet()) {
+        if (pwallet->IsRhombusWallet()) {
             scriptPubKey = out.tx->tx->vpout[out.i]->GetPScriptPubKey();
             nValue = out.tx->tx->vpout[out.i]->GetValue();
         } else {
@@ -3857,8 +3857,8 @@ static UniValue listunspent(const JSONRPCRequest& request)
         if (avoid_reuse) entry.pushKV("reused", reused);
         entry.pushKV("safe", out.fSafe);
 
-        if (IsParticlWallet(pwallet)) {
-            const CHDWallet *phdw = GetParticlWallet(pwallet);
+        if (IsRhombusWallet(pwallet)) {
+            const CHDWallet *phdw = GetRhombusWallet(pwallet);
             CKeyID stakingKeyID;
             bool fStakeable = ExtractStakingKeyID(*scriptPubKey, stakingKeyID);
             if (fStakeable) {
@@ -3977,7 +3977,7 @@ void FundTransaction(CWallet* const pwallet, CMutableTransaction& tx, CAmount& f
         coinControl.fAllowWatchOnly = ParseIncludeWatchonly(NullUniValue, *pwallet);
     }
 
-    size_t nOutputs = IsParticlWallet(pwallet) ? tx.vpout.size() : tx.vout.size();
+    size_t nOutputs = IsRhombusWallet(pwallet) ? tx.vpout.size() : tx.vout.size();
     if (nOutputs == 0)
         throw JSONRPCError(RPC_INVALID_PARAMETER, "TX must have at least one output");
 
@@ -4308,7 +4308,7 @@ static UniValue bumpfee(const JSONRPCRequest& request)
     CAmount new_fee;
     CMutableTransaction mtx;
     feebumper::Result res;
-    if (IsParticlWallet(pwallet)) {
+    if (IsRhombusWallet(pwallet)) {
         // Targeting total fee bump. Requires a change output of sufficient size.
         res = feebumper::CreateTotalBumpTransaction(pwallet, hash, coin_control, errors, old_fee, new_fee, mtx);
     } else {
@@ -4703,8 +4703,8 @@ UniValue getaddressinfo(const JSONRPCRequest& request)
     std::unique_ptr<SigningProvider> provider = pwallet->GetSolvingProvider(scriptPubKey);
 
     isminetype mine = ISMINE_NO;
-    if (IsParticlWallet(pwallet)) {
-        const CHDWallet *phdw = GetParticlWallet(pwallet);
+    if (IsRhombusWallet(pwallet)) {
+        const CHDWallet *phdw = GetRhombusWallet(pwallet);
         if (dest.type() == typeid(CExtKeyPair)) {
             CExtKeyPair ek = boost::get<CExtKeyPair>(dest);
             CKeyID id = ek.GetID();
@@ -4999,7 +4999,7 @@ UniValue sethdseed(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_WALLET_ERROR, "Cannot set a HD seed on a non-HD wallet. Use the upgradewallet RPC in order to upgrade a non-HD wallet to HD");
     }
 
-    if (IsParticlWallet(pwallet))
+    if (IsRhombusWallet(pwallet))
         throw JSONRPCError(RPC_WALLET_ERROR, "Not necessary in Particl mode.");
 
     EnsureWalletIsUnlocked(pwallet);

@@ -223,44 +223,44 @@ static void AddTx(benchmark::State& state, const std::string from, const std::st
     ECC_Stop_Blinding();
 }
 
-static void ParticlAddTxPlainPlainNotOwned(benchmark::State& state) { AddTx(state, "plain", "plain", false); }
-static void ParticlAddTxPlainPlainOwned(benchmark::State& state) { AddTx(state, "plain", "plain", true); }
-static void ParticlAddTxPlainBlindNotOwned(benchmark::State& state) { AddTx(state, "plain", "blind", false); }
-static void ParticlAddTxPlainBlindOwned(benchmark::State& state) { AddTx(state, "plain", "blind", true); }
-// static void ParticlAddTxPlainAnonNotOwned(benchmark::State& state) { AddTx(state, "plain", "anon", false); }
-// static void ParticlAddTxPlainAnonOwned(benchmark::State& state) { AddTx(state, "plain", "anon", true); }
+static void RhombusAddTxPlainPlainNotOwned(benchmark::State& state) { AddTx(state, "plain", "plain", false); }
+static void RhombusAddTxPlainPlainOwned(benchmark::State& state) { AddTx(state, "plain", "plain", true); }
+static void RhombusAddTxPlainBlindNotOwned(benchmark::State& state) { AddTx(state, "plain", "blind", false); }
+static void RhombusAddTxPlainBlindOwned(benchmark::State& state) { AddTx(state, "plain", "blind", true); }
+// static void RhombusAddTxPlainAnonNotOwned(benchmark::State& state) { AddTx(state, "plain", "anon", false); }
+// static void RhombusAddTxPlainAnonOwned(benchmark::State& state) { AddTx(state, "plain", "anon", true); }
 
-static void ParticlAddTxBlindPlainNotOwned(benchmark::State& state) { AddTx(state, "blind", "plain", false); }
-static void ParticlAddTxBlindPlainOwned(benchmark::State& state) { AddTx(state, "blind", "plain", true); }
-static void ParticlAddTxBlindBlindNotOwned(benchmark::State& state) { AddTx(state, "blind", "blind", false); }
-static void ParticlAddTxBlindBlindOwned(benchmark::State& state) { AddTx(state, "blind", "blind", true); }
-static void ParticlAddTxBlindAnonNotOwned(benchmark::State& state) { AddTx(state, "blind", "anon", false); }
-static void ParticlAddTxBlindAnonOwned(benchmark::State& state) { AddTx(state, "blind", "anon", true); }
+static void RhombusAddTxBlindPlainNotOwned(benchmark::State& state) { AddTx(state, "blind", "plain", false); }
+static void RhombusAddTxBlindPlainOwned(benchmark::State& state) { AddTx(state, "blind", "plain", true); }
+static void RhombusAddTxBlindBlindNotOwned(benchmark::State& state) { AddTx(state, "blind", "blind", false); }
+static void RhombusAddTxBlindBlindOwned(benchmark::State& state) { AddTx(state, "blind", "blind", true); }
+static void RhombusAddTxBlindAnonNotOwned(benchmark::State& state) { AddTx(state, "blind", "anon", false); }
+static void RhombusAddTxBlindAnonOwned(benchmark::State& state) { AddTx(state, "blind", "anon", true); }
 
-static void ParticlAddTxAnonPlainNotOwned(benchmark::State& state) { AddTx(state, "anon", "plain", false); }
-static void ParticlAddTxAnonPlainOwned(benchmark::State& state) { AddTx(state, "anon", "plain", true); }
-static void ParticlAddTxAnonBlindNotOwned(benchmark::State& state) { AddTx(state, "anon", "blind", false); }
-static void ParticlAddTxAnonBlindOwned(benchmark::State& state) { AddTx(state, "anon", "blind", true); }
-static void ParticlAddTxAnonAnonNotOwned(benchmark::State& state) { AddTx(state, "anon", "anon", false); }
-static void ParticlAddTxAnonAnonOwned(benchmark::State& state) { AddTx(state, "anon", "anon", true); }
+static void RhombusAddTxAnonPlainNotOwned(benchmark::State& state) { AddTx(state, "anon", "plain", false); }
+static void RhombusAddTxAnonPlainOwned(benchmark::State& state) { AddTx(state, "anon", "plain", true); }
+static void RhombusAddTxAnonBlindNotOwned(benchmark::State& state) { AddTx(state, "anon", "blind", false); }
+static void RhombusAddTxAnonBlindOwned(benchmark::State& state) { AddTx(state, "anon", "blind", true); }
+static void RhombusAddTxAnonAnonNotOwned(benchmark::State& state) { AddTx(state, "anon", "anon", false); }
+static void RhombusAddTxAnonAnonOwned(benchmark::State& state) { AddTx(state, "anon", "anon", true); }
 
-BENCHMARK(ParticlAddTxPlainPlainNotOwned, 100);
-BENCHMARK(ParticlAddTxPlainPlainOwned, 100);
-BENCHMARK(ParticlAddTxPlainBlindNotOwned, 100);
-BENCHMARK(ParticlAddTxPlainBlindOwned, 100);
-// BENCHMARK(ParticlAddTxPlainAnonNotOwned, 100);
-// BENCHMARK(ParticlAddTxPlainAnonOwned, 100);
+BENCHMARK(RhombusAddTxPlainPlainNotOwned, 100);
+BENCHMARK(RhombusAddTxPlainPlainOwned, 100);
+BENCHMARK(RhombusAddTxPlainBlindNotOwned, 100);
+BENCHMARK(RhombusAddTxPlainBlindOwned, 100);
+// BENCHMARK(RhombusAddTxPlainAnonNotOwned, 100);
+// BENCHMARK(RhombusAddTxPlainAnonOwned, 100);
 
-BENCHMARK(ParticlAddTxBlindPlainNotOwned, 100);
-BENCHMARK(ParticlAddTxBlindPlainOwned, 100);
-BENCHMARK(ParticlAddTxBlindBlindNotOwned, 100);
-BENCHMARK(ParticlAddTxBlindBlindOwned, 100);
-BENCHMARK(ParticlAddTxBlindAnonNotOwned, 100);
-BENCHMARK(ParticlAddTxBlindAnonOwned, 100);
+BENCHMARK(RhombusAddTxBlindPlainNotOwned, 100);
+BENCHMARK(RhombusAddTxBlindPlainOwned, 100);
+BENCHMARK(RhombusAddTxBlindBlindNotOwned, 100);
+BENCHMARK(RhombusAddTxBlindBlindOwned, 100);
+BENCHMARK(RhombusAddTxBlindAnonNotOwned, 100);
+BENCHMARK(RhombusAddTxBlindAnonOwned, 100);
 
-BENCHMARK(ParticlAddTxAnonPlainNotOwned, 100);
-BENCHMARK(ParticlAddTxAnonPlainOwned, 100);
-BENCHMARK(ParticlAddTxAnonBlindNotOwned, 100);
-BENCHMARK(ParticlAddTxAnonBlindOwned, 100);
-BENCHMARK(ParticlAddTxAnonAnonNotOwned, 100);
-BENCHMARK(ParticlAddTxAnonAnonOwned, 100);
+BENCHMARK(RhombusAddTxAnonPlainNotOwned, 100);
+BENCHMARK(RhombusAddTxAnonPlainOwned, 100);
+BENCHMARK(RhombusAddTxAnonBlindNotOwned, 100);
+BENCHMARK(RhombusAddTxAnonBlindOwned, 100);
+BENCHMARK(RhombusAddTxAnonAnonNotOwned, 100);
+BENCHMARK(RhombusAddTxAnonAnonOwned, 100);

@@ -471,7 +471,7 @@ static bool CheckInputsFromMempoolAndCache(const CTransaction& tx, TxValidationS
         if (txFrom) {
             assert(txFrom->GetHash() == txin.prevout.hash);
             assert(txFrom->GetNumVOuts() > txin.prevout.n);
-            if (txFrom->IsParticlVersion()) {
+            if (txFrom->IsRhombusVersion()) {
                 assert(coin.Matches(txFrom->vpout[txin.prevout.n].get()));
             } else {
                 assert(txFrom->vout[txin.prevout.n] == coin.out);
@@ -1589,7 +1589,7 @@ bool CChainState::IsInitialBlockDownload() const
         && m_chain.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
         return true;
     if (fRhombusMode
-    
+
         && (GetNumPeers() < 1
             || m_chain.Tip()->nHeight < GetNumBlocksOfPeers()-10))
         return true;
@@ -2688,7 +2688,7 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
                 return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-txns-nonfinal");
             }
 
-            if (tx.IsParticlVersion()) {
+            if (tx.IsRhombusVersion()) {
                 // Update spent inputs
                 for (size_t j = 0; j < tx.vin.size(); j++) {
                     const CTxIn input = tx.vin[j];
@@ -4235,20 +4235,20 @@ static bool FindUndoPos(BlockValidationState &state, int nFile, FlatFilePos &pos
 static bool CheckBlockHeader(const CBlockHeader& block, BlockValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW = true)
 {
     if (fRhombusMode
-    
-        && !block.IsParticlVersion())
+
+        && !block.IsRhombusVersion())
         return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "block-version", "bad block version");
 
     // Check timestamp
     if (fRhombusMode
-    
+
         && !block.hashPrevBlock.IsNull() // allow genesis block to be created in the future
         && block.GetBlockTime() > FutureDrift(GetAdjustedTime()))
         return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "block-timestamp", "block timestamp too far in the future");
 
     // Check proof of work matches claimed amount
     if (!fRhombusMode
-    
+
         && fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
         return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "high-hash", "proof of work failed");
 

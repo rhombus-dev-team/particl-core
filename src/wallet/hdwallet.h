@@ -85,7 +85,7 @@ public:
         Finalise();
     }
 
-    bool IsParticlWallet() const override { return true; };
+    bool IsRhombusWallet() const override { return true; };
 
     int Finalise();
     int FreeExtKeyMaps();
@@ -586,9 +586,9 @@ int64_t CalculateMaximumSignedTxSize(const CTransaction &tx, const CHDWallet *wa
 
 void RestartStakingThreads();
 
-bool IsParticlWallet(const WalletStorage *win);
-CHDWallet *GetParticlWallet(WalletStorage *win);
-const CHDWallet *GetParticlWallet(const WalletStorage *win);
+bool IsRhombusWallet(const WalletStorage *win);
+CHDWallet *GetRhombusWallet(WalletStorage *win);
+const CHDWallet *GetRhombusWallet(const WalletStorage *win);
 
 
 #endif // PARTICL_WALLET_HDWALLET_H

@@ -55,7 +55,7 @@ WalletTx MakeWalletTx(CWallet& wallet, const CWalletTx& wtx)
     for (const auto& txin : wtx.tx->vin) {
         result.txin_is_mine.emplace_back(wallet.IsMine(txin));
     }
-    if (wtx.tx->IsParticlVersion()) {
+    if (wtx.tx->IsRhombusVersion()) {
         size_t nv = wtx.tx->GetNumVOuts();
         result.txout_is_mine.reserve(nv);
         result.txout_address.reserve(nv);
@@ -181,8 +181,8 @@ class WalletImpl : public Wallet
 public:
     explicit WalletImpl(const std::shared_ptr<CWallet>& wallet) : m_wallet(wallet)
     {
-        if (::IsParticlWallet(wallet.get())) {
-            m_wallet_part = GetParticlWallet(wallet.get());
+        if (::IsRhombusWallet(wallet.get())) {
+            m_wallet_part = GetRhombusWallet(wallet.get());
         }
     }
 
@@ -363,7 +363,7 @@ public:
         CAmount& new_fee,
         CMutableTransaction& mtx) override
     {
-        if (::IsParticlWallet(m_wallet.get())) {
+        if (::IsRhombusWallet(m_wallet.get())) {
             return feebumper::CreateTotalBumpTransaction(m_wallet.get(), txid, coin_control, errors, old_fee, new_fee, mtx) ==
                 feebumper::Result::OK;
         } else {
@@ -685,7 +685,7 @@ public:
         return MakeHandler(m_wallet_part->NotifyReservedBalanceChanged.connect(fn));
     }
 
-    bool IsParticlWallet() override
+    bool IsRhombusWallet() override
     {
         return m_wallet_part;
     }
@@ -725,7 +725,7 @@ public:
         return m_wallet_part->GetAvailableBlindBalance(&coin_control);
     }
 
-    CHDWallet *getParticlWallet() override
+    CHDWallet *GetRhombusWallet() override
     {
         return m_wallet_part;
     }

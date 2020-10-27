@@ -871,7 +871,7 @@ bool CSMSG::Start(std::shared_ptr<CWallet> pwalletIn, std::vector<std::shared_pt
     UnloadAllWallets();
 
     for (const auto &pw : vpwallets) {
-        CHDWallet *const ppartw = GetParticlWallet(pw.get());
+        CHDWallet *const ppartw = GetRhombusWallet(pw.get());
         if (!ppartw || !ppartw->m_smsg_enabled) {
             continue;
         }
@@ -1944,7 +1944,7 @@ static bool ScanBlock(CSMSG &smsg, const CBlock &block, SecMsgDB &addrpkdb,
     for (const auto &tx : block.vtx) {
         // Harvest public keys from coinstake txns
 
-        if (!tx->IsParticlVersion()) {
+        if (!tx->IsRhombusVersion()) {
             continue;
         }
 
@@ -4236,7 +4236,7 @@ int CSMSG::FundMsg(SecureMessage &smsg, std::string &sError, bool fTestFee, CAmo
         memcpy(&tr.vData[21], &msgFee, 4);
         vec_send.push_back(tr);
 
-        CHDWallet *const pw = GetParticlWallet(pactive_wallet.get());
+        CHDWallet *const pw = GetRhombusWallet(pactive_wallet.get());
         CTransactionRef tx_new;
         CWalletTx wtx(pactive_wallet.get(), tx_new);
 
@@ -4285,7 +4285,7 @@ int CSMSG::FundMsg(SecureMessage &smsg, std::string &sError, bool fTestFee, CAmo
             return errorN(SMSG_GENERAL_ERROR, sError, __func__, "Transaction cannot be broadcast immediately: %s.", err_string);
         }
         {
-            CHDWallet *pw = GetParticlWallet(pactive_wallet.get());
+            CHDWallet *pw = GetRhombusWallet(pactive_wallet.get());
             pw->CommitTransaction(wtx.tx, wtx.mapValue, wtx.vOrderForm);
         }
     }

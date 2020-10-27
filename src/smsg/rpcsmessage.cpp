@@ -70,7 +70,7 @@ static UniValue smsgenable(const JSONRPCRequest &request)
         sFindWallet = request.params[0].get_str();
     }
     for (const auto &pw : vpwallets) {
-        CHDWallet *const ppartw = GetParticlWallet(pw.get());
+        CHDWallet *const ppartw = GetRhombusWallet(pw.get());
         if (!ppartw) {
             continue;
         }
@@ -917,7 +917,7 @@ static UniValue smsgsend(const JSONRPCRequest &request)
         if (!smsgModule.pactive_wallet) {
             throw JSONRPCError(RPC_INVALID_PARAMETER, "Active wallet must be set to send a paid smsg.");
         }
-        CHDWallet *const pw = GetParticlWallet(smsgModule.pactive_wallet.get());
+        CHDWallet *const pw = GetRhombusWallet(smsgModule.pactive_wallet.get());
         if (!fTestFee) {
             EnsureWalletIsUnlocked(pw);
         }

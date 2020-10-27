@@ -2023,7 +2023,7 @@ CAmount CHDWallet::GetDebit(const CTxIn &txin, const isminefilter &filter) const
 
 CAmount CHDWallet::GetDebit(const CTransaction& tx, const isminefilter& filter) const
 {
-    if (!tx.IsParticlVersion())
+    if (!tx.IsRhombusVersion())
         return CWallet::GetDebit(tx, filter);
 
     CAmount nDebit = 0;
@@ -13088,12 +13088,12 @@ void RestartStakingThreads()
     StartThreadStakeMiner();
 };
 
-bool IsParticlWallet(const WalletStorage *win)
+bool IsRhombusWallet(const WalletStorage *win)
 {
     return win && dynamic_cast<const CHDWallet*>(win);
 };
 
-CHDWallet *GetParticlWallet(WalletStorage *win)
+CHDWallet *GetRhombusWallet(WalletStorage *win)
 {
     CHDWallet *rv;
     if (!win) {
@@ -13105,7 +13105,7 @@ CHDWallet *GetParticlWallet(WalletStorage *win)
     return rv;
 };
 
-const CHDWallet *GetParticlWallet(const WalletStorage *win)
+const CHDWallet *GetRhombusWallet(const WalletStorage *win)
 {
     const CHDWallet *rv;
     if (!win) {

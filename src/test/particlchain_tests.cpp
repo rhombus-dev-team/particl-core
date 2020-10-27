@@ -175,7 +175,7 @@ BOOST_AUTO_TEST_CASE(mixed_input_types)
 {
     CMutableTransaction txn;
     txn.nVersion = PARTICL_TXN_VERSION;
-    BOOST_CHECK(txn.IsParticlVersion());
+    BOOST_CHECK(txn.IsRhombusVersion());
 
     CAmount txfee;
     int nSpendHeight = 1;
@@ -184,7 +184,7 @@ BOOST_AUTO_TEST_CASE(mixed_input_types)
 
     CMutableTransaction txnPrev;
     txnPrev.nVersion = PARTICL_TXN_VERSION;
-    BOOST_CHECK(txnPrev.IsParticlVersion());
+    BOOST_CHECK(txnPrev.IsRhombusVersion());
 
     CScript scriptPubKey;
     txnPrev.vpout.push_back(MAKE_OUTPUT<CTxOutStandard>(1 * COIN, scriptPubKey));

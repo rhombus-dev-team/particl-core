@@ -242,7 +242,7 @@ void StartThreadStakeMiner()
             size_t nEnd = (i == nThreads-1) ? nWallets : nPerThread * (i+1);
             StakeThread *t = new StakeThread();
             vStakeThreads.push_back(t);
-            GetParticlWallet(vpwallets[i].get())->nStakeThread = i;
+            GetRhombusWallet(vpwallets[i].get())->nStakeThread = i;
             t->sName = strprintf("miner%d", i);
             t->thread = std::thread(&TraceThread<std::function<void()> >, t->sName.c_str(), std::function<void()>(std::bind(&ThreadStakeMiner, i, vpwallets, nStart, nEnd)));
         }
@@ -386,7 +386,7 @@ void ThreadStakeMiner(size_t nThreadID, std::vector<std::shared_ptr<CWallet>> &v
         size_t nWaitFor = 60000;
         CAmount reserve_balance;
         for (size_t i = nStart; i < nEnd; ++i) {
-            auto pwallet = GetParticlWallet(vpwallets[i].get());
+            auto pwallet = GetRhombusWallet(vpwallets[i].get());
 
             if (!pwallet->fStakingEnabled) {
                 pwallet->m_is_staking = CHDWallet::NOT_STAKING_DISABLED;

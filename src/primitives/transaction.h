@@ -56,7 +56,7 @@ enum DataOutputTypes
 bool ExtractCoinStakeInt64(const std::vector<uint8_t> &vData, DataOutputTypes get_type, CAmount &out);
 bool ExtractCoinStakeUint32(const std::vector<uint8_t> &vData, DataOutputTypes get_type, uint32_t &out);
 
-inline bool IsParticlTxVersion(int nVersion)
+inline bool IsRhombusTxVersion(int nVersion)
 {
     return (nVersion & 0xFF) >= PARTICL_TXN_VERSION;
 }
@@ -711,7 +711,7 @@ template<typename Stream, typename TxType>
 inline void SerializeTransaction(const TxType& tx, Stream& s) {
     const bool fAllowWitness = !(s.GetVersion() & SERIALIZE_TRANSACTION_NO_WITNESS);
 
-    if (IsParticlTxVersion(tx.nVersion)) {
+    if (IsRhombusTxVersion(tx.nVersion)) {
         uint8_t bv = tx.nVersion & 0xFF;
         s << bv;
 
@@ -821,8 +821,8 @@ public:
         return vin.empty() && vout.empty() && vpout.empty();
     }
 
-    bool IsParticlVersion() const {
-        return IsParticlTxVersion(nVersion);
+    bool IsRhombusVersion() const {
+        return IsRhombusTxVersion(nVersion);
     }
 
     int GetType() const {
@@ -831,7 +831,7 @@ public:
 
     size_t GetNumVOuts() const
     {
-        return IsParticlTxVersion(nVersion) ? vpout.size() : vout.size();
+        return IsRhombusTxVersion(nVersion) ? vpout.size() : vout.size();
     }
 
     const uint256& GetHash() const { return hash; }
@@ -852,7 +852,7 @@ public:
 
     bool IsCoinBase() const
     {
-        if (IsParticlVersion()) {
+        if (IsRhombusVersion()) {
             return (GetType() == TXN_COINBASE
                 && vin.size() == 1 && vin[0].prevout.IsNull()); // TODO [rm]?
         }
@@ -962,8 +962,8 @@ struct CMutableTransaction
         nVersion |= (type & 0xFF) << 8;
     }
 
-    bool IsParticlVersion() const {
-        return IsParticlTxVersion(nVersion);
+    bool IsRhombusVersion() const {
+        return IsRhombusTxVersion(nVersion);
     }
 
     int GetType() const {
@@ -980,7 +980,7 @@ struct CMutableTransaction
 
     size_t GetNumVOuts() const
     {
-        return IsParticlTxVersion(nVersion) ? vpout.size() : vout.size();
+        return IsRhombusTxVersion(nVersion) ? vpout.size() : vout.size();
     }
 
     /** Compute the hash of this CMutableTransaction. This is computed on the

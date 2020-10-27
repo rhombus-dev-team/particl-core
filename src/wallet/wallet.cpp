@@ -224,7 +224,7 @@ WalletCreationStatus CreateWallet(interfaces::Chain& chain, const SecureString& 
         error = Untranslated("Wallet creation failed.") + Untranslated(" ") + error;
         return WalletCreationStatus::CREATION_FAILED;
     }
-    if (fRhombusMode && !GetParticlWallet(wallet.get())->Initialise()) {
+    if (fRhombusMode && !GetRhombusWallet(wallet.get())->Initialise()) {
         error = Untranslated("Wallet initialisation failed");
         return WalletCreationStatus::CREATION_FAILED;
     }
@@ -244,7 +244,7 @@ WalletCreationStatus CreateWallet(interfaces::Chain& chain, const SecureString& 
 
             // Set a seed for the wallet
             if (fRhombusMode) {
-                if (0 != GetParticlWallet(wallet.get())->MakeDefaultAccount()) {
+                if (0 != GetRhombusWallet(wallet.get())->MakeDefaultAccount()) {
                     error = Untranslated("Error: MakeDefaultAccount failed");
                     return WalletCreationStatus::CREATION_FAILED;
                 }
@@ -1646,7 +1646,7 @@ void CWalletTx::GetAmounts(std::list<COutputEntry>& listReceived,
     }
 
     // Sent/received.
-    if (tx->IsParticlVersion()) {
+    if (tx->IsRhombusVersion()) {
         for (unsigned int i = 0; i < tx->vpout.size(); ++i) {
             const CTxOutBase *txout = tx->vpout[i].get();
             if (!txout->IsStandardOutput()) {
@@ -2037,7 +2037,7 @@ CAmount CWalletTx::GetAvailableCredit(bool fUseCache, const isminefilter& filter
     for (unsigned int i = 0; i < tx->GetNumVOuts(); i++)
     {
         if (!pwallet->IsSpent(hashTx, i) && (allow_used_addresses || !pwallet->IsSpentKey(hashTx, i))) {
-            nCredit += pwallet->IsParticlWallet()
+            nCredit += pwallet->IsRhombusWallet()
                        ? pwallet->GetCredit(tx->vpout[i].get(), filter)
                        : pwallet->GetCredit(tx->vout[i], filter);
             if (!MoneyRange(nCredit))
@@ -2105,7 +2105,7 @@ bool CWalletTx::IsTrusted(std::set<uint256>& trusted_parents) const
         const CWalletTx* parent = pwallet->GetWalletTx(txin.prevout.hash);
         if (parent == nullptr) return false;
 
-        if (tx->IsParticlVersion()) {
+        if (tx->IsRhombusVersion()) {
             const CTxOutBase *parentOut = parent->tx->vpout[txin.prevout.n].get();
             if (!(pwallet->IsMine(parentOut) & ISMINE_SPENDABLE)) {
                 return false;
@@ -4385,7 +4385,7 @@ std::vector<OutputGroup> CWallet::GroupOutputs(const std::vector<COutput>& outpu
 
             size_t ancestors, descendants;
             chain().getTransactionAncestry(output.tx->GetHash(), ancestors, descendants);
-            const CScript *pscript = output.tx->tx->IsParticlVersion()
+            const CScript *pscript = output.tx->tx->IsRhombusVersion()
                 ? output.tx->tx->vpout[output.i]->GetPScriptPubKey() : &output.tx->tx->vout[output.i].scriptPubKey;
             if (!single_coin && ExtractDestination(*pscript, dst)) {
                 auto it = gmap.find(dst);
