@@ -40,7 +40,7 @@
 // Application startup time (used for uptime calculation)
 int64_t GetStartupTime();
 
-extern bool fParticlMode;
+extern bool fRhombusMode;
 
 extern const char * const BITCOIN_CONF_FILENAME;
 

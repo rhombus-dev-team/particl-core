@@ -236,7 +236,7 @@ bool AreInputsStandard(const CTransaction& tx, const CCoinsViewCache& mapInputs,
     if (tx.IsCoinBase())
         return true; // Coinbases don't use vin normally
 
-    if (fParticlMode) {
+    if (fRhombusMode) {
         for (unsigned int i = 0; i < tx.vin.size(); i++) {
             if (tx.vin[i].IsAnonInput()) {
                 continue;

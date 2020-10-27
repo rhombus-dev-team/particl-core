@@ -166,7 +166,7 @@ std::shared_ptr<CWallet> LoadWallet(interfaces::Chain& chain, const WalletLocati
             error = Untranslated("Wallet loading failed.") + Untranslated(" ") + error;
             return nullptr;
         }
-        if (fParticlMode && !((CHDWallet*)wallet.get())->Initialise()) {
+        if (fRhombusMode && !((CHDWallet*)wallet.get())->Initialise()) {
             error = Untranslated("Particl wallet initialisation failed.");
             return nullptr;
         }
@@ -174,7 +174,7 @@ std::shared_ptr<CWallet> LoadWallet(interfaces::Chain& chain, const WalletLocati
         AddWallet(wallet);
         wallet->postInitProcess();
 
-        if (fParticlMode) {
+        if (fRhombusMode) {
             RestartStakingThreads();
         }
         return wallet;
@@ -224,7 +224,7 @@ WalletCreationStatus CreateWallet(interfaces::Chain& chain, const SecureString& 
         error = Untranslated("Wallet creation failed.") + Untranslated(" ") + error;
         return WalletCreationStatus::CREATION_FAILED;
     }
-    if (fParticlMode && !GetParticlWallet(wallet.get())->Initialise()) {
+    if (fRhombusMode && !GetParticlWallet(wallet.get())->Initialise()) {
         error = Untranslated("Wallet initialisation failed");
         return WalletCreationStatus::CREATION_FAILED;
     }
@@ -243,7 +243,7 @@ WalletCreationStatus CreateWallet(interfaces::Chain& chain, const SecureString& 
             }
 
             // Set a seed for the wallet
-            if (fParticlMode) {
+            if (fRhombusMode) {
                 if (0 != GetParticlWallet(wallet.get())->MakeDefaultAccount()) {
                     error = Untranslated("Error: MakeDefaultAccount failed");
                     return WalletCreationStatus::CREATION_FAILED;
@@ -3966,7 +3966,7 @@ std::shared_ptr<CWallet> CWallet::CreateWalletFromFile(interfaces::Chain& chain,
     bool fFirstRun = true;
     // TODO: Can't use std::make_shared because we need a custom deleter but
     // should be possible to use std::allocate_shared.
-    std::shared_ptr<CWallet> walletInstance(fParticlMode
+    std::shared_ptr<CWallet> walletInstance(fRhombusMode
         ? std::shared_ptr<CWallet>(new CHDWallet(&chain, location, WalletDatabase::Create(location.GetPath())), ReleaseWallet)
         : std::shared_ptr<CWallet>(new CWallet(&chain, location, WalletDatabase::Create(location.GetPath())), ReleaseWallet));
 
@@ -4010,12 +4010,12 @@ std::shared_ptr<CWallet> CWallet::CreateWalletFromFile(interfaces::Chain& chain,
 
         if (!(wallet_creation_flags & (WALLET_FLAG_DISABLE_PRIVATE_KEYS | WALLET_FLAG_BLANK_WALLET))) {
             LOCK(walletInstance->cs_wallet);
-            if (!fParticlMode && walletInstance->IsWalletFlagSet(WALLET_FLAG_DESCRIPTORS)) {
+            if (!fRhombusMode && walletInstance->IsWalletFlagSet(WALLET_FLAG_DESCRIPTORS)) {
                 walletInstance->SetupDescriptorScriptPubKeyMans();
                 // SetupDescriptorScriptPubKeyMans already calls SetupGeneration for us so we don't need to call SetupGeneration separately
             } else {
                 // Legacy wallets need SetupGeneration here.
-                if (!fParticlMode)
+                if (!fRhombusMode)
                 for (auto spk_man : walletInstance->GetActiveScriptPubKeyMans()) {
                     if (!spk_man->SetupGeneration()) {
                         error = _("Unable to generate initial keys");
@@ -4171,7 +4171,7 @@ std::shared_ptr<CWallet> CWallet::CreateWalletFromFile(interfaces::Chain& chain,
         walletInstance->m_last_block_processed_height = -1;
     }
 
-    if (!fParticlMode) // Must rescan after hdwallet is loaded
+    if (!fRhombusMode) // Must rescan after hdwallet is loaded
     if (tip_height && *tip_height != rescan_height)
     {
         // We can't rescan beyond non-pruned blocks, stop and throw an error.
@@ -4359,7 +4359,7 @@ int CWalletTx::GetBlocksToMaturity() const
     assert(chain_depth >= 0); // coinbase tx should not be conflicted
 
     LockAssertion lock(pwallet->cs_wallet); // Remove when NO_THREAD_SAFETY_ANALYSIS resolved for GetDepthInMainChain()
-    if (fParticlMode && pwallet->m_last_block_processed_height < COINBASE_MATURITY * 2 && m_confirm.status == CWalletTx::Status::CONFIRMED) {
+    if (fRhombusMode && pwallet->m_last_block_processed_height < COINBASE_MATURITY * 2 && m_confirm.status == CWalletTx::Status::CONFIRMED) {
         int nRequiredDepth = m_confirm.block_height / 2;
         return std::max(0, (nRequiredDepth+1) - chain_depth);
     }

@@ -1011,7 +1011,7 @@ static UniValue gettxoutsetinfo(const JSONRPCRequest& request)
         ret.pushKV("bestblock", stats.hashBlock.GetHex());
         ret.pushKV("transactions", (int64_t)stats.nTransactions);
         ret.pushKV("txouts", (int64_t)stats.nTransactionOutputs);
-        if (fParticlMode)
+        if (fRhombusMode)
             ret.pushKV("txouts_blinded", (int64_t)stats.nBlindTransactionOutputs);
         ret.pushKV("bogosize", (int64_t)stats.nBogoSize);
         ret.pushKV("hash_serialized_2", stats.hashSerialized.GetHex());
@@ -1256,7 +1256,7 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)
     obj.pushKV("blocks",                (int)::ChainActive().Height());
     obj.pushKV("headers",               pindexBestHeader ? pindexBestHeader->nHeight : -1);
     obj.pushKV("bestblockhash",         tip->GetBlockHash().GetHex());
-    if (fParticlMode) {
+    if (fRhombusMode) {
         obj.pushKV("moneysupply",           ValueFromAmount(tip->nMoneySupply));
         obj.pushKV("blockindexsize",        (int)::BlockIndex().size());
         obj.pushKV("delayedblocks",         (int)CountDelayedBlocks());
@@ -1285,7 +1285,7 @@ UniValue getblockchaininfo(const JSONRPCRequest& request)
         }
     }
 
-    if (fParticlMode)
+    if (fRhombusMode)
         return obj;
     const Consensus::Params& consensusParams = Params().GetConsensus();
     UniValue softforks(UniValue::VOBJ);
@@ -1884,7 +1884,7 @@ static UniValue getblockstats(const JSONRPCRequest& request)
 
         if (loop_inputs) {
             CAmount tx_total_in = 0;
-            const auto& txundo = blockUndo.vtxundo.at(fParticlMode ? i : i - 1); // Particl includes coinbase/coinstake in undo data
+            const auto& txundo = blockUndo.vtxundo.at(fRhombusMode ? i : i - 1); // Particl includes coinbase/coinstake in undo data
             for (const Coin& coin: txundo.vprevout) {
                 const CTxOut& prevoutput = coin.out;
 

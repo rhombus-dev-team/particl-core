@@ -599,7 +599,7 @@ void SetupServerArgs(NodeContext& node)
 
     g_wallet_init_interface.AddWalletOptions();
 #ifdef ENABLE_WALLET
-    if (fParticlMode) {
+    if (fRhombusMode) {
         CHDWallet::AddOptions();
     }
 #endif
@@ -1111,11 +1111,11 @@ bool AppInitBasicSetup()
 
 bool AppInitParameterInteraction()
 {
-    fParticlMode = !gArgs.GetBoolArg("-btcmode", false); // qa tests
-    if (!fParticlMode) {
+    fRhombusMode = !gArgs.GetBoolArg("-btcmode", false); // qa tests
+    if (!fRhombusMode) {
         WITNESS_SCALE_FACTOR = WITNESS_SCALE_FACTOR_BTC;
         if (gArgs.GetChainName() == CBaseChainParams::REGTEST) {
-            ResetParams(CBaseChainParams::REGTEST, fParticlMode);
+            ResetParams(CBaseChainParams::REGTEST, fRhombusMode);
         }
     } else {
         MIN_BLOCKS_TO_KEEP = 1024;
@@ -2102,7 +2102,7 @@ bool AppInitMain(NodeContext& node)
 
     // ********************************************************* Step 10.1: start secure messaging
 
-    if (fParticlMode && gArgs.GetBoolArg("-smsg", true)) { // SMSG breaks functional tests with services flag, see version msg
+    if (fRhombusMode && gArgs.GetBoolArg("-smsg", true)) { // SMSG breaks functional tests with services flag, see version msg
 #ifdef ENABLE_WALLET
         auto vpwallets = GetWallets();
         smsgModule.Start(vpwallets.size() > 0 ? vpwallets[0] : nullptr, vpwallets, gArgs.GetBoolArg("-smsgscanchain", false));
@@ -2194,7 +2194,7 @@ bool AppInitMain(NodeContext& node)
 
     // ********************************************************* Step 12.5: start staking
 #ifdef ENABLE_WALLET
-    if (fParticlMode && GetWallets().size() > 0) {
+    if (fRhombusMode && GetWallets().size() > 0) {
         StartThreadStakeMiner();
     }
 #endif

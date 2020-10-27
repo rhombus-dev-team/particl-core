@@ -187,7 +187,7 @@ bool TransactionCanBeBumped(const CWallet& wallet, const uint256& txid)
 {
     LOCK(wallet.cs_wallet);
 
-    if (fParticlMode) {
+    if (fRhombusMode) {
         const CHDWallet *pw = GetParticlWallet(&wallet);
         if (!pw) {
             return false;

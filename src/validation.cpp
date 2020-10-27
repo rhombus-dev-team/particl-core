@@ -618,7 +618,8 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     size_t& nConflictingSize = ws.m_conflicting_size;
 
     const Consensus::Params &consensus = Params().GetConsensus();
-    state.SetStateInfo(nAcceptTime, ::ChainActive().Height(), consensus, fParticlMode, (fBusyImporting && fSkipRangeproof));
+    state.SetStateInfo(nAcceptTime, ::ChainActive().Height(), consensus, fRhombusMode
+    , (fBusyImporting && fSkipRangeproof));
 
     if (!CheckTransaction(tx, state))
         return false; // state filled in by CheckTransaction
@@ -640,7 +641,8 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     // A transaction with 1 segwit input and 1 P2WPHK output has non-witness size of 82 bytes.
     // Transactions smaller than this are not relayed to mitigate CVE-2017-12842 by not relaying
     // 64-byte transactions.
-    if (::GetSerializeSize(tx, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) < (fParticlMode ? MIN_STANDARD_TX_NONWITNESS_SIZE_PART : MIN_STANDARD_TX_NONWITNESS_SIZE))
+    if (::GetSerializeSize(tx, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) < (fRhombusMode
+     ? MIN_STANDARD_TX_NONWITNESS_SIZE_PART : MIN_STANDARD_TX_NONWITNESS_SIZE))
         return state.Invalid(TxValidationResult::TX_NOT_STANDARD, "tx-size-small");
 
     // Only accept nLockTime-using transactions that can be mined in the next
@@ -1301,7 +1303,8 @@ bool ReadBlockFromDisk(CBlock& block, const FlatFilePos& pos, const Consensus::P
     }
 
     // Check the header
-    if (fParticlMode) {
+    if (fRhombusMode
+    ) {
         // only CheckProofOfWork for genesis blocks
         if (block.hashPrevBlock.IsNull()
             && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams, 0, Params().GetLastImportHeight())) {
@@ -1585,7 +1588,8 @@ bool CChainState::IsInitialBlockDownload() const
     if (m_chain.Tip()->nHeight > COINBASE_MATURITY
         && m_chain.Tip()->GetBlockTime() < (GetTime() - nMaxTipAge))
         return true;
-    if (fParticlMode
+    if (fRhombusMode
+    
         && (GetNumPeers() < 1
             || m_chain.Tip()->nHeight < GetNumBlocksOfPeers()-10))
         return true;
@@ -2040,7 +2044,8 @@ DisconnectResult CChainState::DisconnectBlock(const CBlock& block, const CBlockI
         return DISCONNECT_FAILED;
     }
 
-    if (!fParticlMode) {
+    if (!fRhombusMode
+    ) {
         if (blockUndo.vtxundo.size() + 1 != block.vtx.size()) {
             error("DisconnectBlock(): block and undo data inconsistent");
             return DISCONNECT_FAILED;
@@ -2164,7 +2169,8 @@ DisconnectResult CChainState::DisconnectBlock(const CBlock& block, const CBlockI
         }
 
 
-        if (fParticlMode) {
+        if (fRhombusMode
+        ) {
             // restore inputs
             if (!tx.IsCoinBase()) {
                 if (nVtxundo < 0 || nVtxundo >= (int)blockUndo.vtxundo.size()) {
@@ -2371,7 +2377,8 @@ static bool IsScriptWitnessEnabled(const Consensus::Params& params)
 static unsigned int GetBlockScriptFlags(const CBlockIndex* pindex, const Consensus::Params& consensusparams) EXCLUSIVE_LOCKS_REQUIRED(cs_main) {
     AssertLockHeld(cs_main);
 
-    if (fParticlMode) {
+    if (fRhombusMode
+    ) {
         unsigned int flags = SCRIPT_VERIFY_P2SH;
         flags |= SCRIPT_VERIFY_DERSIG;
         flags |= SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY;
@@ -2447,7 +2454,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
     int64_t nTimeStart = GetTimeMicros();
 
     const Consensus::Params &consensus = Params().GetConsensus();
-    state.SetStateInfo(block.nTime, pindex->nHeight, consensus, fParticlMode, (fBusyImporting && fSkipRangeproof));
+    state.SetStateInfo(block.nTime, pindex->nHeight, consensus, fRhombusMode
+    , (fBusyImporting && fSkipRangeproof));
 
     // Check it again in case a previous version let a bad block in
     // NOTE: We don't currently (re-)invoke ContextualCheckBlock() or
@@ -2492,7 +2500,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
 
     // Special case for the genesis block, skipping connection of its transactions
     // (its coinbase is unspendable)
-    if (!fParticlMode  // genesis coinbase is spendable when in Particl mode
+    if (!fRhombusMode
+      // genesis coinbase is spendable when in Particl mode
         && fIsGenesisBlock) {
         if (!fJustCheck)
             view.SetBestBlock(pindex->GetBlockHash(), pindex->nHeight);
@@ -2545,7 +2554,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
     // Now that the whole chain is irreversibly beyond that time it is applied to all blocks except the
     // two in the chain that violate it. This prevents exploiting the issue against nodes during their
     // initial block download.
-    bool fEnforceBIP30 = fParticlMode || (!((pindex->nHeight==91842 && pindex->GetBlockHash() == uint256S("0x00000000000a4d0a398161ffc163c503763b1f4360639393e0e4c8e300e0caec")) ||
+    bool fEnforceBIP30 = fRhombusMode
+     || (!((pindex->nHeight==91842 && pindex->GetBlockHash() == uint256S("0x00000000000a4d0a398161ffc163c503763b1f4360639393e0e4c8e300e0caec")) ||
                            (pindex->nHeight==91880 && pindex->GetBlockHash() == uint256S("0x00000000000743f190a18c5577a3c2d2a1f610ae9601ac046a38084ccb7cd721"))));
 
     // Once BIP34 activated it was not possible to create new duplicate coinbases and thus other than starting
@@ -2592,7 +2602,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
 
     // Start enforcing BIP68 (sequence locks)
     int nLockTimeFlags = 0;
-    if ((fParticlMode && pindex->pprev) || pindex->nHeight >= chainparams.GetConsensus().CSVHeight) {
+    if ((fRhombusMode
+     && pindex->pprev) || pindex->nHeight >= chainparams.GetConsensus().CSVHeight) {
         nLockTimeFlags |= LOCKTIME_VERIFY_SEQUENCE;
     }
 
@@ -2619,7 +2630,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
     int64_t nAnonIn = 0;
     int64_t nStakeReward = 0;
 
-    blockundo.vtxundo.reserve(block.vtx.size() - (fParticlMode ? 0 : 1));
+    blockundo.vtxundo.reserve(block.vtx.size() - (fRhombusMode
+     ? 0 : 1));
 
     // NOTE: Be careful tracking coin created, block reward is based on nMoneySupply
     CAmount nMoneyCreated = 0;
@@ -2631,7 +2643,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
         nInputs += tx.vin.size();
 
         TxValidationState tx_state;
-        tx_state.SetStateInfo(block.nTime, pindex->nHeight, consensus, fParticlMode, (fBusyImporting && fSkipRangeproof));
+        tx_state.SetStateInfo(block.nTime, pindex->nHeight, consensus, fRhombusMode
+        , (fBusyImporting && fSkipRangeproof));
         if (!tx.IsCoinBase())
         {
             CAmount txfee = 0;
@@ -2861,7 +2874,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
         return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "block-validation-failed");
     }
 
-    if (fParticlMode) {
+    if (fRhombusMode
+    ) {
         if (block.IsProofOfStake()) { // Only the genesis block isn't proof of stake
             CTransactionRef txCoinstake = block.vtx[0];
             CTransactionRef txPrevCoinstake = nullptr;
@@ -2960,7 +2974,8 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
     pindex->nAnonOutputs = view.nLastRCTOutput;
     setDirtyBlockIndex.insert(pindex); // pindex has changed, must save to disk
 
-    if ((!fIsGenesisBlock || fParticlMode)
+    if ((!fIsGenesisBlock || fRhombusMode
+    )
      && !WriteUndoDataForBlock(blockundo, state, pindex, chainparams))
         return false;
 
@@ -3342,7 +3357,8 @@ void UpdateTip(const CBlockIndex* pindexNew, const CChainParams& chainParams)
         // Check the version of the last 100 blocks to see if we need to upgrade:
         for (int i = 0; i < 100 && pindex != nullptr; i++)
         {
-            if (fParticlMode)
+            if (fRhombusMode
+            )
             {
                 if (pindex->nVersion > PARTICL_BLOCK_VERSION)
                     ++nUpgraded;
@@ -4218,18 +4234,21 @@ static bool FindUndoPos(BlockValidationState &state, int nFile, FlatFilePos &pos
 
 static bool CheckBlockHeader(const CBlockHeader& block, BlockValidationState& state, const Consensus::Params& consensusParams, bool fCheckPOW = true)
 {
-    if (fParticlMode
+    if (fRhombusMode
+    
         && !block.IsParticlVersion())
         return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "block-version", "bad block version");
 
     // Check timestamp
-    if (fParticlMode
+    if (fRhombusMode
+    
         && !block.hashPrevBlock.IsNull() // allow genesis block to be created in the future
         && block.GetBlockTime() > FutureDrift(GetAdjustedTime()))
         return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "block-timestamp", "block timestamp too far in the future");
 
     // Check proof of work matches claimed amount
-    if (!fParticlMode
+    if (!fRhombusMode
+    
         && fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
         return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "high-hash", "proof of work failed");
 
@@ -4320,7 +4339,8 @@ bool CheckBlock(const CBlock& block, BlockValidationState& state, const Consensu
     if (!CheckBlockHeader(block, state, consensusParams, fCheckPOW))
         return false;
 
-    state.SetStateInfo(block.nTime, -1, consensusParams, fParticlMode, (fBusyImporting && fSkipRangeproof));
+    state.SetStateInfo(block.nTime, -1, consensusParams, fRhombusMode
+    , (fBusyImporting && fSkipRangeproof));
 
     // Check the merkle root.
     if (fCheckMerkleRoot) {
@@ -4348,7 +4368,8 @@ bool CheckBlock(const CBlock& block, BlockValidationState& state, const Consensu
     if (block.vtx.empty() || block.vtx.size() * WITNESS_SCALE_FACTOR > MAX_BLOCK_WEIGHT || ::GetSerializeSize(block, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) * WITNESS_SCALE_FACTOR > MAX_BLOCK_WEIGHT)
         return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-blk-length", "size limits failed");
 
-    if (fParticlMode) {
+    if (fRhombusMode
+    ) {
         if (!::ChainstateActive().IsInitialBlockDownload()
             && block.vtx[0]->IsCoinStake()
             && !CheckStakeUnique(block)) {
@@ -4397,7 +4418,8 @@ bool CheckBlock(const CBlock& block, BlockValidationState& state, const Consensu
     // Must check for duplicate inputs (see CVE-2018-17144)
     for (const auto& tx : block.vtx) {
         TxValidationState tx_state;
-        tx_state.SetStateInfo(block.nTime, -1, consensusParams, fParticlMode, (fBusyImporting && fSkipRangeproof));
+        tx_state.SetStateInfo(block.nTime, -1, consensusParams, fRhombusMode
+        , (fBusyImporting && fSkipRangeproof));
         if (!CheckTransaction(*tx, tx_state)) {
             // CheckBlock() does context-free validation checks. The only
             // possible failures are consensus failures.
@@ -4422,7 +4444,8 @@ bool CheckBlock(const CBlock& block, BlockValidationState& state, const Consensu
 
 bool IsWitnessEnabled(const CBlockIndex* pindexPrev, const Consensus::Params& params)
 {
-    if (fParticlMode) return true;
+    if (fRhombusMode
+    ) return true;
 
     int height = pindexPrev == nullptr ? 0 : pindexPrev->nHeight + 1;
     return (height >= params.SegwitHeight);
@@ -4463,7 +4486,8 @@ void UpdateUncommittedBlockStructures(CBlock& block, const CBlockIndex* pindexPr
 std::vector<unsigned char> GenerateCoinbaseCommitment(CBlock& block, const CBlockIndex* pindexPrev, const Consensus::Params& consensusParams)
 {
     std::vector<unsigned char> commitment;
-    if (fParticlMode) {
+    if (fRhombusMode
+    ) {
         return commitment;
     }
 
@@ -4563,7 +4587,8 @@ static bool ContextualCheckBlockHeader(const CBlockHeader& block, BlockValidatio
     const int nHeight = pindexPrev == nullptr ? 0 : pindexPrev->nHeight + 1;
     const Consensus::Params& consensusParams = params.GetConsensus();
 
-    if (fParticlMode && pindexPrev) {
+    if (fRhombusMode
+     && pindexPrev) {
         // Check proof-of-stake
         if (block.nBits != GetNextTargetRequired(pindexPrev))
             return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "bad-diffbits-pos", "incorrect proof of stake");
@@ -4618,7 +4643,8 @@ static bool ContextualCheckBlock(const CBlock& block, BlockValidationState& stat
 
     // Start enforcing BIP113 (Median Time Past).
     int nLockTimeFlags = 0;
-    if ((fParticlMode && pindexPrev) || nHeight >= consensusParams.CSVHeight) {
+    if ((fRhombusMode
+     && pindexPrev) || nHeight >= consensusParams.CSVHeight) {
         assert(pindexPrev != nullptr);
         nLockTimeFlags |= LOCKTIME_MEDIAN_TIME_PAST;
     }
@@ -4634,7 +4660,8 @@ static bool ContextualCheckBlock(const CBlock& block, BlockValidationState& stat
         }
     }
 
-    if (fParticlMode) {
+    if (fRhombusMode
+    ) {
         // Enforce rule that the coinbase/coinstake ends with serialized block height
         // genesis block scriptSig size will be different
 
@@ -5067,7 +5094,8 @@ bool BlockManager::AcceptBlockHeader(const CBlockHeader& block, BlockValidationS
     if (hash != chainparams.GetConsensus().hashGenesisBlock) {
         if (miSelf != m_block_index.end()) {
             // Block header is already known.
-            if (fParticlMode && !fRequested && !::ChainstateActive().IsInitialBlockDownload() && state.nodeId >= 0
+            if (fRhombusMode
+             && !fRequested && !::ChainstateActive().IsInitialBlockDownload() && state.nodeId >= 0
                 && !IncDuplicateHeaders(state.nodeId)) {
                 Misbehaving(state.nodeId, 5, "Too many duplicates");
             }
@@ -5142,7 +5170,8 @@ bool BlockManager::AcceptBlockHeader(const CBlockHeader& block, BlockValidationS
     }
     if (pindex == nullptr) {
         bool force_accept = true;
-        if (fParticlMode && !::ChainstateActive().IsInitialBlockDownload() && state.nodeId >= 0) {
+        if (fRhombusMode
+         && !::ChainstateActive().IsInitialBlockDownload() && state.nodeId >= 0) {
             if (!AddNodeHeader(state.nodeId, hash)) {
                 LogPrintf("ERROR: %s: DoS limits\n", __func__);
                 return state.Invalid(BlockValidationResult::DOS_20, "dos-limits");
@@ -5267,7 +5296,8 @@ bool CChainState::AcceptBlock(const std::shared_ptr<const CBlock>& pblock, Block
             || (pindex->pprev->bnStakeModifier.IsNull()
                 && pindex->pprev->GetBlockHash() != chainparams.GetConsensus().hashGenesisBlock)) {
             // Block received out of order
-            if (fParticlMode && !IsInitialBlockDownload()) {
+            if (fRhombusMode
+             && !IsInitialBlockDownload()) {
                 if (pindex->nFlags & BLOCK_DELAYED) {
                     // Block is already delayed
                     state.nFlags |= BLOCK_DELAYED;
@@ -5364,7 +5394,8 @@ bool ProcessNewBlock(const CChainParams& chainparams, const std::shared_ptr<cons
             return true;
         }
         if (!ret) {
-            if (fParticlMode) {
+            if (fRhombusMode
+            ) {
                 // Mark block as invalid to prevent re-requesting from peer.
                 // Block will have been added to the block index in AcceptBlockHeader
                 CBlockIndex *pindex = ::ChainstateActive().m_blockman.AddToBlockIndex(*pblock);
@@ -6689,7 +6720,8 @@ bool LoadMempool(CTxMemPool& pool)
             CBlockIndex* tip = ::ChainActive().Tip();
             assert(tip);
             const Consensus::Params &consensus = Params().GetConsensus();
-            state.SetStateInfo(tip->nTime, tip->nHeight, consensus, fParticlMode, (fBusyImporting && fSkipRangeproof));
+            state.SetStateInfo(tip->nTime, tip->nHeight, consensus, fRhombusMode
+            , (fBusyImporting && fSkipRangeproof));
             if (nTime + nExpiryTimeout > nNow) {
                 LOCK(cs_main);
                 AcceptToMemoryPoolWithTime(chainparams, pool, state, tx, nTime,

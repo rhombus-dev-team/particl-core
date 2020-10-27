@@ -2649,7 +2649,7 @@ static void ParseOutputs(
     const std::string   &category_filter,
     bool                 fWithReward,
     bool                 fBech32,
-    bool                 hide_zero_coinstakes,
+    bool                 hide_zero_coinstakes
 ) EXCLUSIVE_LOCKS_REQUIRED(pwallet->cs_wallet)
 {
     UniValue entry(UniValue::VOBJ);

@@ -106,7 +106,7 @@ static int AppInitRawTx(int argc, char* argv[])
         return EXIT_FAILURE;
     }
 
-    fParticlMode = !gArgs.GetBoolArg("-btcmode", false);
+    fRhombusMode = !gArgs.GetBoolArg("-btcmode", false);
     fCreateBlank = gArgs.GetBoolArg("-create", false);
 
     if (argc < 2 || HelpRequested(gArgs)) {

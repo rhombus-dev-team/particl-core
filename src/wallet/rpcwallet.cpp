@@ -287,7 +287,7 @@ static UniValue getnewaddress(const JSONRPCRequest& request)
         label = LabelFromValue(request.params[0]);
 
     OutputType output_type = pwallet->m_default_address_type;
-    size_t type_ofs = fParticlMode ? 4 : 1;
+    size_t type_ofs = fRhombusMode ? 4 : 1;
     if (!request.params[type_ofs].isNull()) {
         if (!ParseOutputType(request.params[type_ofs].get_str(), output_type)) {
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Unknown address type '%s'", request.params[type_ofs].get_str()));
@@ -1250,7 +1250,7 @@ static UniValue addmultisigaddress(const JSONRPCRequest& request)
     }
 
     OutputType output_type = pwallet->m_default_address_type;
-    size_t type_ofs = fParticlMode ? 5 : 3;
+    size_t type_ofs = fRhombusMode ? 5 : 3;
     if (!request.params[type_ofs].isNull()) {
         if (!ParseOutputType(request.params[type_ofs].get_str(), output_type)) {
             throw JSONRPCError(RPC_INVALID_ADDRESS_OR_KEY, strprintf("Unknown address type '%s'", request.params[type_ofs].get_str()));
@@ -1265,8 +1265,8 @@ static UniValue addmultisigaddress(const JSONRPCRequest& request)
     std::unique_ptr<Descriptor> descriptor = InferDescriptor(GetScriptForDestination(dest), spk_man);
 
     UniValue result(UniValue::VOBJ);
-    bool fbech32 = fParticlMode && request.params.size() > 3 ? request.params[3].get_bool() : false;
-    bool f256Hash = fParticlMode && request.params.size() > 4 ? request.params[4].get_bool() : false;
+    bool fbech32 = fRhombusMode && request.params.size() > 3 ? request.params[3].get_bool() : false;
+    bool f256Hash = fRhombusMode && request.params.size() > 4 ? request.params[4].get_bool() : false;
 
     if (f256Hash) {
         CScriptID256 innerID;
@@ -1659,7 +1659,7 @@ static void ListTransactions(const CWallet* const pwallet, const CWalletTx& wtx,
                 if (wtx.IsImmatureCoinBase()) {
                     entry.pushKV("category", "immature");
                 } else {
-                    entry.pushKV("category", (fParticlMode ? "coinbase" : "generate"));
+                    entry.pushKV("category", (fRhombusMode ? "coinbase" : "generate"));
                 }
             } else {
                 entry.pushKV("category", "receive");
@@ -3536,7 +3536,7 @@ static UniValue unloadwallet(const JSONRPCRequest& request)
         throw JSONRPCError(RPC_MISC_ERROR, "Requested wallet already unloaded");
     }
 
-    if (fParticlMode) {
+    if (fRhombusMode) {
         RestartStakingThreads();
     }
 

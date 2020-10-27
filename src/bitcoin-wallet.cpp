@@ -59,7 +59,7 @@ static bool WalletAppInit(int argc, char* argv[])
         return false;
     }
 
-    fParticlMode = !gArgs.GetBoolArg("-btcmode", false); // qa tests
+    fRhombusMode = !gArgs.GetBoolArg("-btcmode", false); // qa tests
 
     // check for printtoconsole, allow -debug
     LogInstance().m_print_to_console = gArgs.GetBoolArg("-printtoconsole", gArgs.GetBoolArg("-debug", false));
@@ -70,10 +70,10 @@ static bool WalletAppInit(int argc, char* argv[])
     }
     // Check for -testnet or -regtest parameter (Params() calls are only valid after this clause)
     SelectParams(gArgs.GetChainName());
-    if (!fParticlMode) {
+    if (!fRhombusMode) {
         WITNESS_SCALE_FACTOR = WITNESS_SCALE_FACTOR_BTC;
         if (gArgs.GetChainName() == CBaseChainParams::REGTEST) {
-            ResetParams(CBaseChainParams::REGTEST, fParticlMode);
+            ResetParams(CBaseChainParams::REGTEST, fRhombusMode);
         }
     }
 

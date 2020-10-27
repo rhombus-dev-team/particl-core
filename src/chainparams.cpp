@@ -835,11 +835,11 @@ void SetOldParams(std::unique_ptr<CChainParams> &params)
     }
 };
 
-void ResetParams(std::string sNetworkId, bool fParticlModeIn)
+void ResetParams(std::string sNetworkId, bool fRhombusModeIn)
 {
     // Hack to pass old unit tests
     globalChainParams = CreateChainParams(sNetworkId);
-    if (!fParticlModeIn) {
+    if (!fRhombusModeIn) {
         SetOldParams(globalChainParams);
     }
 };

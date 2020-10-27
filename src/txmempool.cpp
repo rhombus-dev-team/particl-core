@@ -871,7 +871,7 @@ void CTxMemPool::check(const CCoinsViewCache *pcoins) const
             if (it2 != mapTx.end()) {
                 const CTransaction& tx2 = it2->GetTx();
 
-                if (fParticlMode)
+                if (fRhombusMode)
                     assert(tx2.vpout.size() > txin.prevout.n && tx2.vpout[txin.prevout.n] != nullptr
                         && (tx2.vpout[txin.prevout.n]->IsStandardOutput() || tx2.vpout[txin.prevout.n]->IsType(OUTPUT_CT)));
                 else

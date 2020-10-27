@@ -95,7 +95,7 @@ struct BasicTestingSetup {
     ECCVerifyHandle globalVerifyHandle;
     NodeContext m_node;
 
-    explicit BasicTestingSetup(const std::string& chainName = CBaseChainParams::MAIN, const std::vector<const char*>& extra_args = {}, bool fParticlModeIn = false);
+    explicit BasicTestingSetup(const std::string& chainName = CBaseChainParams::MAIN, const std::vector<const char*>& extra_args = {}, bool fRhombusModeIn = false);
     ~BasicTestingSetup();
 
 private:
@@ -108,7 +108,7 @@ private:
 struct TestingSetup : public BasicTestingSetup {
     boost::thread_group threadGroup;
 
-    explicit TestingSetup(const std::string& chainName = CBaseChainParams::MAIN, const std::vector<const char*>& extra_args = {}, bool fParticlModeIn = false);
+    explicit TestingSetup(const std::string& chainName = CBaseChainParams::MAIN, const std::vector<const char*>& extra_args = {}, bool fRhombusModeIn = false);
     ~TestingSetup();
 };
 

@@ -836,7 +836,7 @@ public:
           m_location(location),
           database(std::move(database))
     {
-        if (!fParticlMode) {
+        if (!fRhombusMode) {
             m_min_fee = CFeeRate(DEFAULT_TRANSACTION_MINFEE_BTC);
             m_default_max_tx_fee = DEFAULT_TRANSACTION_MAXFEE_BTC;
         }

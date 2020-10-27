@@ -74,7 +74,7 @@ const int64_t nStartupTime = GetTime();
 
 const char * const BITCOIN_CONF_FILENAME = "particl.conf";
 
-bool fParticlMode = true;
+bool fRhombusMode = true;
 ArgsManager gArgs;
 
 /** A map that contains all the currently held directory locks. After
