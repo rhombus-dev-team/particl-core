@@ -80,7 +80,6 @@ prefixes
     tx
 
     version
-    votes               - vector of vote tokens added by time added asc
 
     wkey
     wset                - wallet setting
@@ -186,28 +185,6 @@ public:
     }
 };
 
-class CVoteToken
-{
-public:
-    CVoteToken() {};
-    CVoteToken(uint32_t nToken_, int nStart_, int nEnd_, int64_t nTimeAdded_) :
-        nToken(nToken_), nStart(nStart_), nEnd(nEnd_), nTimeAdded(nTimeAdded_) {};
-
-    uint32_t nToken;
-    int nStart;
-    int nEnd;
-    int64_t nTimeAdded;
-
-    ADD_SERIALIZE_METHODS;
-    template <typename Stream, typename Operation>
-    inline void SerializationOp(Stream &s, Operation ser_action)
-    {
-        READWRITE(nToken);
-        READWRITE(nStart);
-        READWRITE(nEnd);
-        READWRITE(nTimeAdded);
-    }
-};
 
 /** Access to the wallet database */
 class CHDWalletDB : public WalletBatch
@@ -381,9 +358,7 @@ public:
 
     bool WriteAddressBookEntry(const std::string &sKey, const CAddressBookData &data);
     bool EraseAddressBookEntry(const std::string &sKey);
-
-    bool ReadVoteTokens(std::vector<CVoteToken> &vVoteTokens, uint32_t nFlags=DB_READ_UNCOMMITTED);
-    bool WriteVoteTokens(const std::vector<CVoteToken> &vVoteTokens);
+    
 
     bool WriteTxRecord(const uint256 &hash, const CTransactionRecord &rtx);
     bool EraseTxRecord(const uint256 &hash);

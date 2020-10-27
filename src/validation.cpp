@@ -4656,15 +4656,6 @@ static bool ContextualCheckBlock(const CBlock& block, BlockValidationState& stat
                 return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-height", "block height mismatch in coinstake");
             }
 
-            std::vector<uint8_t> &vData = ((CTxOutData*)block.vtx[0]->vpout[0].get())->vData;
-            if (vData.size() > 8 && vData[4] == DO_VOTE) {
-                uint32_t voteToken;
-                memcpy(&voteToken, &vData[5], 4);
-
-                LogPrint(BCLog::HDWALLET, _("Block %d casts vote for option %u of proposal %u.\n").translated.c_str(),
-                    nHeight, voteToken >> 16, voteToken & 0xFFFF);
-            }
-
             // check witness merkleroot, TODO: should witnessmerkleroot be hashed?
             bool malleated = false;
             uint256 hashWitness = BlockWitnessMerkleRoot(block, &malleated);

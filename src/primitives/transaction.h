@@ -47,11 +47,10 @@ enum DataOutputTypes
     DO_NARR_CRYPT           = 2,
     DO_STEALTH              = 3,
     DO_STEALTH_PREFIX       = 4,
-    DO_VOTE                 = 5,
-    DO_FEE                  = 6,
-    DO_FUND_MSG             = 7,
-    DO_SMSG_FEE             = 8,
-    DO_SMSG_DIFFICULTY      = 9,
+    DO_FEE                  = 5,
+    DO_FUND_MSG             = 6,
+    DO_SMSG_FEE             = 7,
+    DO_SMSG_DIFFICULTY      = 8,
 };
 
 bool ExtractCoinStakeInt64(const std::vector<uint8_t> &vData, DataOutputTypes get_type, CAmount &out);

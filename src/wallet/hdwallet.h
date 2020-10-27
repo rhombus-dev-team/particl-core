@@ -114,9 +114,6 @@ public:
 
     bool LoadAddressBook(CHDWalletDB *pwdb);
 
-    bool LoadVoteTokens(CHDWalletDB *pwdb) EXCLUSIVE_LOCKS_REQUIRED(cs_wallet);
-    bool GetVote(int nHeight, uint32_t &token);
-
     bool LoadTxRecords(CHDWalletDB *pwdb);
 
     bool IsLocked() const override;
@@ -510,7 +507,6 @@ public:
     RtxOrdered_t rtxOrdered;
     mutable MapRecords_t mapTempRecords; // Hack for sending unmined inputs through fundrawtransactionfrom
 
-    std::vector<CVoteToken> vVoteTokens;
 
     // Staking Settings
     std::atomic<bool> fStakingEnabled{false};

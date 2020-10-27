@@ -5199,12 +5199,6 @@ Note:  Since the fee is calculated on a per-byte basis, a fee of &quot;100 satos
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location line="+1"/>
-        <source>Block %d casts vote for option %u of proposal %u.
-</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location line="+6"/>
         <source>Copyright (C)</source>
         <translation type="unfinished"></translation>

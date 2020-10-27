@@ -142,7 +142,6 @@ bool CHDWallet::Initialise()
 
         LoadAddressBook(&wdb);
         LoadTxRecords(&wdb);
-        LoadVoteTokens(&wdb);
     }
 
     int rescan_height = 0;
@@ -743,57 +742,6 @@ bool CHDWallet::LoadAddressBook(CHDWalletDB *pwdb)
     pcursor->close();
 
     return true;
-};
-
-bool CHDWallet::LoadVoteTokens(CHDWalletDB *pwdb)
-{
-    LogPrint(BCLog::HDWALLET, "%s Loading vote tokens.\n", GetDisplayName());
-
-    vVoteTokens.clear();
-
-    std::vector<CVoteToken> vVoteTokensRead;
-
-    if (!pwdb->ReadVoteTokens(vVoteTokensRead)) {
-        return false;
-    }
-
-    int nBestHeight = GetLastBlockHeight();
-
-    for (auto &v : vVoteTokensRead) {
-        if (v.nEnd > nBestHeight - 1000) { // 1000 block buffer in case of reorg etc
-            vVoteTokens.push_back(v);
-            if (LogAcceptCategory(BCLog::HDWALLET)) {
-                if ((v.nToken >> 16) < 1
-                    || (v.nToken & 0xFFFF) < 1) {
-                    WalletLogPrintf("Clearing vote from block %d to %d.\n",
-                        v.nStart, v.nEnd);
-                } else {
-                    WalletLogPrintf("Voting for option %u on proposal %u from block %d to %d.\n",
-                        v.nToken >> 16, v.nToken & 0xFFFF, v.nStart, v.nEnd);
-                }
-            }
-        }
-    }
-
-    return true;
-};
-
-bool CHDWallet::GetVote(int nHeight, uint32_t &token)
-{
-    for (auto i = vVoteTokens.rbegin(); i != vVoteTokens.rend(); ++i) {
-        if (i->nEnd < nHeight
-            || i->nStart > nHeight) {
-            continue;
-        }
-        if ((i->nToken >> 16) < 1
-            || (i->nToken & 0xFFFF) < 1) {
-            continue;
-        }
-        token = i->nToken;
-        return true;
-    }
-
-    return false;
 };
 
 bool CHDWallet::LoadTxRecords(CHDWalletDB *pwdb)
@@ -12699,15 +12647,6 @@ bool CHDWallet::CreateCoinStake(unsigned int nBits, int64_t nTime, int nBlockHei
             OUTPUT_PTR<CTxOutData> out0 = MAKE_OUTPUT<CTxOutData>();
             out0->vData.resize(4);
             memcpy(&out0->vData[0], &nBlockHeight, 4);
-
-            uint32_t voteToken = 0;
-            if (GetVote(nBlockHeight, voteToken)) {
-                size_t origSize = out0->vData.size();
-                out0->vData.resize(origSize + 5);
-                out0->vData[origSize] = DO_VOTE;
-                memcpy(&out0->vData[origSize+1], &voteToken, 4);
-            }
-
             txNew.vpout.push_back(out0);
 
             OUTPUT_PTR<CTxOutStandard> out1 = MAKE_OUTPUT<CTxOutStandard>();

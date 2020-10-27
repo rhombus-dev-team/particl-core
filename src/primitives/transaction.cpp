@@ -20,7 +20,7 @@ bool ExtractCoinStakeInt64(const std::vector<uint8_t> &vData, DataOutputTypes ge
     size_t ofs = 4;
     while (ofs < vData.size()) {
         uint8_t current_type = vData[ofs];
-        if (current_type == DO_VOTE || current_type == DO_SMSG_DIFFICULTY) {
+        if (current_type == DO_SMSG_DIFFICULTY) {
             ofs += 5;
         } else
         if (current_type == DO_SMSG_FEE) {
@@ -50,7 +50,7 @@ bool ExtractCoinStakeUint32(const std::vector<uint8_t> &vData, DataOutputTypes g
     size_t ofs = 4;
     while (ofs < vData.size()) {
         uint8_t current_type = vData[ofs];
-        if (current_type == DO_VOTE || current_type == DO_SMSG_DIFFICULTY) {
+        if (current_type == DO_SMSG_DIFFICULTY) {
             if (vData.size() < ofs+5) {
                 return false;
             }
