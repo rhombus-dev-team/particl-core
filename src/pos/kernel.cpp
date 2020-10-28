@@ -166,20 +166,6 @@ bool IsConfirmedInNPrevBlocks(const uint256 &hashBlock, const CBlockIndex *pinde
     return false;
 }
 
-
-static bool CheckAge(const CBlockIndex *pindexTip, const uint256 &hashKernelBlock, int &nDepth)
-{
-    // pindexTip is the current tip of the chain
-    // hashKernelBlock is the hash of the block containing the kernel transaction
-
-    int nRequiredDepth = std::min((int)(Params().GetStakeMinConfirmations()-1), (int)(pindexTip->nHeight / 2));
-
-    if (IsConfirmedInNPrevBlocks(hashKernelBlock, pindexTip, nRequiredDepth, nDepth)) {
-        return false;
-    }
-    return true;
-}
-
 // Check kernel hash target and coinstake signature
 bool CheckProofOfStake(BlockValidationState &state, const CBlockIndex *pindexPrev, const CTransaction &tx, int64_t nTime, unsigned int nBits, uint256 &hashProofOfStake, uint256 &targetProofOfStake)
 {
