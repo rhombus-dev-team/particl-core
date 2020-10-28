@@ -39,10 +39,8 @@ int64_t CChainParams::GetCoinYearReward(int64_t nTime) const
 
 int64_t CChainParams::GetProofOfStakeReward(const CBlockIndex *pindexPrev, int64_t nFees) const
 {
-    int64_t nSubsidy;
-
-    nSubsidy = (pindexPrev->nMoneySupply / COIN) * GetCoinYearReward(pindexPrev->nTime) / (365 * 24 * (60 * 60 / nTargetSpacing));
-
+    // 100 rhom per block, block reward
+    int64_t nSubsidy = 100 * COIN;
     return nSubsidy + nFees;
 };
 
