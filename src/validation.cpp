@@ -3360,7 +3360,7 @@ void UpdateTip(const CBlockIndex* pindexNew, const CChainParams& chainParams)
             if (fRhombusMode
             )
             {
-                if (pindex->nVersion > PARTICL_BLOCK_VERSION)
+                if (pindex->nVersion > RHOMBUS_BLOCK_VERSION)
                     ++nUpgraded;
             } else
             {

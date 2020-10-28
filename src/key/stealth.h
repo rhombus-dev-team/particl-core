@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PARTICL_KEY_STEALTH_H
-#define PARTICL_KEY_STEALTH_H
+#ifndef RHOMBUS_KEY_STEALTH_H
+#define RHOMBUS_KEY_STEALTH_H
 
 #include <stdio.h>
 #include <stdint.h>
@@ -156,5 +156,5 @@ void ECC_Start_Stealth();
 void ECC_Stop_Stealth();
 
 
-#endif  // PARTICL_KEY_STEALTH_H
+#endif  // RHOMBUS_KEY_STEALTH_H
 

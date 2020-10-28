@@ -250,7 +250,7 @@ BASE_SCRIPTS = [
     # Put them in a random line within the section that fits their approximate run-time
 ]
 
-PARTICL_SCRIPTS = [
+RHOMBUS_SCRIPTS = [
     'p2p_part_fork.py',
     'feature_part_pos.py',
     'feature_part_extkey.py',
@@ -277,7 +277,7 @@ PARTICL_SCRIPTS = [
     'wallet_part_segwit_scripts.py',
 ]
 
-PARTICL_SCRIPTS_EXT = [
+RHOMBUS_SCRIPTS_EXT = [
     'feature_part_smsg_multiwallet.py',
     'feature_part_smsg_rollingcache.py',
 ]
@@ -291,7 +291,7 @@ INSIGHT_SCRIPTS = [
 ]
 
 # Place EXTENDED_SCRIPTS first since it has the 3 longest running tests
-ALL_SCRIPTS = EXTENDED_SCRIPTS + BASE_SCRIPTS + PARTICL_SCRIPTS + INSIGHT_SCRIPTS + PARTICL_SCRIPTS_EXT
+ALL_SCRIPTS = EXTENDED_SCRIPTS + BASE_SCRIPTS + RHOMBUS_SCRIPTS + INSIGHT_SCRIPTS + RHOMBUS_SCRIPTS_EXT
 
 NON_SCRIPTS = [
     # These are python files that live in the functional tests directory, but are not test scripts.
@@ -399,13 +399,13 @@ def main():
         if args.extended:
             test_list += EXTENDED_SCRIPTS
         if args.rhombus:
-            test_list += PARTICL_SCRIPTS
+            test_list += RHOMBUS_SCRIPTS
         if args.insight:
             test_list += INSIGHT_SCRIPTS
         if args.bitcoin:
             test_list += BASE_SCRIPTS
         if args.rhombusext:
-            test_list += PARTICL_SCRIPTS_EXT
+            test_list += RHOMBUS_SCRIPTS_EXT
 
     # Remove the test cases that the user has explicitly asked to exclude.
     if args.exclude:

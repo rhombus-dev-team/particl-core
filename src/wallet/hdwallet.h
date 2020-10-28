@@ -2,8 +2,8 @@
 // Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PARTICL_WALLET_HDWALLET_H
-#define PARTICL_WALLET_HDWALLET_H
+#ifndef RHOMBUS_WALLET_HDWALLET_H
+#define RHOMBUS_WALLET_HDWALLET_H
 
 #include <wallet/wallet.h>
 #include <wallet/hdwalletdb.h>
@@ -591,5 +591,5 @@ CHDWallet *GetRhombusWallet(WalletStorage *win);
 const CHDWallet *GetRhombusWallet(const WalletStorage *win);
 
 
-#endif // PARTICL_WALLET_HDWALLET_H
+#endif // RHOMBUS_WALLET_HDWALLET_H
 

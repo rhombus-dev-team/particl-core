@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file license.txt or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PARTICL_ANON_H
-#define PARTICL_ANON_H
+#ifndef RHOMBUS_ANON_H
+#define RHOMBUS_ANON_H
 
 #include <sync.h>
 #include <pubkey.h>
@@ -44,4 +44,4 @@ bool RewindToHeight(int nToHeight, int &nBlocks, std::string &sError) EXCLUSIVE_
 bool RewindRangeProof(const std::vector<uint8_t> &rangeproof, const std::vector<uint8_t> &commitment, const uint256 &nonce,
                       std::vector<uint8_t> &blind_out, CAmount &value_out);
 
-#endif  // PARTICL_ANON_H
+#endif  // RHOMBUS_ANON_H

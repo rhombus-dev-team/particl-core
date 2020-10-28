@@ -25,43 +25,43 @@ BITCOIN_INCLUDES=-I$(builddir) $(BDB_CPPFLAGS) $(BOOST_CPPFLAGS) $(LEVELDB_CPPFL
 BITCOIN_INCLUDES += -I$(srcdir)/secp256k1/include
 BITCOIN_INCLUDES += $(UNIVALUE_CFLAGS)
 
-LIBPARTICL_SERVER=librhombus_server.a
-LIBPARTICL_COMMON=librhombus_common.a
-LIBPARTICL_CONSENSUS=librhombus_consensus.a
-LIBPARTICL_CLI=librhombus_cli.a
-LIBPARTICL_UTIL=librhombus_util.a
-LIBPARTICL_CRYPTO_BASE=crypto/librhombus_crypto_base.a
-LIBPARTICLQT=qt/librhombusqt.a
+LIBRHOMBUS_SERVER=librhombus_server.a
+LIBRHOMBUS_COMMON=librhombus_common.a
+LIBRHOMBUS_CONSENSUS=librhombus_consensus.a
+LIBRHOMBUS_CLI=librhombus_cli.a
+LIBRHOMBUS_UTIL=librhombus_util.a
+LIBRHOMBUS_CRYPTO_BASE=crypto/librhombus_crypto_base.a
+LIBRHOMBUSQT=qt/librhombusqt.a
 LIBSECP256K1=secp256k1/libsecp256k1.la
-LIBPARTICL_SMSG=librhombus_smsg.a
-LIBPARTICL_MNEMONIC=librhombus_mnemonic.a
+LIBRHOMBUS_SMSG=librhombus_smsg.a
+LIBRHOMBUS_MNEMONIC=librhombus_mnemonic.a
 
 if ENABLE_ZMQ
-LIBPARTICL_ZMQ=librhombus_zmq.a
+LIBRHOMBUS_ZMQ=librhombus_zmq.a
 endif
 if BUILD_BITCOIN_LIBS
-LIBPARTICLCONSENSUS=librhombusconsensus.la
+LIBRHOMBUSCONSENSUS=librhombusconsensus.la
 endif
 if ENABLE_WALLET
-LIBPARTICL_WALLET=librhombus_wallet.a
-LIBPARTICL_WALLET_TOOL=librhombus_wallet_tool.a
+LIBRHOMBUS_WALLET=librhombus_wallet.a
+LIBRHOMBUS_WALLET_TOOL=librhombus_wallet_tool.a
 endif
 if ENABLE_USBDEVICE
-LIBPARTICL_USBDEVICE=librhombus_usbdevice.a
+LIBRHOMBUS_USBDEVICE=librhombus_usbdevice.a
 endif
 
-LIBPARTICL_CRYPTO= $(LIBPARTICL_CRYPTO_BASE)
+LIBRHOMBUS_CRYPTO= $(LIBRHOMBUS_CRYPTO_BASE)
 if ENABLE_SSE41
-LIBPARTICL_CRYPTO_SSE41 = crypto/librhombus_crypto_sse41.a
-LIBPARTICL_CRYPTO += $(LIBPARTICL_CRYPTO_SSE41)
+LIBRHOMBUS_CRYPTO_SSE41 = crypto/librhombus_crypto_sse41.a
+LIBRHOMBUS_CRYPTO += $(LIBRHOMBUS_CRYPTO_SSE41)
 endif
 if ENABLE_AVX2
-LIBPARTICL_CRYPTO_AVX2 = crypto/librhombus_crypto_avx2.a
-LIBPARTICL_CRYPTO += $(LIBPARTICL_CRYPTO_AVX2)
+LIBRHOMBUS_CRYPTO_AVX2 = crypto/librhombus_crypto_avx2.a
+LIBRHOMBUS_CRYPTO += $(LIBRHOMBUS_CRYPTO_AVX2)
 endif
 if ENABLE_SHANI
-LIBPARTICL_CRYPTO_SHANI = crypto/librhombus_crypto_shani.a
-LIBPARTICL_CRYPTO += $(LIBPARTICL_CRYPTO_SHANI)
+LIBRHOMBUS_CRYPTO_SHANI = crypto/librhombus_crypto_shani.a
+LIBRHOMBUS_CRYPTO += $(LIBRHOMBUS_CRYPTO_SHANI)
 endif
 
 $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(wildcard secp256k1/include/*)
@@ -70,20 +70,20 @@ $(LIBSECP256K1): $(wildcard secp256k1/src/*.h) $(wildcard secp256k1/src/*.c) $(w
 # Make is not made aware of per-object dependencies to avoid limiting building parallelization
 # But to build the less dependent modules first, we manually select their order here:
 EXTRA_LIBRARIES += \
-  $(LIBPARTICL_CRYPTO) \
-  $(LIBPARTICL_UTIL) \
-  $(LIBPARTICL_COMMON) \
-  $(LIBPARTICL_CONSENSUS) \
-  $(LIBPARTICL_SERVER) \
-  $(LIBPARTICL_CLI) \
-  $(LIBPARTICL_WALLET) \
-  $(LIBPARTICL_WALLET_TOOL) \
-  $(LIBPARTICL_USBDEVICE) \
-  $(LIBPARTICL_SMSG) \
-  $(LIBPARTICL_MNEMONIC) \
-  $(LIBPARTICL_ZMQ)
+  $(LIBRHOMBUS_CRYPTO) \
+  $(LIBRHOMBUS_UTIL) \
+  $(LIBRHOMBUS_COMMON) \
+  $(LIBRHOMBUS_CONSENSUS) \
+  $(LIBRHOMBUS_SERVER) \
+  $(LIBRHOMBUS_CLI) \
+  $(LIBRHOMBUS_WALLET) \
+  $(LIBRHOMBUS_WALLET_TOOL) \
+  $(LIBRHOMBUS_USBDEVICE) \
+  $(LIBRHOMBUS_SMSG) \
+  $(LIBRHOMBUS_MNEMONIC) \
+  $(LIBRHOMBUS_ZMQ)
 
-lib_LTLIBRARIES = $(LIBPARTICLCONSENSUS)
+lib_LTLIBRARIES = $(LIBRHOMBUSCONSENSUS)
 
 bin_PROGRAMS =
 noinst_PROGRAMS =
@@ -693,21 +693,21 @@ endif
 # Libraries below may be listed more than once to resolve circular dependencies (see
 # https://eli.thegreenplace.net/2013/07/09/library-order-in-static-linking#circular-dependency)
 rhombusd_LDADD = \
-  $(LIBPARTICL_SERVER) \
-  $(LIBPARTICL_WALLET) \
-  $(LIBPARTICL_COMMON) \
+  $(LIBRHOMBUS_SERVER) \
+  $(LIBRHOMBUS_WALLET) \
+  $(LIBRHOMBUS_COMMON) \
   $(LIBUNIVALUE) \
-  $(LIBPARTICL_UTIL) \
-  $(LIBPARTICL_ZMQ) \
-  $(LIBPARTICL_CONSENSUS) \
-  $(LIBPARTICL_CRYPTO) \
+  $(LIBRHOMBUS_UTIL) \
+  $(LIBRHOMBUS_ZMQ) \
+  $(LIBRHOMBUS_CONSENSUS) \
+  $(LIBRHOMBUS_CRYPTO) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \
   $(LIBSECP256K1) \
-  $(LIBPARTICL_SMSG) \
-  $(LIBPARTICL_MNEMONIC) \
-  $(LIBPARTICL_USBDEVICE)
+  $(LIBRHOMBUS_SMSG) \
+  $(LIBRHOMBUS_MNEMONIC) \
+  $(LIBRHOMBUS_USBDEVICE)
 
 rhombusd_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS)
 if ENABLE_USBDEVICE
@@ -726,10 +726,10 @@ rhombus_cli_SOURCES += bitcoin-cli-res.rc
 endif
 
 rhombus_cli_LDADD = \
-  $(LIBPARTICL_CLI) \
+  $(LIBRHOMBUS_CLI) \
   $(LIBUNIVALUE) \
-  $(LIBPARTICL_UTIL) \
-  $(LIBPARTICL_CRYPTO)
+  $(LIBRHOMBUS_UTIL) \
+  $(LIBRHOMBUS_CRYPTO)
 
 rhombus_cli_LDADD += $(BOOST_LIBS) $(EVENT_LIBS)
 #
@@ -746,10 +746,10 @@ endif
 
 rhombus_tx_LDADD = \
   $(LIBUNIVALUE) \
-  $(LIBPARTICL_COMMON) \
-  $(LIBPARTICL_UTIL) \
-  $(LIBPARTICL_CONSENSUS) \
-  $(LIBPARTICL_CRYPTO) \
+  $(LIBRHOMBUS_COMMON) \
+  $(LIBRHOMBUS_UTIL) \
+  $(LIBRHOMBUS_CONSENSUS) \
+  $(LIBRHOMBUS_CRYPTO) \
   $(LIBSECP256K1)
 
 rhombus_tx_LDADD += $(BOOST_LIBS)
@@ -767,17 +767,17 @@ endif
 
 
 rhombus_wallet_LDADD = \
-  $(LIBPARTICL_WALLET_TOOL) \
-  $(LIBPARTICL_WALLET) \
-  $(LIBPARTICL_SERVER) \
-  $(LIBPARTICL_COMMON) \
-  $(LIBPARTICL_CONSENSUS) \
-  $(LIBPARTICL_UTIL) \
-  $(LIBPARTICL_CRYPTO) \
-  $(LIBPARTICL_SMSG) \
-  $(LIBPARTICL_MNEMONIC) \
-  $(LIBPARTICL_USBDEVICE) \
-  $(LIBPARTICL_ZMQ) \
+  $(LIBRHOMBUS_WALLET_TOOL) \
+  $(LIBRHOMBUS_WALLET) \
+  $(LIBRHOMBUS_SERVER) \
+  $(LIBRHOMBUS_COMMON) \
+  $(LIBRHOMBUS_CONSENSUS) \
+  $(LIBRHOMBUS_UTIL) \
+  $(LIBRHOMBUS_CRYPTO) \
+  $(LIBRHOMBUS_SMSG) \
+  $(LIBRHOMBUS_MNEMONIC) \
+  $(LIBRHOMBUS_USBDEVICE) \
+  $(LIBRHOMBUS_ZMQ) \
   $(LIBLEVELDB) \
   $(LIBLEVELDB_SSE42) \
   $(LIBMEMENV) \

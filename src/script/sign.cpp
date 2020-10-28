@@ -507,12 +507,12 @@ public:
     DummySignatureCheckerRhombus() : DummySignatureChecker() {}
     bool IsRhombusVersion() const override { return true; }
 };
-const DummySignatureCheckerRhombus DUMMY_CHECKER_PARTICL;
+const DummySignatureCheckerRhombus DUMMY_CHECKER_RHOMBUS;
 
 class DummySignatureCreatorRhombus : public DummySignatureCreator {
 public:
     DummySignatureCreatorRhombus() : DummySignatureCreator(33, 32) {}
-    const BaseSignatureChecker& Checker() const override { return DUMMY_CHECKER_PARTICL; }
+    const BaseSignatureChecker& Checker() const override { return DUMMY_CHECKER_RHOMBUS; }
     bool IsRhombusVersion() const override { return true; }
 };
 
@@ -531,7 +531,7 @@ bool LookupHelper(const M& map, const K& key, V& value)
 
 const BaseSignatureCreator& DUMMY_SIGNATURE_CREATOR = DummySignatureCreator(32, 32);
 const BaseSignatureCreator& DUMMY_MAXIMUM_SIGNATURE_CREATOR = DummySignatureCreator(33, 32);
-const BaseSignatureCreator& DUMMY_SIGNATURE_CREATOR_PARTICL = DummySignatureCreatorRhombus();
+const BaseSignatureCreator& DUMMY_SIGNATURE_CREATOR_RHOMBUS = DummySignatureCreatorRhombus();
 
 bool IsSolvable(const SigningProvider& provider, const CScript& script)
 {

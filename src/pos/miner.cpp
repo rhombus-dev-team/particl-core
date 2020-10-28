@@ -150,7 +150,7 @@ bool ImportOutputs(CBlockTemplate *pblocktemplate, int nHeight)
     }
 
     CMutableTransaction txn;
-    txn.nVersion = PARTICL_TXN_VERSION;
+    txn.nVersion = RHOMBUS_TXN_VERSION;
     txn.SetType(TXN_COINBASE);
     txn.nLockTime = 0;
     txn.vin.push_back(CTxIn()); // null prevout

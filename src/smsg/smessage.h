@@ -3,8 +3,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PARTICL_SMSG_SMESSAGE_H
-#define PARTICL_SMSG_SMESSAGE_H
+#ifndef RHOMBUS_SMSG_SMESSAGE_H
+#define RHOMBUS_SMSG_SMESSAGE_H
 
 #include <sync.h>
 #include <key_io.h>
@@ -518,5 +518,5 @@ double GetDifficulty(uint32_t compact);
 
 extern smsg::CSMSG smsgModule;
 
-#endif // PARTICL_SMSG_SMESSAGE_H
+#endif // RHOMBUS_SMSG_SMESSAGE_H
 

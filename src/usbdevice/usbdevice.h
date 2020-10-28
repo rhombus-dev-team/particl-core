@@ -2,8 +2,8 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef PARTICL_USBDEVICE_USBDEVICE_H
-#define PARTICL_USBDEVICE_USBDEVICE_H
+#ifndef RHOMBUS_USBDEVICE_USBDEVICE_H
+#define RHOMBUS_USBDEVICE_USBDEVICE_H
 
 #include <string.h>
 #include <assert.h>
@@ -176,5 +176,5 @@ public:
 
 } // usb_device
 
-#endif // PARTICL_USBDEVICE_USBDEVICE_H
+#endif // RHOMBUS_USBDEVICE_USBDEVICE_H
 
