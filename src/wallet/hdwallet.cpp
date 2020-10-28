@@ -109,17 +109,17 @@ int CHDWallet::FreeExtKeyMaps()
 
 void CHDWallet::AddOptions()
 {
-    gArgs.AddArg("-defaultlookaheadsize=<n>", strprintf("Number of keys to load into the lookahead pool per chain. (default: %u)", DEFAULT_LOOKAHEAD_SIZE), ArgsManager::ALLOW_ANY, OptionsCategory::PART_WALLET);
-    gArgs.AddArg("-stealthv1lookaheadsize=<n>", strprintf("Number of V1 stealth keys to look ahead during a rescan. (default: %u)", DEFAULT_STEALTH_LOOKAHEAD_SIZE), ArgsManager::ALLOW_ANY, OptionsCategory::PART_WALLET);
-    gArgs.AddArg("-stealthv2lookaheadsize=<n>", strprintf("Number of V2 stealth keys to look ahead during a rescan. (default: %u)", DEFAULT_STEALTH_LOOKAHEAD_SIZE), ArgsManager::ALLOW_ANY, OptionsCategory::PART_WALLET);
-    gArgs.AddArg("-extkeysaveancestors", strprintf("On saving a key from the lookahead pool, save all unsaved keys leading up to it too. (default: %s)", "true"), ArgsManager::ALLOW_ANY, OptionsCategory::PART_WALLET);
-    gArgs.AddArg("-createdefaultmasterkey", strprintf("Generate a random master key and main account if no master key exists. (default: %s)", "false"), ArgsManager::ALLOW_ANY, OptionsCategory::PART_WALLET);
+    gArgs.AddArg("-defaultlookaheadsize=<n>", strprintf("Number of keys to load into the lookahead pool per chain. (default: %u)", DEFAULT_LOOKAHEAD_SIZE), ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_WALLET);
+    gArgs.AddArg("-stealthv1lookaheadsize=<n>", strprintf("Number of V1 stealth keys to look ahead during a rescan. (default: %u)", DEFAULT_STEALTH_LOOKAHEAD_SIZE), ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_WALLET);
+    gArgs.AddArg("-stealthv2lookaheadsize=<n>", strprintf("Number of V2 stealth keys to look ahead during a rescan. (default: %u)", DEFAULT_STEALTH_LOOKAHEAD_SIZE), ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_WALLET);
+    gArgs.AddArg("-extkeysaveancestors", strprintf("On saving a key from the lookahead pool, save all unsaved keys leading up to it too. (default: %s)", "true"), ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_WALLET);
+    gArgs.AddArg("-createdefaultmasterkey", strprintf("Generate a random master key and main account if no master key exists. (default: %s)", "false"), ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_WALLET);
 
-    gArgs.AddArg("-staking", "Stake your coins to support network and gain reward (default: true)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
-    gArgs.AddArg("-stakingthreads", "Number of threads to start for staking, max 1 per active wallet, will divide wallets evenly between threads (default: 1)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
-    gArgs.AddArg("-minstakeinterval=<n>", "Minimum time in seconds between successful stakes (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
-    gArgs.AddArg("-minersleep=<n>", "Milliseconds between stake attempts. Lowering this param will not result in more stakes. (default: 500)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
-    gArgs.AddArg("-reservebalance=<amount>", "Ensure available balance remains above reservebalance. (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::PART_STAKING);
+    gArgs.AddArg("-staking", "Stake your coins to support network and gain reward (default: true)", ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_STAKING);
+    gArgs.AddArg("-stakingthreads", "Number of threads to start for staking, max 1 per active wallet, will divide wallets evenly between threads (default: 1)", ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_STAKING);
+    gArgs.AddArg("-minstakeinterval=<n>", "Minimum time in seconds between successful stakes (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_STAKING);
+    gArgs.AddArg("-minersleep=<n>", "Milliseconds between stake attempts. Lowering this param will not result in more stakes. (default: 500)", ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_STAKING);
+    gArgs.AddArg("-reservebalance=<amount>", "Ensure available balance remains above reservebalance. (default: 0)", ArgsManager::ALLOW_ANY, OptionsCategory::RHOM_STAKING);
 
     return;
 };
@@ -6487,12 +6487,12 @@ int CHDWallet::ExtKeyEncryptAll(CHDWalletDB *pwdb, const CKeyingMaterial &vMKey)
     size_t nKeys = 0;
 
     uint32_t fFlags = DB_SET_RANGE;
-    ssKey << std::string(DBKeys::PART_EXTKEY);
+    ssKey << std::string(DBKeys::RHOM_EXTKEY);
     while (pwdb->ReadAtCursor(pcursor, ssKey, ssValue, fFlags) == 0) {
         fFlags = DB_NEXT;
 
         ssKey >> strType;
-        if (strType != DBKeys::PART_EXTKEY) {
+        if (strType != DBKeys::RHOM_EXTKEY) {
             break;
         }
 
@@ -6729,12 +6729,12 @@ int CHDWallet::ExtKeyLoadAccounts()
     std::string strType;
 
     unsigned int fFlags = DB_SET_RANGE;
-    ssKey << std::string(DBKeys::PART_EXTACC);
+    ssKey << std::string(DBKeys::RHOM_EXTACC);
     while (wdb.ReadAtCursor(pcursor, ssKey, ssValue, fFlags) == 0) {
         fFlags = DB_NEXT;
 
         ssKey >> strType;
-        if (strType != DBKeys::PART_EXTACC) {
+        if (strType != DBKeys::RHOM_EXTACC) {
             break;
         }
 
@@ -6934,14 +6934,14 @@ int CHDWallet::ExtKeyLoadAccountPacks()
 
     size_t nStealthKeys = 0;
     ssKey.clear();
-    ssKey << std::string(DBKeys::PART_SXADDRKEYPACK);
+    ssKey << std::string(DBKeys::RHOM_SXADDRKEYPACK);
     fFlags = DB_SET_RANGE;
     while (wdb.ReadAtCursor(pcursor, ssKey, ssValue, fFlags) == 0) {
         aksPak.clear();
         fFlags = DB_NEXT;
 
         ssKey >> strType;
-        if (strType != DBKeys::PART_SXADDRKEYPACK) {
+        if (strType != DBKeys::RHOM_SXADDRKEYPACK) {
             break;
         }
 
@@ -8505,12 +8505,12 @@ int CHDWallet::LoadStealthAddresses()
     std::string strType;
 
     unsigned int fFlags = DB_SET_RANGE;
-    ssKey << std::string(DBKeys::PART_SXADDR);
+    ssKey << std::string(DBKeys::RHOM_SXADDR);
     while (wdb.ReadAtCursor(pcursor, ssKey, ssValue, fFlags) == 0) {
         fFlags = DB_NEXT;
 
         ssKey >> strType;
-        if (strType != DBKeys::PART_SXADDR) {
+        if (strType != DBKeys::RHOM_SXADDR) {
             break;
         }
 
@@ -12957,13 +12957,13 @@ int LoopExtKeysInDB(CHDWallet *pwallet, bool fInactive, bool fInAccount, LoopExt
     std::string strType;
 
     uint32_t fFlags = DB_SET_RANGE;
-    ssKey << std::string(DBKeys::PART_EXTKEY);
+    ssKey << std::string(DBKeys::RHOM_EXTKEY);
 
     while (wdb.ReadAtCursor(pcursor, ssKey, ssValue, fFlags) == 0) {
         fFlags = DB_NEXT;
 
         ssKey >> strType;
-        if (strType != DBKeys::PART_EXTKEY) {
+        if (strType != DBKeys::RHOM_EXTKEY) {
             break;
         }
 
@@ -12999,13 +12999,13 @@ int LoopExtAccountsInDB(CHDWallet *pwallet, bool fInactive, LoopExtKeyCallback &
     std::string strType, sError;
 
     uint32_t fFlags = DB_SET_RANGE;
-    ssKey << std::string(DBKeys::PART_EXTACC);
+    ssKey << std::string(DBKeys::RHOM_EXTACC);
 
     while (wdb.ReadAtCursor(pcursor, ssKey, ssValue, fFlags) == 0) {
         fFlags = DB_NEXT;
 
         ssKey >> strType;
-        if (strType != DBKeys::PART_EXTACC) {
+        if (strType != DBKeys::RHOM_EXTACC) {
             break;
         }
 

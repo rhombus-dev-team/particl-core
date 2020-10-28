@@ -494,10 +494,10 @@ std::string ArgsManager::GetHelpMessage() const
             case OptionsCategory::SMSG:
                 usage += HelpMessageGroup("SMSG Commands:");
                 break;
-            case OptionsCategory::PART_WALLET:
+            case OptionsCategory::RHOM_WALLET:
                 usage += HelpMessageGroup("Rhombus wallet Commands:");
                 break;
-            case OptionsCategory::PART_STAKING:
+            case OptionsCategory::RHOM_STAKING:
                 usage += HelpMessageGroup("Staking Commands:");
                 break;
             default:
@@ -1146,9 +1146,9 @@ int GetNumCores()
 std::string CopyrightHolders(const std::string& strPrefix)
 {
     const int BTC_START_YEAR = 2009;
-    const int PART_START_YEAR = 2017;
+    const int RHOM_START_YEAR = 2017;
 
-    std::string sRange = strprintf(" %i-%i ", PART_START_YEAR, COPYRIGHT_YEAR);
+    std::string sRange = strprintf(" %i-%i ", RHOM_START_YEAR, COPYRIGHT_YEAR);
     const auto copyright_devs = strprintf(_(COPYRIGHT_HOLDERS).translated, COPYRIGHT_HOLDERS_SUBSTITUTION);
     std::string strCopyrightHolders = strPrefix + sRange + copyright_devs;
 

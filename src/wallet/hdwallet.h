@@ -16,7 +16,7 @@
 static const size_t DEFAULT_STEALTH_LOOKAHEAD_SIZE = 5;
 
 //! -fallbackfee default
-static const CAmount DEFAULT_FALLBACK_FEE_PART = 20000;
+static const CAmount DEFAULT_FALLBACK_FEE_RHOM = 20000;
 
 typedef std::map<CKeyID, CStealthKeyMetadata> StealthKeyMetaMap;
 typedef std::map<CKeyID, CExtKeyAccount*> ExtKeyAccountMap;
@@ -77,7 +77,7 @@ public:
     CHDWallet(interfaces::Chain* chain, const WalletLocation& location, std::unique_ptr<WalletDatabase> dbw_in) : CWallet(chain, location, std::move(dbw_in))
     {
         m_default_address_type = OutputType::LEGACY; // In Rhombus segwit is enabled for all types
-        m_fallback_fee = CFeeRate(DEFAULT_FALLBACK_FEE_PART);
+        m_fallback_fee = CFeeRate(DEFAULT_FALLBACK_FEE_RHOM);
     }
 
     ~CHDWallet()

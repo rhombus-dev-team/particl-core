@@ -642,7 +642,7 @@ bool MemPoolAccept::PreChecks(ATMPArgs& args, Workspace& ws)
     // Transactions smaller than this are not relayed to mitigate CVE-2017-12842 by not relaying
     // 64-byte transactions.
     if (::GetSerializeSize(tx, PROTOCOL_VERSION | SERIALIZE_TRANSACTION_NO_WITNESS) < (fRhombusMode
-     ? MIN_STANDARD_TX_NONWITNESS_SIZE_PART : MIN_STANDARD_TX_NONWITNESS_SIZE))
+     ? MIN_STANDARD_TX_NONWITNESS_SIZE_RHOM : MIN_STANDARD_TX_NONWITNESS_SIZE))
         return state.Invalid(TxValidationResult::TX_NOT_STANDARD, "tx-size-small");
 
     // Only accept nLockTime-using transactions that can be mined in the next

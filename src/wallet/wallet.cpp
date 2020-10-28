@@ -3701,7 +3701,7 @@ void CWallet::UnlockAllCoins()
     setLockedCoins.clear();
 
     WalletBatch batch(*database);
-    batch.EraseAllByPrefix(DBKeys::PART_LOCKEDUTXO);
+    batch.EraseAllByPrefix(DBKeys::RHOM_LOCKEDUTXO);
 }
 
 bool CWallet::IsLockedCoin(uint256 hash, unsigned int n) const
