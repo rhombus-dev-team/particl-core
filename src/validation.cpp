@@ -2939,6 +2939,11 @@ bool CChainState::ConnectBlock(const CBlock& block, BlockValidationState& state,
                 }
             }
 
+             if (nStakeReward < 0 || nStakeReward > nCalculatedStakeReward) {
+                LogPrintf("ERROR: %s: Coinstake pays too much(actual=%d vs calculated=%d)\n", __func__, nStakeReward, nCalculatedStakeReward);
+                return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-amount");
+            }
+
             if (pindex->pprev->nHeight > 0) { // Genesis block is pow
                 if (!txPrevCoinstake
                     && !coinStakeCache.GetCoinStake(pindex->pprev->GetBlockHash(), txPrevCoinstake)) {
