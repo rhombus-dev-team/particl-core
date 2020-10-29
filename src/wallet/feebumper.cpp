@@ -228,7 +228,7 @@ Result CreateTotalBumpTransaction(const CWallet* wallet, const uint256& txid, co
     if (!IsRhombusWallet(wallet)) {
         return Result::WALLET_ERROR;
     }
-    const CHDWallet Rhombus(wallet);
+    const CHDWallet *pw = GetRhombusWallet(wallet);
     auto it = wallet->mapWallet.find(txid);
     if (it != wallet->mapWallet.end()) {
         const CWalletTx& wtx = it->second;

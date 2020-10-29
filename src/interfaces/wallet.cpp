@@ -725,7 +725,7 @@ public:
         return m_wallet_part->GetAvailableBlindBalance(&coin_control);
     }
 
-    CHDWallet *GetRhombusWallet() override
+    CHDWallet *getRhombusWallet() override
     {
         return m_wallet_part;
     }

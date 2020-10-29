@@ -324,7 +324,7 @@ public:
 
     virtual CAmount getAvailableAnonBalance(const CCoinControl& coin_control) = 0;
     virtual CAmount getAvailableBlindBalance(const CCoinControl& coin_control) = 0;
-    virtual CHDWallet *GetRhombusWallet() = 0;
+    virtual CHDWallet *getRhombusWallet() = 0;
     virtual bool setReserveBalance(CAmount nValue) = 0;
     virtual void lockWallet() = 0;
     virtual bool setUnlockedForStaking() = 0;
