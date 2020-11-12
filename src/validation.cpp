@@ -1303,14 +1303,8 @@ bool ReadBlockFromDisk(CBlock& block, const FlatFilePos& pos, const Consensus::P
     }
 
     // Check the header
-    if (fRhombusMode
+    if (!fRhombusMode
     ) {
-        // only CheckProofOfWork for genesis blocks
-        if (block.hashPrevBlock.IsNull()
-            && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams, 0, Params().GetLastImportHeight())) {
-            return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
-        }
-    } else {
         if (!CheckProofOfWork(block.GetHash(), block.nBits, consensusParams))
             return error("ReadBlockFromDisk: Errors in block header at %s", pos.ToString());
     }
@@ -4528,23 +4522,9 @@ unsigned int GetNextTargetRequired(const CBlockIndex *pindexLast)
 
     arith_uint256 bnProofOfWorkLimit;
     unsigned int nProofOfWorkLimit;
-    int nHeight = pindexLast ? pindexLast->nHeight+1 : 0;
 
-    if (nHeight < (int)Params().GetLastImportHeight()) {
-        if (nHeight == 0) {
-            return arith_uint256("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff").GetCompact();
-        }
-        int nLastImportHeight = (int) Params().GetLastImportHeight();
-        arith_uint256 nMaxProofOfWorkLimit = arith_uint256("000000000008ffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        arith_uint256 nMinProofOfWorkLimit = UintToArith256(consensus.powLimit);
-        arith_uint256 nStep = (nMaxProofOfWorkLimit - nMinProofOfWorkLimit) / nLastImportHeight;
-
-        bnProofOfWorkLimit = nMaxProofOfWorkLimit - (nStep * nHeight);
-        nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
-    } else {
-        bnProofOfWorkLimit = UintToArith256(consensus.powLimit);
-        nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
-    }
+    bnProofOfWorkLimit = UintToArith256(consensus.powLimit);
+    nProofOfWorkLimit = bnProofOfWorkLimit.GetCompact();
 
     if (pindexLast == nullptr)
         return nProofOfWorkLimit; // Genesis block
@@ -4716,7 +4696,7 @@ static bool ContextualCheckBlock(const CBlock& block, BlockValidationState& stat
             }
         } else {
             bool fCheckPOW = true; // TODO: pass properly
-            if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams, nHeight, Params().GetLastImportHeight()))
+            if (fCheckPOW && !CheckProofOfWork(block.GetHash(), block.nBits, consensusParams, nHeight, 0 ))
                 return state.Invalid(BlockValidationResult::BLOCK_INVALID_HEADER, "high-hash", "proof of work failed");
 
             // Enforce rule that the coinbase/ ends with serialized block height
@@ -4733,25 +4713,11 @@ static bool ContextualCheckBlock(const CBlock& block, BlockValidationState& stat
         if (nHeight > 0 && !block.vtx[0]->IsCoinStake()) { // only genesis block can start with coinbase
             return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cs-missing", "first tx is not coinstake");
         }
-
-        if (nHeight > 0 // skip genesis
-            && Params().GetLastImportHeight() >= (uint32_t)nHeight) {
-            // 2nd txn must be coinbase
-            if (block.vtx.size() < 2 || !block.vtx[1]->IsCoinBase()) {
-                return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cb", "Second txn of import block must be coinbase");
-            }
-
-            // Check hash of genesis import txn matches expected hash.
-            uint256 txnHash = block.vtx[1]->GetHash();
-            if (!Params().CheckImportCoinbase(nHeight, txnHash)) {
-                return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cb", "Incorrect outputs hash.");
-            }
-        } else {
-            // 2nd txn can't be coinbase if block height > GetLastImportHeight
-            if (block.vtx.size() > 1 && block.vtx[1]->IsCoinBase()) {
+        
+       if (nHeight == 0)
+            if (block.vtx.size() > 1 && block.vtx[1]->IsCoinBase())
                 return state.Invalid(BlockValidationResult::BLOCK_CONSENSUS, "bad-cb-multiple", "unexpected coinbase");
-            }
-        }
+        // }
     } else {
         if (nHeight >= consensusParams.BIP34Height)
         {
