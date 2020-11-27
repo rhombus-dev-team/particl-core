@@ -4914,7 +4914,7 @@ static const char *TypeToWord(OutputTypes type)
     switch (type)
     {
         case OUTPUT_STANDARD:
-            return "part";
+            return "rhom";
         case OUTPUT_CT:
             return "blind";
         case OUTPUT_RINGCT:
@@ -4927,7 +4927,7 @@ static const char *TypeToWord(OutputTypes type)
 
 static OutputTypes WordToType(std::string &s)
 {
-    if (s == "part")
+    if (s == "rhom")
         return OUTPUT_STANDARD;
     if (s == "blind")
         return OUTPUT_CT;
@@ -4949,7 +4949,7 @@ static std::string SendHelp(CHDWallet *pwallet, OutputTypes typeIn, OutputTypes 
 
     rv += "\nSend an amount of ";
     rv += typeIn == OUTPUT_RINGCT ? "anon" : typeIn == OUTPUT_CT ? "blinded" : "";
-    rv += std::string(" part in a") + (typeOut == OUTPUT_RINGCT || typeOut == OUTPUT_CT ? " blinded" : "") + " payment to a given address"
+    rv += std::string(" rhom in a") + (typeOut == OUTPUT_RINGCT || typeOut == OUTPUT_CT ? " blinded" : "") + " payment to a given address"
         + (typeOut == OUTPUT_CT ? " in anon part": "") + ".\n";
 
     rv += HELP_REQUIRING_PASSPHRASE;
@@ -4981,7 +4981,7 @@ static std::string SendHelp(CHDWallet *pwallet, OutputTypes typeIn, OutputTypes 
     return rv;
 };
 
-static UniValue sendparttoblind(const JSONRPCRequest &request)
+static UniValue sendrhomtoblind(const JSONRPCRequest &request)
 {
     std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
     CHDWallet *const pwallet = GetRhombusWallet(wallet.get());
@@ -4993,7 +4993,7 @@ static UniValue sendparttoblind(const JSONRPCRequest &request)
     return SendToInner(request, OUTPUT_STANDARD, OUTPUT_CT);
 };
 
-static UniValue sendparttoanon(const JSONRPCRequest &request)
+static UniValue sendrhomtoanon(const JSONRPCRequest &request)
 {
     std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
     CHDWallet *const pwallet = GetRhombusWallet(wallet.get());
@@ -5006,7 +5006,7 @@ static UniValue sendparttoanon(const JSONRPCRequest &request)
 };
 
 
-static UniValue sendblindtopart(const JSONRPCRequest &request)
+static UniValue sendblindtorhom(const JSONRPCRequest &request)
 {
     std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
     CHDWallet *const pwallet = GetRhombusWallet(wallet.get());
@@ -5043,7 +5043,7 @@ static UniValue sendblindtoanon(const JSONRPCRequest &request)
 };
 
 
-static UniValue sendanontopart(const JSONRPCRequest &request)
+static UniValue sendanontorhom(const JSONRPCRequest &request)
 {
     std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
     CHDWallet *const pwallet = GetRhombusWallet(wallet.get());
@@ -5086,11 +5086,11 @@ UniValue sendtypeto(const JSONRPCRequest &request)
     if (!EnsureWalletIsAvailable(pwallet, request.fHelp))
         return NullUniValue;
             RPCHelpMan{"sendtypeto",
-                "\nSend part to multiple outputs." +
+                "\nSend rhom to multiple outputs." +
                 HELP_REQUIRING_PASSPHRASE,
                 {
-                    {"typein", RPCArg::Type::STR, RPCArg::Optional::NO, "part/blind/anon"},
-                    {"typeout", RPCArg::Type::STR, RPCArg::Optional::NO, "part/blind/anon"},
+                    {"typein", RPCArg::Type::STR, RPCArg::Optional::NO, "rhom/blind/anon"},
+                    {"typeout", RPCArg::Type::STR, RPCArg::Optional::NO, "rhom/blind/anon"},
                     {"outputs", RPCArg::Type::ARR, RPCArg::Optional::NO, "A json array of json objects",
                         {
                             {"", RPCArg::Type::OBJ, RPCArg::Optional::NO, "",
@@ -5144,7 +5144,7 @@ UniValue sendtypeto(const JSONRPCRequest &request)
                     RPCResult::Type::STR_HEX, "", "The transaction id",
                 },
                 RPCExamples{
-            HelpExampleCli("sendtypeto", "anon part \"[{\\\"address\\\":\\\"PbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR\\\",\\\"amount\\\":0.1}]\"")
+            HelpExampleCli("sendtypeto", "anon rhom \"[{\\\"address\\\":\\\"RbpVcjgYatnkKgveaeqhkeQBFwjqR7jKBR\\\",\\\"amount\\\":0.1}]\"")
                 },
             }.Check(request);
 
@@ -6294,14 +6294,14 @@ static UniValue buildscript(const JSONRPCRequest &request)
     return obj;
 };
 
-static UniValue createrawparttransaction(const JSONRPCRequest& request)
+static UniValue createrawrhomtransaction(const JSONRPCRequest& request)
 {
     std::shared_ptr<CWallet> const wallet = GetWalletForJSONRPCRequest(request);
     CHDWallet *const pwallet = GetRhombusWallet(wallet.get());
     if (!EnsureWalletIsAvailable(pwallet, request.fHelp))
         return NullUniValue;
 
-            RPCHelpMan{"createrawparttransaction",
+            RPCHelpMan{"createrawrhomtransaction",
                 "\nCreate a transaction spending the given inputs and creating new confidential outputs.\n"
                 "Outputs can be addresses or data.\n"
                 "Returns hex-encoded raw transaction.\n"
@@ -6365,11 +6365,11 @@ static UniValue createrawparttransaction(const JSONRPCRequest& request)
                         }},
                 }},
                 RPCExamples{
-            HelpExampleCli("createrawparttransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\" \"{\\\"address\\\":0.01}\"")
-            + HelpExampleCli("createrawparttransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\" \"{\\\"data\\\":\\\"00010203\\\"}\"") +
+            HelpExampleCli("createrawrhomtransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\" \"{\\\"address\\\":0.01}\"")
+            + HelpExampleCli("createrawrhomtransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\" \"{\\\"data\\\":\\\"00010203\\\"}\"") +
             "\nAs a JSON-RPC call\n"
-            + HelpExampleRpc("createrawparttransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\", \"{\\\"address\\\":0.01}\"")
-            + HelpExampleRpc("createrawparttransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\", \"{\\\"data\\\":\\\"00010203\\\"}\"")
+            + HelpExampleRpc("createrawrhomtransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\", \"{\\\"address\\\":0.01}\"")
+            + HelpExampleRpc("createrawrhomtransaction", "\"[{\\\"txid\\\":\\\"myid\\\",\\\"vout\\\":0}]\", \"{\\\"data\\\":\\\"00010203\\\"}\"")
                 },
             }.Check(request);
 
@@ -7983,14 +7983,14 @@ static const CRPCCommand commands[] =
 
 
     //sendparttopart // normal txn
-    { "wallet",             "sendparttoblind",                  &sendparttoblind,               {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
-    { "wallet",             "sendparttoanon",                   &sendparttoanon,                {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
+    { "wallet",             "sendrhomtoblind",                  &sendrhomtoblind,               {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
+    { "wallet",             "sendrhomtoanon",                   &sendrhomtoanon,                {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
 
-    { "wallet",             "sendblindtopart",                  &sendblindtopart,               {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
+    { "wallet",             "sendblindtorhom",                  &sendblindtorhom,               {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
     { "wallet",             "sendblindtoblind",                 &sendblindtoblind,              {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
     { "wallet",             "sendblindtoanon",                  &sendblindtoanon,               {"address","amount","comment","comment_to","subtractfeefromamount","narration"} },
 
-    { "wallet",             "sendanontopart",                   &sendanontopart,                {"address","amount","comment","comment_to","subtractfeefromamount","narration","ringsize","inputs_per_sig"} },
+    { "wallet",             "sendanontorhom",                   &sendanontorhom,                {"address","amount","comment","comment_to","subtractfeefromamount","narration","ringsize","inputs_per_sig"} },
     { "wallet",             "sendanontoblind",                  &sendanontoblind,               {"address","amount","comment","comment_to","subtractfeefromamount","narration","ringsize","inputs_per_sig"} },
     { "wallet",             "sendanontoanon",                   &sendanontoanon,                {"address","amount","comment","comment_to","subtractfeefromamount","narration","ringsize","inputs_per_sig"} },
 
@@ -8008,7 +8008,7 @@ static const CRPCCommand commands[] =
     { "wallet",             "derivefromstealthaddress",         &derivefromstealthaddress,      {"stealthaddress","ephempubkey"} },
 
     { "rawtransactions",    "buildscript",                      &buildscript,                   {"json"} },
-    { "rawtransactions",    "createrawparttransaction",         &createrawparttransaction,      {"inputs","outputs","locktime","replaceable"} },
+    { "rawtransactions",    "createrawrhomtransaction",         &createrawrhomtransaction,      {"inputs","outputs","locktime","replaceable"} },
     { "rawtransactions",    "fundrawtransactionfrom",           &fundrawtransactionfrom,        {"input_type","hexstring","input_amounts","output_amounts","options"} },
     { "rawtransactions",    "verifycommitment",                 &verifycommitment,              {"commitment","blind","amount"} },
     { "rawtransactions",    "rewindrangeproof",                 &rewindrangeproof,              {"rangeproof","commitment","nonce_key","ephemeral_key"} },
