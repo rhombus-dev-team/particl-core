@@ -380,20 +380,19 @@ public:
         base58Prefixes[EXT_PUBLIC_KEY_BTC] = {0x04, 0x88, 0xB2, 0x1E}; // xpub
         base58Prefixes[EXT_SECRET_KEY_BTC] = {0x04, 0x88, 0xAD, 0xE4}; // xprv
 
-        bech32Prefixes[PUBKEY_ADDRESS].assign       ("Rh",(const char*)"Rh"+2);
-        bech32Prefixes[SCRIPT_ADDRESS].assign       ("Rr",(const char*)"Rr"+2);
-        bech32Prefixes[PUBKEY_ADDRESS_256].assign   ("Rl",(const char*)"Rl"+2);
-        bech32Prefixes[SCRIPT_ADDRESS_256].assign   ("Rj",(const char*)"Rj"+2);
-        bech32Prefixes[SECRET_KEY].assign           ("Rx",(const char*)"Rx"+2);
-        bech32Prefixes[EXT_PUBLIC_KEY].assign       ("Rep",(const char*)"Rep"+3);
-        bech32Prefixes[EXT_SECRET_KEY].assign       ("Rex",(const char*)"Rex"+3);
-        bech32Prefixes[STEALTH_ADDRESS].assign      ("Rs",(const char*)"Rs"+2);
-        bech32Prefixes[EXT_KEY_HASH].assign         ("Rek",(const char*)"Rek"+3);
-        bech32Prefixes[EXT_ACC_HASH].assign         ("Rea",(const char*)"Rea"+3);
-        bech32Prefixes[STAKE_ONLY_PKADDR].assign    ("Rcs",(const char*)"Rcs"+3);
+        bech32Prefixes[PUBKEY_ADDRESS].assign       ("rh",(const char*)"rh"+2);
+        bech32Prefixes[SCRIPT_ADDRESS].assign       ("rr",(const char*)"rr"+2);
+        bech32Prefixes[PUBKEY_ADDRESS_256].assign   ("rl",(const char*)"rl"+2);
+        bech32Prefixes[SCRIPT_ADDRESS_256].assign   ("rj",(const char*)"rj"+2);
+        bech32Prefixes[SECRET_KEY].assign           ("rx",(const char*)"rx"+2);
+        bech32Prefixes[EXT_PUBLIC_KEY].assign       ("rep",(const char*)"rep"+3);
+        bech32Prefixes[EXT_SECRET_KEY].assign       ("rex",(const char*)"rex"+3);
+        bech32Prefixes[STEALTH_ADDRESS].assign      ("rs",(const char*)"rs"+2);
+        bech32Prefixes[EXT_KEY_HASH].assign         ("rek",(const char*)"rek"+3);
+        bech32Prefixes[EXT_ACC_HASH].assign         ("rea",(const char*)"rea"+3);
+        bech32Prefixes[STAKE_ONLY_PKADDR].assign    ("rcs",(const char*)"rcs"+3);
 
         bech32_hrp = "rw";
-
         vFixedSeeds = std::vector<SeedSpec6>(pnSeed6_main, pnSeed6_main + ARRAYLEN(pnSeed6_main));
 
         fDefaultConsistencyChecks = false;
