@@ -90,7 +90,7 @@ void MnemonicDialog::on_btnCancel_clicked()
 void MnemonicDialog::on_btnImport_clicked()
 {
     QString sCommand = (ui->chkImportChain->checkState() == Qt::Unchecked)
-        ? "extkeyimportmaster" : "extkeygenesisimport";
+        ? "extkeyimportmaster" : "extkeyimportmaster";
     sCommand += " \"" + ui->tbxMnemonic->toPlainText() + "\"";
 
     QString sPassword = ui->edtPassword->text();

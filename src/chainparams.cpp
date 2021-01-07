@@ -8,6 +8,7 @@
 //#include <rpc/server.h>
 
 #include <chainparams.h>
+#include <pow.h>
 
 #include <chainparamsseeds.h>
 #include <consensus/merkle.h>
@@ -150,7 +151,7 @@ const size_t nGenesisOutputsTestnet = sizeof(genesisOutputsTestnet) / sizeof(gen
 
 static CBlock CreateGenesisBlockRegTest(uint32_t nTime, uint32_t nNonce, uint32_t nBits)
 {
-    const char *pszTimestamp = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks";
+    const char *pszTimestamp = "000000000000000000070f733a7938515c60e693fb07c46538a9fcff5d1c6830";
 
     CMutableTransaction txNew;
     txNew.nVersion = RHOMBUS_TXN_VERSION;
@@ -158,14 +159,6 @@ static CBlock CreateGenesisBlockRegTest(uint32_t nTime, uint32_t nNonce, uint32_
     txNew.vin.resize(1);
     uint32_t nHeight = 0;  // bip34
     txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp)) << OP_RETURN << nHeight;
-
-    txNew.vpout.resize(nGenesisOutputsRegtest);
-    for (size_t k = 0; k < nGenesisOutputsRegtest; ++k) {
-        OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
-        out->nValue = regTestOutputs[k].second;
-        out->scriptPubKey = CScript() << OP_DUP << OP_HASH160 << ParseHex(regTestOutputs[k].first) << OP_EQUALVERIFY << OP_CHECKSIG;
-        txNew.vpout[k] = out;
-    }
 
     CBlock genesis;
     genesis.nTime    = nTime;
@@ -183,7 +176,7 @@ static CBlock CreateGenesisBlockRegTest(uint32_t nTime, uint32_t nNonce, uint32_
 
 static CBlock CreateGenesisBlockTestNet(uint32_t nTime, uint32_t nNonce, uint32_t nBits)
 {
-    const char *pszTimestamp = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks";
+    const char *pszTimestamp = "000000000000000000070f733a7938515c60e693fb07c46538a9fcff5d1c6830";
 
     CMutableTransaction txNew;
     txNew.nVersion = RHOMBUS_TXN_VERSION;
@@ -192,29 +185,26 @@ static CBlock CreateGenesisBlockTestNet(uint32_t nTime, uint32_t nNonce, uint32_
     uint32_t nHeight = 0;  // bip34
     txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp)) << OP_RETURN << nHeight;
 
-    txNew.vpout.resize(nGenesisOutputsTestnet);
-    for (size_t k = 0; k < nGenesisOutputsTestnet; ++k) {
+   for (size_t k = 0; k < 20; ++k) {
         OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
-        out->nValue = genesisOutputsTestnet[k].second;
-        out->scriptPubKey = CScript() << OP_DUP << OP_HASH160 << ParseHex(genesisOutputsTestnet[k].first) << OP_EQUALVERIFY << OP_CHECKSIG;
-        txNew.vpout[k] = out;
+        out->nValue = (200000000/20) *  COIN;
+        out->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("4d2a2e22250047cf4544d5870931ad3b9bbbf161") << OP_EQUALVERIFY << OP_CHECKSIG;
+        txNew.vpout.push_back(out);
     }
 
-    OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
-    // Reserved Rhombus for primary round
-    // RLWLm1Hp7im3mq44Y1DgyirYgwvrmRASib 9c8c6c8c698f074180ecfdb38e8265c11f2a62cf
-    out = MAKE_OUTPUT<CTxOutStandard>();
-    out->nValue = 996000 * COIN;
-    out->scriptPubKey = CScript() << 1512000000 << OP_CHECKLOCKTIMEVERIFY << OP_DROP << OP_HASH160<< ParseHex("9c8c6c8c698f074180ecfdb38e8265c11f2a62cf") << OP_EQUAL; // 2017-11-30
-    txNew.vpout.push_back(out);
+    for (size_t l = 0; l < 100; ++l) {
+        OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
+        out->nValue = (800000000/100) *  COIN;
+        out->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("5807ef094ad50c0e408d6845aa19cde409b1f132") << OP_EQUALVERIFY << OP_CHECKSIG;
+        txNew.vpout.push_back(out);
+    }
 
-
-    // Reserved Rhombus for lunarllc
-    // RLWLm1Hp7im3mq44Y1DgyirYgwvrmRASib 9c8c6c8c698f074180ecfdb38e8265c11f2a62cf
-    out = MAKE_OUTPUT<CTxOutStandard>();
-    out->nValue = 216346 * COIN;
-    out->scriptPubKey = CScript() << OP_HASH160 << ParseHex("89ca93e03119d53fd9ad1e65ce22b6f8791f8a49") << OP_EQUAL;
-    txNew.vpout.push_back(out);
+    for (size_t m = 0; m < 15; ++m) {
+        OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
+        out->nValue = (6000000000/15) *  COIN;
+        out->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("4f953fbe777219b4da2cb852c49cd89cf6394b52") << OP_EQUALVERIFY << OP_CHECKSIG;
+        txNew.vpout.push_back(out);
+    }
 
 
     CBlock genesis;
@@ -233,7 +223,7 @@ static CBlock CreateGenesisBlockTestNet(uint32_t nTime, uint32_t nNonce, uint32_
 
 static CBlock CreateGenesisBlockMainNet(uint32_t nTime, uint32_t nNonce, uint32_t nBits)
 {
-    const char *pszTimestamp = "The Times 03/Jan/2009 Chancellor on brink of second bailout for banks";
+    const char *pszTimestamp = "000000000000000000070f733a7938515c60e693fb07c46538a9fcff5d1c6830";
     const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
 
     CMutableTransaction txNew;
@@ -246,15 +236,26 @@ static CBlock CreateGenesisBlockMainNet(uint32_t nTime, uint32_t nNonce, uint32_
     txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp)) << OP_RETURN << nHeight;
 
 
-    OUTPUT_PTR<CTxOutStandard> out1 = MAKE_OUTPUT<CTxOutStandard>();
-    out1->nValue = 200000000 *  COIN;
-    out1->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("3b2541351c37401ccb17f6032a746e187a080035") << OP_EQUALVERIFY << OP_CHECKSIG;
-    txNew.vpout.push_back(out1);
+     for (size_t k = 0; k < 20; ++k) {
+        OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
+        out->nValue = (200000000/20) *  COIN;
+        out->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("df7b11f656c53fd31486ee1e48f814814853445d") << OP_EQUALVERIFY << OP_CHECKSIG;
+        txNew.vpout.push_back(out);
+    }
 
-    OUTPUT_PTR<CTxOutStandard> out2 = MAKE_OUTPUT<CTxOutStandard>();
-    out2->nValue = 800000000 *  COIN;
-    out2->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("076ca15dd972f066239f35e4f94bfcdff811e67f")<< OP_EQUALVERIFY << OP_CHECKSIG;
-    txNew.vpout.push_back(out2);
+    for (size_t l = 0; l < 100; ++l) {
+        OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
+        out->nValue = (800000000/100) *  COIN;
+        out->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("a4e543ecac59d9caa218f7b1236153a2c764fa72") << OP_EQUALVERIFY << OP_CHECKSIG;
+        txNew.vpout.push_back(out);
+    }
+
+    for (size_t m = 0; m < 15; ++m) {
+        OUTPUT_PTR<CTxOutStandard> out = MAKE_OUTPUT<CTxOutStandard>();
+        out->nValue = (6000000000/15) *  COIN;
+        out->scriptPubKey =  CScript() << OP_DUP << OP_HASH160 << ParseHex("1aae93aba1c771c6d5edf44fc94dfecdda3ad0f5") << OP_EQUALVERIFY << OP_CHECKSIG;
+        txNew.vpout.push_back(out);
+    }
 
     CBlock genesis;
     genesis.nTime    = nTime;
@@ -328,38 +329,34 @@ public:
         pchMessageStart[0] = 0xfb;
         pchMessageStart[1] = 0xf2;
         pchMessageStart[2] = 0xef;
-        pchMessageStart[3] = 0xb4;
+        pchMessageStart[3] = 0xb5;
         nDefaultPort = 41738;
         nBIP44ID = (int)WithHardenedBit(44);
         assert(nBIP44ID == (int)0x8000002C);
 
 
         nModifierInterval = 10 * 60;    // 10 minutes
-        nStakeMinConfirmations = 45;   // 45 * 10 minutes
-        nTargetSpacing = 120;           // 2 minutes for testing, 10 minutes for launch
+        nStakeMinConfirmations = 180;   // 180 * 2.5 minutes
+        nTargetSpacing = 150;           // 2 minutes for testing, 10 minutes for launch
         nTargetTimespan = 24 * 60;      // 24 mins
 
         nPruneAfterHeight = 100000;
         m_assumed_blockchain_size = 1;
         m_assumed_chain_state_size = 1;
 
-        genesis = CreateGenesisBlockMainNet(1604206168, 3668295, 0x1f00ffff); // 2017-07-17 13:00:00
-
+        genesis = CreateGenesisBlockMainNet(1607567863, 167674, 0x1f00ffff);
         consensus.hashGenesisBlock = genesis.GetHash();
-        //genesis.GetBlockHeader().
-	    //LogPrintf("checking aserts %s\n%s\n%s\n%s\n", consensus.hashGenesisBlock.ToString(), genesis.hashMerkleRoot.ToString(), uint256S("0x00000b739648f3aa338b845b8495e2fda3a6a1c4cd30a84327b1395ed01329a3").ToString(), uint256S("0x54130f73358f72fc1028bc1d5cb7abc23960679fa7cc1c4a7674fe1882ac99d6").ToString());
-	    LogPrintf("block %s", genesis.ToString());
 
-	    //assert(consensus.hashGenesisBlock ==  uint256S("0xfc19a52e2920b102e418158b1b5367d5419636306e5988af93b62c63b4294462"));   //uint256S("0x00000b739648f3aa338b845b8495e2fda3a6a1c4cd30a84327b1395ed01329a3"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x25db6490540d17d08ae242c30d37e4223bae42a0d7ddca3895d6dc33ac9b9e68"));   //uint256S("0x54130f73358f72fc1028bc1d5cb7abc23960679fa7cc1c4a7674fe1882ac99d6"));
-        //assert(genesis.hashWitnessMerkleRoot == uint256S("0xb9808b35e74ac10cd74f8aa9aaf99f424c90165a73a85e502729061b326e9514"));   //uint256S("0x619e94a7f9f04c8a1d018eb8bcd9c42d3c23171ebed8f351872256e36959d66c"));
+	    assert(consensus.hashGenesisBlock ==  uint256S("0x00006c324b2f2fd4d570106fa8ff35bb2cb5e18c26ffcd16585d85dab252e897"));   //uint256S("0x00000b739648f3aa338b845b8495e2fda3a6a1c4cd30a84327b1395ed01329a3"));
+        assert(genesis.hashMerkleRoot == uint256S("0x5bd3e9405a97b3949363d2966f078128c1d9b00de5894fc6433910e799ba188d"));   //uint256S("0x54130f73358f72fc1028bc1d5cb7abc23960679fa7cc1c4a7674fe1882ac99d6"));
+        assert(genesis.hashWitnessMerkleRoot == uint256S("0x6f49f663f75e32a5cfefebffad47080ac2067ec4d3031e0d57462dabfd324e60"));   //uint256S("0x619e94a7f9f04c8a1d018eb8bcd9c42d3c23171ebed8f351872256e36959d66c"));
 
         // Note that of those which support the service bits prefix, most only support a subset of
         // possible options.
         // This is fine at runtime as we'll fall back to using them as a oneshot if they don't support the
         // service bits we want, but we should get them updated to support all service bits wanted by any
         // release ASAP to avoid it where possible.
-        vSeeds.emplace_back("");
+        //vSeeds.emplace_back("mainnet.rhom.com");
 
 
         base58Prefixes[PUBKEY_ADDRESS]     = {0x3c}; // R
@@ -483,7 +480,7 @@ public:
         consensus.nMinimumChainWork = uint256S("0x00000000000000000000000000000000000000000000000899ad150e4ba9f730");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x1d9a63069ed2b88c9a1752ade780d39f783118a4d6f7b4a04b398c3d77d4cd1f"); // 585754
+        //consensus.defaultAssumeValid = uint256S("0x1d9a63069ed2b88c9a1752ade780d39f783118a4d6f7b4a04b398c3d77d4cd1f"); // 585754
 
         consensus.nMinRCTOutputDepth = 12;
 
@@ -504,12 +501,12 @@ public:
         m_assumed_blockchain_size = 1;
         m_assumed_chain_state_size = 1;
 
-        genesis = CreateGenesisBlockTestNet(1603839395, 875582, 0x1f00ffff);
+        genesis = CreateGenesisBlockTestNet(1607567863, 194729, 0x1f00ffff);
         consensus.hashGenesisBlock = genesis.GetHash();
 
-        //assert(consensus.hashGenesisBlock == uint256S("0x0000594ada5310b367443ee0afd4fa3d0bbd5850ea4e33cdc7d6a904a7ec7c90"));
-        //assert(genesis.hashMerkleRoot == uint256S("0x54130f73358f72fc1028bc1d5cb7abc23960679fa7cc1c4a7674fe1882ac99d6"));
-        //assert(genesis.hashWitnessMerkleRoot == uint256S("0xf9e2235c9531d5a19263ece36e82c4d5b71910d73cd0b677b81c5e50d17b6cda"));
+        assert(consensus.hashGenesisBlock == uint256S("0x0000795feac87a1d474b6e0d4fa4f72f5732664910609a44fe002e779f1f2dfc"));
+        assert(genesis.hashMerkleRoot == uint256S("0xae56a287a8d4f9a989a80a8dd1a3f9c5cbfa7b322fe02424158e0e81fdde1e86"));
+        assert(genesis.hashWitnessMerkleRoot == uint256S("0xf2a4d32af3b653d5c6343a5c10a3357d7761829643226e1978b4a7420add744e"));
 
         vFixedSeeds.clear();
         vSeeds.clear();

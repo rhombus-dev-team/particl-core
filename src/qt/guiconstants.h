@@ -43,7 +43,7 @@ static const int TOOLTIP_WRAP_THRESHOLD = 80;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "Rhombus"
-#define QAPP_ORG_DOMAIN "rhombus.io"
+#define QAPP_ORG_DOMAIN "rhom.com"
 #define QAPP_APP_NAME_DEFAULT "Rhombus-Qt"
 #define QAPP_APP_NAME_TESTNET "Rhombus-Qt-testnet"
 #define QAPP_APP_NAME_REGTEST "Rhombus-Qt-regtest"
