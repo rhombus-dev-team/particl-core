@@ -24,7 +24,7 @@ packages:
 - "apt-transport-https"
 - "libjpeg-dev"
 remotes:
-- "url": "https://github.com/rhombus/rhombus-desktop"
+- "url": "https://github.com/rhombus-project/rhombus-desktop"
   "dir": "rhombus-desktop"
 files: []
 script: |
